@@ -93,7 +93,6 @@ namespace Events_Space
 			logger::info("recieved KID finished event"sv);
 
 			//Settings::GetSingleton()->Load();
-			//Events::Patch_Spell_List();
 
 			return RE::BSEventNotifyControl::kContinue;
 		}
@@ -267,22 +266,22 @@ namespace Events_Space
 		}
 	}
 
-	// void Events::init()
-	// {
-	// 	_precision_API = reinterpret_cast<PRECISION_API::IVPrecision1*>(PRECISION_API::RequestPluginAPI());
-	// 	if (_precision_API) {
-	// 		_precision_API->AddPostHitCallback(SKSE::GetPluginHandle(), PrecisionWeaponsCallback_Post);
-	// 		logger::info("Enabled compatibility with Precision");
-	// 	}
-	// }
+	void Events::init()
+	{
+		_precision_API = reinterpret_cast<PRECISION_API::IVPrecision1*>(PRECISION_API::RequestPluginAPI());
+		if (_precision_API) {
+			_precision_API->AddPostHitCallback(SKSE::GetPluginHandle(), PrecisionWeaponsCallback_Post);
+			logger::info("Enabled compatibility with Precision");
+		}
+	}
 
-	// void Events::PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata)
-	// {
-	// 	if (!a_precisionHitData.target || !a_precisionHitData.target->Is(RE::FormType::ActorCharacter)) {
-	// 		return;
-	// 	}
-	// 	return;
-	// }
+	void Events::PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata)
+	{
+		if (!a_precisionHitData.target || !a_precisionHitData.target->Is(RE::FormType::ActorCharacter)) {
+			return;
+		}
+		return;
+	}
 
 
 

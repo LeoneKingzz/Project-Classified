@@ -1,16 +1,17 @@
-#include "hook.h"
+#include "Events.h"
 
 void MessageHandler(SKSE::MessagingInterface::Message *a_msg)
 {
 	switch (a_msg->type)
 	{
 	case SKSE::MessagingInterface::kDataLoaded:
-		hooks::animEventHandler::Register(false, true);
-		hooks::OnMeleeHitHook::install();
-		// hooks::InputEventHandler::SinkEventHandlers();
-		//hooks::Settings::GetSingleton()->Load();
-		//hooks::OnMeleeHitHook::Patch_Spell_List();
+		Events_Space::animEventHandler::Register(false, true);
+		Events_Space::Events::install();
+		//Events_Space::Settings::GetSingleton()->Load();
+		break;
 
+	case SKSE::MessagingInterface::kPostPostLoad:
+		Events_Space::Events::GetSingleton()->init();
 		break;
 
 	default:
@@ -21,11 +22,11 @@ void MessageHandler(SKSE::MessagingInterface::Message *a_msg)
 
 void Init()
 {
-	hooks::OnMeleeHitHook::install_pluginListener();
+	Events_Space::Events::install_pluginListener();
 	auto messaging = SKSE::GetMessagingInterface();
 	messaging->RegisterListener("SKSE", MessageHandler);
 }
 
 void Load(){
-	//hooks::OnMeleeHitHook::install_protected();
+	Events_Space::Events::install_protected();
 }

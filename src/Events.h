@@ -1,4 +1,4 @@
-//#include "PrecisionAPI.h"
+#include "PrecisionAPI.h"
 #include "GeneralFunctions.h"
 //using std::string;
 static float& g_deltaTime = (*(float*)RELOCATION_ID(523660, 410199).address());
@@ -103,8 +103,8 @@ namespace Events_Space
 		Events& operator=(const Events&) = delete;
 		Events& operator=(Events&&) = delete;
 
-		//PRECISION_API::IVPrecision1* _precision_API;
-		//static void PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata);
+		PRECISION_API::IVPrecision1* _precision_API;
+		static void PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata);
 
 	protected:
 
