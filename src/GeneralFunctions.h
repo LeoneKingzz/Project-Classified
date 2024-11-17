@@ -23,6 +23,15 @@ namespace GFunc_Space{
 	typedef float (*tActor_GetReach)(RE::Actor *a_this);
 	static REL::Relocation<tActor_GetReach> Actor_GetReach{RELOCATION_ID(37588, 38538)};
 
+	typedef void(_fastcall *tPushActorAway_sub_14067D4A0)(RE::AIProcess *a_causer, RE::Actor *a_target, RE::NiPoint3 &a_origin, float a_magnitude);
+	inline static REL::Relocation<tPushActorAway_sub_14067D4A0> pushActorAway{RELOCATION_ID(38858, 39895)};
+
+	typedef void(_fastcall *_shakeCamera)(float strength, RE::NiPoint3 source, float duration);
+	inline static REL::Relocation<_shakeCamera> shakeCamera{RELOCATION_ID(32275, 33012)};
+
+	typedef void(_fastcall *_destroyProjectile)(RE::Projectile *a_projectile);
+	inline static REL::Relocation<_destroyProjectile> destroyProjectile{RELOCATION_ID(42930, 44110)};
+
 	union ConditionParam
 	{
 		char c;
@@ -68,6 +77,7 @@ namespace GFunc_Space{
 		RE::BGSAttackData *get_attackData(RE::Actor *a);
 		float get_personal_threatRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		float get_personal_survivalRatio(RE::Actor *protagonist, RE::Actor *combat_target);
+		void PushActorAway(RE::Actor *causer, RE::Actor *target, float magnitude);
 
 		struct PolarAngle
 		{
