@@ -415,7 +415,6 @@ namespace hooks
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			OnMeleeHitHook::GetSingleton()->scan_activeRunes(nullptr, nullptr, false, false, true);
 
 			return RE::BSEventNotifyControl::kContinue;
 		}
@@ -623,7 +622,7 @@ namespace hooks
 				auto bNSV_IsinCombat = false;
 				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
 				{
-					OnMeleeHitHook::GetAttackSpell(actor, true);
+
 				}
 			}
 			break;
@@ -634,7 +633,7 @@ namespace hooks
 				auto bNSV_IsinCombat = false;
 				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
 				{
-					OnMeleeHitHook::GetAttackSpell(actor);
+
 				}
 			}
 			break;
@@ -645,7 +644,7 @@ namespace hooks
 				auto bNSV_IsinCombat = false;
 				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
 				{
-					OnMeleeHitHook::Cast_PotentialRune(actor, true);
+
 				}
 			}
 			break;
@@ -656,7 +655,7 @@ namespace hooks
 				auto bNSV_IsinCombat = false;
 				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
 				{
-					OnMeleeHitHook::Cast_PotentialRune(actor);
+
 				}
 			}
 			break;
