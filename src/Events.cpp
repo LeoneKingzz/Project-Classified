@@ -45,9 +45,9 @@ namespace Events_Space
 			}
 
 			// if (a_actor->IsPlayerRef()){
-			// 	OnMeleeHitHook::GetSingleton()->scan_activeRunes(nullptr, nullptr, false, false, true);
+			// 	Events::GetSingleton()->scan_activeRunes(nullptr, nullptr, false, false, true);
 			// }else{
-			// 	OnMeleeHitHook::GetSingleton()->scan_activeRunes(a_actor, nullptr, false, true);
+			// 	Events::GetSingleton()->scan_activeRunes(a_actor, nullptr, false, true);
 			// }
 
 			return RE::BSEventNotifyControl::kContinue;
@@ -93,7 +93,7 @@ namespace Events_Space
 			logger::info("recieved KID finished event"sv);
 
 			//Settings::GetSingleton()->Load();
-			//OnMeleeHitHook::Patch_Spell_List();
+			//Events::Patch_Spell_List();
 
 			return RE::BSEventNotifyControl::kContinue;
 		}
@@ -227,7 +227,7 @@ namespace Events_Space
 
 	std::unordered_map<uint64_t, animEventHandler::FnProcessEvent> animEventHandler::fnHash;
 
-	void OnMeleeHitHook::install(){
+	void Events::install(){
 
 		auto eventSink = OurEventSink::GetSingleton();
 
@@ -241,33 +241,33 @@ namespace Events_Space
 		eventSourceHolder->AddEventSink<RE::TESDeathEvent>(eventSink);
 	}
 
-	void OnMeleeHitHook::install_pluginListener(){
+	void Events::install_pluginListener(){
 		auto eventSink = OurEventSink::GetSingleton();
 		SKSE::GetModCallbackEventSource()->AddEventSink(eventSink);
 	}
 
 	
 
-	bool OnMeleeHitHook::BindPapyrusFunctions(VM* vm)
+	bool Events::BindPapyrusFunctions(VM* vm)
 	{
 		//vm->RegisterFunction("XXXX", "XXXXX", XXXX);
 		return true;
 	}
 
-	void OnMeleeHitHook::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
+	void Events::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
 	{
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
 			// auto bNSV_IsinCombat = false;
 			// if ((a_actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
 			// {
-			// 	OnMeleeHitHook::Scan_ForHealers(a_actor);
+			// 	Events::Scan_ForHealers(a_actor);
 			// }else{
-			// 	OnMeleeHitHook::Unregister_Healer(a_actor);
+			// 	Events::Unregister_Healer(a_actor);
 			// }
 		}
 	}
 
-	// void OnMeleeHitHook::init()
+	// void Events::init()
 	// {
 	// 	_precision_API = reinterpret_cast<PRECISION_API::IVPrecision1*>(PRECISION_API::RequestPluginAPI());
 	// 	if (_precision_API) {
@@ -276,7 +276,7 @@ namespace Events_Space
 	// 	}
 	// }
 
-	// void OnMeleeHitHook::PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata)
+	// void Events::PrecisionWeaponsCallback_Post(const PRECISION_API::PrecisionHitData& a_precisionHitData, const RE::HitData& a_hitdata)
 	// {
 	// 	if (!a_precisionHitData.target || !a_precisionHitData.target->Is(RE::FormType::ActorCharacter)) {
 	// 		return;

@@ -318,10 +318,10 @@ namespace GFunc_Space{
 
 		std::random_device rd;
 
-		// std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
-		// std::unordered_map<RE::Actor *, std::vector<RE::Projectile *>> _RunesCast;
-		// std::shared_mutex mtx_RunesCast;
-		// std::shared_mutex mtx_Inventory;
+		std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
+		std::unordered_map<RE::Actor *, std::vector<RE::Projectile *>> _RunesCast;
+		std::shared_mutex mtx_RunesCast;
+		std::shared_mutex mtx_Inventory;
 
 		static int soundHelper_a(void *manager, RE::BSSoundHandle *a2, int a3, int a4) // sub_140BEEE70
 		{
