@@ -11,7 +11,7 @@
 #pragma warning(disable : 4189)
 
 namespace GFunc_Space{
-	// static float& g_deltaTime = (*(float*)RELOCATION_ID(523660, 410199).address());
+
 	using uniqueLocker = std::unique_lock<std::shared_mutex>;
 	using sharedLocker = std::shared_lock<std::shared_mutex>;
 
@@ -58,7 +58,6 @@ namespace GFunc_Space{
 		static bool isHumanoid(RE::Actor *a_actor);
 		static std::vector<RE::TESForm *> GetEquippedForm(RE::Actor *actor);
 		static bool IsWeaponOut(RE::Actor *actor);
-		void Update(RE::Actor *a_actor, float a_delta);
 		float AV_Mod(RE::Actor *a_actor, int a_aggression, float input, float mod);
 		int GenerateRandomInt(int value_a, int value_b);
 		float GenerateRandomFloat(float value_a, float value_b);
@@ -289,7 +288,6 @@ namespace GFunc_Space{
 
 		static void playSound(RE::Actor *a, RE::BGSSoundDescriptorForm *a_descriptor)
 		{
-			// logger::info("starting voicing....");
 
 			RE::BSSoundHandle handle;
 			handle.soundID = static_cast<uint32_t>(-1);
@@ -302,8 +300,6 @@ namespace GFunc_Space{
 			{
 				soundHelper_b(&handle, a->Get3D());
 				soundHelper_c(&handle);
-				// logger::info("FormID {}"sv, a_descriptor->GetFormID());
-				// logger::info("voicing complete");
 			}
 		}
 
