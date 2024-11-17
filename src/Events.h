@@ -1,5 +1,5 @@
 #include "lib/PrecisionAPI.h"
-#include "GeneralFunctions.h"
+#include "DovahAI.h"
 //using std::string;
 static float& g_deltaTime = (*(float*)RELOCATION_ID(523660, 410199).address());
 
