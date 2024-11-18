@@ -85,6 +85,8 @@ namespace GFunc_Space{
 		float get_personal_threatRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		float get_personal_survivalRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		void PushActorAway(RE::Actor *causer, RE::Actor *target, float magnitude);
+		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> bar);
+		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
 
 		struct PolarAngle
 		{
@@ -369,4 +371,19 @@ namespace GFunc_Space{
 	};
 }
 
+constexpr uint32_t hash(const char *data, size_t const size) noexcept
+{
+	uint32_t hash = 5381;
 
+	for (const char *c = data; c < data + size; ++c)
+	{
+		hash = ((hash << 5) + hash) + (unsigned char)*c;
+	}
+
+	return hash;
+}
+
+constexpr uint32_t operator"" _h(const char *str, size_t size) noexcept
+{
+	return hash(str, size);
+}

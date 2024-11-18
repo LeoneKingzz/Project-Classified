@@ -104,6 +104,61 @@ namespace GFunc_Space{
 		}
 	}
 
+	void GFunc::RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string> bar)
+	{
+		uniqueLocker lock(mtx_Timer);
+		auto itt = _Timer.find(a_actor);
+		if (itt == _Timer.end())
+		{
+			_Timer.insert({a_actor, bar});
+		}
+	}
+
+	void GFunc::Process_Updates(RE::Actor *a_actor, GFunc_Space::Time::time_point time_now)
+	{
+		uniqueLocker lock(mtx_Timer);
+		for (auto it = _Timer.begin(); it != _Timer.end(); ++it)
+		{
+			if (it->first == a_actor)
+			{
+				auto data = it->second;
+				auto update = std::get<0>(data);
+				if (update){
+					auto time_initial = std::get<1>(data);
+					auto time_required = std::get<2>(data);
+					if (duration_cast<ms>(time_now - time_initial).count() == time_required.count())
+					{
+						auto function = std::get<3>(data);
+						switch (hash(function.c_str(), function.size()))
+						{
+						case "BeginCastLeft"_h:
+							
+							break;
+
+						case "BeginCastRight"_h:
+							
+							break;
+
+						case "MLh_SpellFire_Event"_h:
+							
+							break;
+
+						case "MRh_SpellFire_Event"_h:
+							
+							break;
+
+						default:
+							break;
+						}
+					}
+				}
+				
+				break;
+			}
+			
+		}
+	}
+
 	void GFunc::Re_EquipAll(RE::Actor *a_actor)
 	{
 		uniqueLocker lock(mtx_Inventory);
