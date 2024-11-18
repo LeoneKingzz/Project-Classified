@@ -10,6 +10,7 @@
 #include <chrono>
 #include <iostream>
 #include <tuple>
+#include <thread>
 #pragma warning(disable: 4100)
 #pragma warning(disable : 4189)
 
@@ -322,6 +323,17 @@ namespace GFunc_Space{
 				soundHelper_c(&handle);
 			}
 		}
+
+		inline void *ApplyHavokImpulse(RE::TESObjectREFR *self, float afX, float afY, float afZ, float afMagnitude)
+		{
+			using func_t = RE::TESObjectREFR *(RE::BSScript::Internal::VirtualMachine *, RE::VMStackID, RE::TESObjectREFR *, float, float, float, float);
+			RE::VMStackID frame = 0;
+
+			REL::Relocation<func_t> func{RE::VTABLE_SkyrimScript____ApplyHavokImpulseFunctor[0]};
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+
+			return func(vm, frame, self, afX, afY, afZ, afMagnitude);
+		};
 
 	private:
 		GFunc() = default;

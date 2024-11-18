@@ -29,11 +29,30 @@ namespace DovahAI_Space{
         return result;
     }
 
+    void DovahAI::wait(int a_duration)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(a_duration));
+    }
+
     void DovahAI::DeathRadollCrashLand(RE::Actor *a_actor)
     {
         auto first_position = a_actor->GetPosition();
         DeferredKill(a_actor, true);
-      
+
+        std::jthread waitThread(wait, 100);
+
+        auto second_position = a_actor->GetPosition();
+        DeferredKill(a_actor);
+        DeferredKill(a_actor, true);
+        a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -9999.0f);
+        DeferredKill(a_actor);
+        a_actor->NotifyAnimationGraph("Ragdoll");
+    }
+
+    void DovahAI::DeathRadollCrashLand_1(RE::Actor *a_actor)
+    {
+        auto first_position = a_actor->GetPosition();
+        DeferredKill(a_actor, true);
     }
 
     int main()

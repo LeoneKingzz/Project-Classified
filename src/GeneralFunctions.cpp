@@ -126,13 +126,14 @@ namespace GFunc_Space{
 				if (update){
 					auto time_initial = std::get<1>(data);
 					auto time_required = std::get<2>(data);
-					if (duration_cast<ms>(time_now - time_initial).count() == time_required.count())
+					if (duration_cast<ms>(time_now - time_initial).count() >= time_required.count())
 					{
 						auto function = std::get<3>(data);
 						switch (hash(function.c_str(), function.size()))
 						{
-						case "BeginCastLeft"_h:
-							
+						case "DeathRadollCrashLand_1"_h:
+						    
+
 							break;
 
 						case "BeginCastRight"_h:
