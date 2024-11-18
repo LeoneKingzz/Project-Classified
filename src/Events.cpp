@@ -256,13 +256,7 @@ namespace Events_Space
 	void Events::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
 	{
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
-			// auto bNSV_IsinCombat = false;
-			// if ((a_actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
-			// {
-			// 	Events::Scan_ForHealers(a_actor);
-			// }else{
-			// 	Events::Unregister_Healer(a_actor);
-			// }
+			
 		}
 	}
 

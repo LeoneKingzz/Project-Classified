@@ -33,5 +33,21 @@ namespace DovahAI_Space{
     {
         auto first_position = a_actor->GetPosition();
         DeferredKill(a_actor, true);
+        auto start = std::chrono::steady_clock::now();
+
+        auto five_seconds = 1ms;
+    }
+
+    int main()
+    {
+        
+        // auto t0 = GFunc_Space::Time::now();
+        // auto t1 = Time::now();
+        // fsec fs = t1 - t0;
+        // ms d = std::chrono::duration_cast<ms>(fs);
+        // std::cout << fs.count() << "s\n";
+        // std::cout << d.count() << "ms\n";
+
+        std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string> bar();
     }
 }

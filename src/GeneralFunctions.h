@@ -9,6 +9,7 @@
 #include <vector>
 #include <chrono>
 #include <iostream>
+#include <tuple>
 #pragma warning(disable: 4100)
 #pragma warning(disable : 4189)
 
@@ -33,6 +34,10 @@ namespace GFunc_Space{
 
 	typedef void(_fastcall *_destroyProjectile)(RE::Projectile *a_projectile);
 	inline static REL::Relocation<_destroyProjectile> destroyProjectile{RELOCATION_ID(42930, 44110)};
+	typedef std::chrono::high_resolution_clock Time;
+	typedef std::chrono::milliseconds ms;
+	typedef std::chrono::seconds secs;
+	typedef std::chrono::duration<float> fsec;
 
 	union ConditionParam
 	{
@@ -328,8 +333,8 @@ namespace GFunc_Space{
 		std::random_device rd;
 
 		std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
-		std::unordered_map<RE::Actor *, std::vector<RE::Projectile *>> _RunesCast;
-		std::shared_mutex mtx_RunesCast;
+		std::unordered_map<RE::Actor *, std::tuple<bool, Time::time_point, ms, std::string>> _Timer;
+		std::shared_mutex mtx_Timer;
 		std::shared_mutex mtx_Inventory;
 
 		static int soundHelper_a(void *manager, RE::BSSoundHandle *a2, int a3, int a4) // sub_140BEEE70

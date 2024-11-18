@@ -2,6 +2,7 @@
 
 namespace DovahAI_Space{
 
+
 	class DovahAI
 	{
 	public:
