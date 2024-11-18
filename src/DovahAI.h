@@ -11,9 +11,12 @@ namespace DovahAI_Space{
 			return &avInterface;
 		}
 
-		
+		static void DeferredKill(RE::Actor *a_actor, bool start = false);
+		static void DeathRadollPerch(RE::Actor *a_actor);
+		static bool GetBoolVariable(RE::Actor *a_actor, std::string a_string);
+		static void DeathRadollCrashLand(RE::Actor *a_actor);
 
-	private:
+		private:
 		DovahAI() = default;
 		DovahAI(const DovahAI &) = delete;
 		DovahAI(DovahAI &&) = delete;
