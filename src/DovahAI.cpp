@@ -91,12 +91,6 @@ namespace DovahAI_Space{
         return result;
     }
 
-    void DovahAI::DeathRadollCrashLand_1(RE::Actor *a_actor)
-    {
-        auto first_position = a_actor->GetPosition();
-        DeferredKill(a_actor, true);
-    }
-
     void DovahAI::SetLandingMarker(RE::Actor *a_actor)
     {
         if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
@@ -105,4 +99,23 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::DeathRadollFly(RE::Actor *a_actor)
+    {
+        DeferredKill(a_actor, true);
+        auto first_position = a_actor->GetPosition();
+        auto first_time = std::chrono::steady_clock::now();
+        std::jthread waitThread(wait, 400);
+        auto second_position = a_actor->GetPosition();
+        auto second_time = std::chrono::steady_clock::now();
+        auto time_secs = (std::chrono::duration_cast<std::chrono::seconds>(second_time - first_time).count()) * 10.0;
+        auto total_val = (abs(second_position.x - first_position.x) + abs(second_position.y - first_position.y) + abs(second_position.z - first_position.z))/time_secs;
+        if (total_val > 80000.0)
+        {
+            total_val = 80000.0;
+        }
+        a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -9999.0f);
+        DeferredKill(a_actor);
+        a_actor->NotifyAnimationGraph("Ragdoll");
+        GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, total_val);
+    }
 }
