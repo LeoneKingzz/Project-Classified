@@ -38,15 +38,28 @@ namespace DovahAI_Space{
     {
         auto first_position = a_actor->GetPosition();
         DeferredKill(a_actor, true);
-
         std::jthread waitThread(wait, 100);
-
         auto second_position = a_actor->GetPosition();
         DeferredKill(a_actor);
         DeferredKill(a_actor, true);
         a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -9999.0f);
         DeferredKill(a_actor);
         a_actor->NotifyAnimationGraph("Ragdoll");
+        GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, 50000.0f);
+    }
+
+    float DovahAI::PercentageHealthAction(RE::Actor *a_actor)
+    {
+        float result = 0.0f;
+
+        if (GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging"))
+        {
+            result = 1.25f;
+        }else{
+
+        }
+
+        return result;
     }
 
     void DovahAI::DeathRadollCrashLand_1(RE::Actor *a_actor)
