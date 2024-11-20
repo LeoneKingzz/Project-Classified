@@ -19,6 +19,7 @@ namespace DovahAI_Space{
 		static void DeathRadollCrashLand_1(RE::Actor *a_actor);
 		void wait(int a_duration);
 		float PercentageHealthAction(RE::Actor *a_actor);
+		void SetLandingMarker(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;

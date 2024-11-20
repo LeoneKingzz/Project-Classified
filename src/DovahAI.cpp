@@ -50,13 +50,42 @@ namespace DovahAI_Space{
 
     float DovahAI::PercentageHealthAction(RE::Actor *a_actor)
     {
-        float result = 0.0f;
+        float result = 1.0f;
 
         if (GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging"))
         {
             result = 1.25f;
         }else{
 
+            auto cur_health = a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth);
+            auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
+            if (perm_health != 0 && cur_health != 0)
+            {
+                if (auto percentHealth = (cur_health / perm_health)){
+                    if (percentHealth > 0.87 && percentHealth <= 1.0)
+                    {
+                        result = 1.25f;
+                    }
+                    else if (percentHealth > 0.74 && percentHealth <= 0.87)
+                    {
+                        result = 1.2f;
+                    }
+                    else if (percentHealth > 0.61 && percentHealth <= 0.74)
+                    {
+                        result = 1.15f;
+                    }
+                    else if (percentHealth > 0.48 && percentHealth <= 0.61)
+                    {
+                        result = 1.1f;
+                    }
+                    else if (percentHealth > 0.35 && percentHealth <= 0.48)
+                    {
+                        result = 1.05f;
+                    }else{
+                        result = 1.0f;
+                    }
+                }
+            }
         }
 
         return result;
@@ -68,16 +97,12 @@ namespace DovahAI_Space{
         DeferredKill(a_actor, true);
     }
 
-    int main()
+    void DovahAI::SetLandingMarker(RE::Actor *a_actor)
     {
-        
-        // auto t0 = GFunc_Space::Time::now();
-        // auto t1 = Time::now();
-        // fsec fs = t1 - t0;
-        // ms d = std::chrono::duration_cast<ms>(fs);
-        // std::cout << fs.count() << "s\n";
-        // std::cout << d.count() << "ms\n";
-
-        //std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string> bar();
+        if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
+        {
+            GFunc_Space::GFunc::GetSingleton()->SetForcedLandingMarker(a_actor, combat_target_handle.get());
+        }
     }
+
 }
