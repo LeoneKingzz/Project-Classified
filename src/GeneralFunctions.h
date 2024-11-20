@@ -324,16 +324,12 @@ namespace GFunc_Space{
 			}
 		}
 
-		inline void *ApplyHavokImpulse(RE::TESObjectREFR *self, float afX, float afY, float afZ, float afMagnitude)
+		static void ApplyHavokImpulse(RE::TESObjectREFR *self, float afX, float afY, float afZ, float afMagnitude)
 		{
-			using func_t = RE::TESObjectREFR *(RE::BSScript::Internal::VirtualMachine *, RE::VMStackID, RE::TESObjectREFR *, float, float, float, float);
-			RE::VMStackID frame = 0;
-
+			using func_t = decltype(&ApplyHavokImpulse);
 			REL::Relocation<func_t> func{RE::VTABLE_SkyrimScript____ApplyHavokImpulseFunctor[0]};
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-
-			return func(vm, frame, self, afX, afY, afZ, afMagnitude);
-		};
+			return func(self, afX, afY, afZ, afMagnitude);
+		}
 
 	private:
 		GFunc() = default;
