@@ -150,7 +150,7 @@ namespace GFunc_Space{
 								auto function = std::get<3>(data);
 								switch (hash(function.c_str(), function.size())){
 								case "TATripleThreat_Update"_h:
-
+									a_actor->SetGraphVariableBool("bLDP_TripleThreat_Faction", false);
 									break;
 
 								default:
