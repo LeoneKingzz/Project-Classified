@@ -171,6 +171,7 @@ namespace DovahAI_Space{
             std::jthread waitThread(wait, 500);
         }
         std::jthread waitThread1(wait, 800);
+        a_actor->NotifyAnimationGraph("to_Flight_Kill_Grab_Action");
         
     }
 }
