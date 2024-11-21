@@ -190,4 +190,10 @@ namespace DovahAI_Space{
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
         caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); //talonAOE
     }
+
+    void DovahAI::DamageTarget(RE::Actor *a_actor, float percentage)
+    {
+        auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
+        a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(perm_health * percentage));
+    }
 }

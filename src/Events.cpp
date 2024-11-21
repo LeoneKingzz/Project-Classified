@@ -183,6 +183,11 @@ namespace Events_Space
 			}
 			break;
 
+		case "DragonForcefulLandEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				
+			}
 		case "DragonLandEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
