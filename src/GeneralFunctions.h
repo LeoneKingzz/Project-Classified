@@ -1,4 +1,5 @@
 #include "SKSE/Trampoline.h"
+#include "ClibUtil/editorID.hpp"
 #include <SimpleIni.h>
 #include <iterator>
 #include <mutex>
