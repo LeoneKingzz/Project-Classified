@@ -221,6 +221,7 @@ namespace Events_Space
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect"))
 				{
+					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 13.0f);
 				}
 			}
 			break;
