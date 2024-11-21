@@ -15,6 +15,8 @@ namespace DovahAI_Space{
 		static void DeferredKill(RE::Actor *a_actor, bool start = false);
 		static void DeathRadollPerch(RE::Actor *a_actor);
 		static bool GetBoolVariable(RE::Actor *a_actor, std::string a_string);
+		static int GetIntVariable(RE::Actor *a_actor, std::string a_string);
+		static float GetFloatVariable(RE::Actor *a_actor, std::string a_string);
 		static void DeathRadollCrashLand(RE::Actor *a_actor);
 		void wait(int a_duration);
 		float PercentageHealthAction(RE::Actor *a_actor);

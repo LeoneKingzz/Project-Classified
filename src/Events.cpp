@@ -235,6 +235,8 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
+
+				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 			}
 			break;
 
