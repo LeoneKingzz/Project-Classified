@@ -361,6 +361,7 @@ namespace GFunc_Space{
 			return func(a_ref, a_impactEffect, a_nodeName, a_pickDirection, a_pickLength, a_applyNodeRotation, a_useNodeLocalRotation);
 		}
 
+
 	private:
 		GFunc() = default;
 		GFunc(const GFunc &) = delete;

@@ -89,7 +89,7 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			logger::info("recieved KID finished event"sv);
+			//logger::info("recieved KID finished event"sv);
 
 			//Settings::GetSingleton()->Load();
 
@@ -171,7 +171,7 @@ namespace Events_Space
 		if (!a_event.holder) {
 			return fn ? (this->*fn)(a_event, src) : RE::BSEventNotifyControl::kContinue;
 		}
-
+		auto data = RE::TESDataHandler::GetSingleton();
 		RE::Actor* a_actor = const_cast<RE::TESObjectREFR*>(a_event.holder)->As<RE::Actor>();
 		switch (hash(a_event.tag.c_str(), a_event.tag.size())) {
 		case "footfront"_h:
@@ -186,14 +186,18 @@ namespace Events_Space
 		case "DragonForcefulLandEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				
+				RE::NiPoint3 Tx;
+				Tx.x = 0.0f;
+				Tx.y = 0.0f;
+				Tx.x = -1.0f;
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
 			}
 		case "DragonLandEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
 				{
-					auto data = RE::TESDataHandler::GetSingleton();
+					
 					const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
 					caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // talonAOE
 					if (const auto combatGroup = a_actor->GetCombatGroup())
@@ -224,6 +228,13 @@ namespace Events_Space
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
 				{
 				}
+			}
+			break;
+
+		case "DragonTakeoffEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
 			}
 			break;
 
@@ -266,8 +277,15 @@ namespace Events_Space
 	void Events::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
 	{
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
-			DovahAI_Space::DovahAI::Others(a_actor);
-			
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				DovahAI_Space::DovahAI::Others(a_actor);
+
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect") && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kCruising)
+				{
+					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", false);
+				}
+			}
 		}
 	}
 

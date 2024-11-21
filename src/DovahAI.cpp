@@ -29,6 +29,20 @@ namespace DovahAI_Space{
         return result;
     }
 
+    int DovahAI::GetIntVariable(RE::Actor *a_actor, std::string a_string)
+    {
+        auto result = 0;
+        a_actor->GetGraphVariableInt(a_string, result);
+        return result;
+    }
+
+    float DovahAI::GetFloatVariable(RE::Actor *a_actor, std::string a_string)
+    {
+        auto result = 0.0f;
+        a_actor->GetGraphVariableFloat(a_string, result);
+        return result;
+    }
+
     bool DovahAI::IsMQ206CutsceneDragons(RE::Actor *a_actor)
     {
         auto result = false;
