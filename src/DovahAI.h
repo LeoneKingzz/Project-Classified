@@ -24,6 +24,8 @@ namespace DovahAI_Space{
 		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
 		static void Others(RE::Actor *a_actor);
 		static void TalonSmash(RE::Actor *a_actor);
+		static bool IsMQ206CutsceneDragons(RE::Actor *a_actor);
+		static void DamageTarget(RE::Actor *a_actor, float percentage);
 
 	private:
 		DovahAI() = default;

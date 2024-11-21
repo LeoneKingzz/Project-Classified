@@ -30,6 +30,16 @@ namespace GFunc_Space{
 		}
 	}
 
+	float GFunc::get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata)
+	{
+		auto he_me = PolarAngle(me->GetPosition() - he->GetPosition());
+		auto head = PolarAngle(he->GetHeading(false) * 180.0f / PI);
+		if (attackdata)
+			head = head.add(attackdata->data.attackAngle);
+		auto angle = he_me.sub(head).to_normangle();
+		return angle;
+	}
+
 	bool Has_Magiceffect_Keyword(const RE::Actor *a_actor, const RE::BGSKeyword *a_key)
 	{
 		static RE::TESConditionItem cond;
