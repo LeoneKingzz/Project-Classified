@@ -121,8 +121,8 @@ namespace GFunc_Space{
 		if (itt == _Timer.end())
 		{
 			std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>> Hen;
-			_Timer.insert({a_actor, Hen});
 			Hen.push_back(data);
+			_Timer.insert({a_actor, Hen});
 		}else{
 			itt->second.push_back(data);
 		}
@@ -160,10 +160,16 @@ namespace GFunc_Space{
 								default:
 									break;
 								}
-								//it->second.erase();
+								std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>>::iterator position = std::find(it->second.begin(), it->second.end(), data);
+								if (position != it->second.end())
+								{
+									it->second.erase(position);
+								}
 							}
 						}
 					}
+				}else{
+					_Timer.erase(it);
 				}
 				break;
 			}
