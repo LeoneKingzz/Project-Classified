@@ -199,7 +199,7 @@ namespace Events_Space
 				{
 					
 					const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-					caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // talonAOE
+					caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VLS_Spell_EvaluteAI_Trigger"), true, a_actor, 1, false, 0.0, a_actor); // talonAOE
 					if (const auto combatGroup = a_actor->GetCombatGroup())
 					{
 						for (auto &targetData : combatGroup->targets)
@@ -235,12 +235,13 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
-
 				if(auto process = a_actor->GetActorRuntimeData().currentProcess){
 					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
-
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect"))
+				{
+				}
 			}
 			break;
 

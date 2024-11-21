@@ -210,4 +210,28 @@ namespace DovahAI_Space{
         auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
         a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(perm_health * percentage));
     }
+
+    void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
+    {
+        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), true, a_actor, 1, false, 0.0, a_actor);
+        if (const auto combatGroup = a_actor->GetCombatGroup())
+        {
+            for (auto &targetData : combatGroup->targets)
+            {
+                if (auto target = targetData.targetHandle.get())
+                {
+                    RE::Actor *Enemy = target.get();
+                    if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 150.0f)
+                    {
+                        DovahAI_Space::DovahAI::DamageTarget(Enemy, 0.25f);
+                        if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
+                        {
+                            GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
