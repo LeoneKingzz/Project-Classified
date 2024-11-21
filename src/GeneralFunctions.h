@@ -353,6 +353,7 @@ namespace GFunc_Space{
 			REL::Relocation<func_t> func{RELOCATION_ID(36680, 37688)};
 			return func(self, a_faction);
 		}
+
 		bool PlayImpactEffect(RE::TESObjectREFR *a_ref, RE::BGSImpactDataSet *a_impactEffect, const RE::BSFixedString &a_nodeName, RE::NiPoint3 &a_pickDirection, float a_pickLength, bool a_applyNodeRotation, bool a_useNodeLocalRotation)
 		{
 			using func_t = decltype(&PlayImpactEffect);

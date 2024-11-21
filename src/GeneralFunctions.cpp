@@ -563,4 +563,6 @@ namespace GFunc_Space{
 		// RE::NiPoint3 vec = causer->GetPosition();
 		pushActorAway(causer->GetActorRuntimeData().currentProcess, target, vec, magnitude);
 	}
+
+	
 }
