@@ -269,12 +269,8 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
 				{
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-					std::get<0>(data) = true;
-					std::get<1>(data) = std::chrono::steady_clock::now();
-					std::get<2>(data) = 1400ms;
-					std::get<3>(data) = "TATripleThreat_Update";
+					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "TATripleThreat_Update");
 					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
-					
 				}
 			}
 			break;

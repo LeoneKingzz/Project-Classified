@@ -128,6 +128,14 @@ namespace GFunc_Space{
 		}
 	}
 
+	void GFunc::set_tupledata(std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string> data, bool a, GFunc_Space::Time::time_point b, GFunc_Space::ms c, std::string d)
+	{
+		std::get<0>(data) = a;
+		std::get<1>(data) = b;
+		std::get<2>(data) = c;
+		std::get<3>(data) = d;
+	}
+
 	void GFunc::Process_Updates(RE::Actor *a_actor, GFunc_Space::Time::time_point time_now){
 		uniqueLocker lock(mtx_Timer);
 		for (auto it = _Timer.begin(); it != _Timer.end(); ++it){

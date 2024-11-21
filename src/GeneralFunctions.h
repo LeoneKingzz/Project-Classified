@@ -89,6 +89,7 @@ namespace GFunc_Space{
 		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data);
 		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
 		float get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata);
+		static void set_tupledata(std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data, bool a, std::chrono::steady_clock::time_point b, GFunc_Space::ms c, std::string d);
 
 		struct PolarAngle
 		{
