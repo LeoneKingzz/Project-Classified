@@ -118,4 +118,45 @@ namespace DovahAI_Space{
         a_actor->NotifyAnimationGraph("Ragdoll");
         GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, total_val);
     }
+
+    void DovahAI::ResetAI(RE::Actor *a_actor)
+    {
+        auto data = RE::TESDataHandler::GetSingleton();
+        a_actor->AddSpell(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"));
+        std::jthread waitThread(wait, 350);
+        a_actor->RemoveSpell(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"));
+    }
+
+    void DovahAI::SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04)
+    {
+        switch (I)
+        {
+        case 0:
+            a_actor->NotifyAnimationGraph(AnimEvent01);
+            break;
+
+        case 1:
+            a_actor->NotifyAnimationGraph(AnimEvent02);
+            break;
+
+        case 2:
+            a_actor->NotifyAnimationGraph(AnimEvent03);
+            break;
+
+        case 3:
+            a_actor->NotifyAnimationGraph(AnimEvent04);
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    void DovahAI::Others(RE::Actor *a_actor)
+    {
+        if (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kSpeedMult) != 100.0f){
+            a_actor->AsActorValueOwner()->SetActorValue(RE::ActorValue::kSpeedMult, 100.0f);
+            a_actor->SetGraphVariableFloat("playbackSpeed", GetSingleton()->PercentageHealthAction(a_actor));
+        }
+    }
 }

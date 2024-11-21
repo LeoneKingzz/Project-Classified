@@ -44,11 +44,10 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			// if (a_actor->IsPlayerRef()){
-			// 	Events::GetSingleton()->scan_activeRunes(nullptr, nullptr, false, false, true);
-			// }else{
-			// 	Events::GetSingleton()->scan_activeRunes(a_actor, nullptr, false, true);
-			// }
+			if (a_actor->HasKeywordString("ActorTypeDragon")){
+				a_actor->SetGraphVariableFloat("playbackSpeed", 1.0f);
+			
+			}
 
 			return RE::BSEventNotifyControl::kContinue;
 		}
@@ -100,20 +99,21 @@ namespace Events_Space
 		RE::BSEventNotifyControl ProcessEvent(const RE::TESCombatEvent* event, RE::BSTEventSource<RE::TESCombatEvent>*){
 			auto a_actor = event->actor->As<RE::Actor>();
 
-			if (!a_actor || a_actor->IsPlayerRef()) {
+			if (!a_actor || !a_actor->HasKeywordString("ActorTypeDragon")) {
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
 			switch (event->newState.get()) {
 			case RE::ACTOR_COMBAT_STATE::kCombat:
-				a_actor->SetGraphVariableBool("bNSV_IsinCombat", true);
+				a_actor->SetGraphVariableBool("bLDP_IsinCombat", true);
+				a_actor->SetGraphVariableBool("bLDP_CrashLand_Faction", true);
 				break;
 			case RE::ACTOR_COMBAT_STATE::kSearching:
-				a_actor->SetGraphVariableBool("bNSV_IsinCombat", false);
+				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
 				break;
 
 			case RE::ACTOR_COMBAT_STATE::kNone:
-				a_actor->SetGraphVariableBool("bNSV_IsinCombat", false);
+				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
 				break;
 
 			default:
@@ -172,48 +172,14 @@ namespace Events_Space
 			return fn ? (this->*fn)(a_event, src) : RE::BSEventNotifyControl::kContinue;
 		}
 
-		RE::Actor* actor = const_cast<RE::TESObjectREFR*>(a_event.holder)->As<RE::Actor>();
+		RE::Actor* a_actor = const_cast<RE::TESObjectREFR*>(a_event.holder)->As<RE::Actor>();
 		switch (hash(a_event.tag.c_str(), a_event.tag.size())) {
-		case "BeginCastLeft"_h:
-		    if (!actor->IsPlayerRef()){
-				auto bNSV_IsinCombat = false;
-				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
-				{
-
-				}
-			}
-			break;
-
-		case "BeginCastRight"_h:
-			if (!actor->IsPlayerRef())
+		case "footfront"_h:
+		case "footleft"_h:
+		case "footright"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				auto bNSV_IsinCombat = false;
-				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
-				{
-
-				}
-			}
-			break;
-
-		case "MLh_SpellFire_Event"_h:
-			if (!actor->IsPlayerRef())
-			{
-				auto bNSV_IsinCombat = false;
-				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
-				{
-
-				}
-			}
-			break;
-
-		case "MRh_SpellFire_Event"_h:
-			if (!actor->IsPlayerRef())
-			{
-				auto bNSV_IsinCombat = false;
-				if ((actor->GetGraphVariableBool("bNSV_IsinCombat", bNSV_IsinCombat) && bNSV_IsinCombat))
-				{
-
-				}
+				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
 			}
 			break;
 
@@ -256,6 +222,7 @@ namespace Events_Space
 	void Events::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
 	{
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
+			DovahAI_Space::DovahAI::Others(a_actor);
 			
 		}
 	}
