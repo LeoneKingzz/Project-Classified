@@ -315,6 +315,24 @@ namespace Events_Space
 
 			break;
 
+		case "StampHitEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
+				{
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
+				}
+				RE::NiPoint3 Tx;
+				Tx.x = -1.0f;
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
+				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+				{
+					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+				}
+			}
+			break;
+
 		default:
 			break;
 		}
