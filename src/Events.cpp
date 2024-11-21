@@ -199,7 +199,6 @@ namespace Events_Space
 				}
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
-					auto data = RE::TESDataHandler::GetSingleton();
 					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp")));
 				}
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
@@ -259,6 +258,9 @@ namespace Events_Space
 						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
 						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
 
+						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonTripleThreat
+						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+
 						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
 						{
 							a_actor->SetGraphVariableBool("bLDP_TripleThreat_Faction", true);
@@ -271,6 +273,32 @@ namespace Events_Space
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
 					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "TATripleThreat_Update");
 					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+				}
+			}
+			break;
+
+		case "DragonLeftWingAttackEffect"_h:
+		case "DragonRightWingAttackEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
+				{
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
+				}
+				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+				{
+					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+				}
+			}
+			break;
+
+		case "FlapThrustBegin"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
+				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
+				{
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
 			}
 			break;
