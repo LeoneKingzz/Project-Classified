@@ -347,9 +347,9 @@ namespace GFunc_Space{
 			return func(vm, frame, self, target);
 		}
 
-		static auto RemoveFromFaction(RE::Actor *self, RE::TESFaction *a_faction)
+		static void RemoveFromFaction(RE::Actor *self, RE::TESFaction *a_faction)
 		{
-			using func_t = void(RE::Actor *, RE::TESFaction *);
+			using func_t = decltype(&RemoveFromFaction);
 			REL::Relocation<func_t> func{RELOCATION_ID(36680, 37688)};
 			return func(self, a_faction);
 		}
