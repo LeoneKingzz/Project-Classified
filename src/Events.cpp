@@ -236,6 +236,10 @@ namespace Events_Space
 			{
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
 
+				if(auto process = a_actor->GetActorRuntimeData().currentProcess){
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
+				}
+
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 			}
 			break;
