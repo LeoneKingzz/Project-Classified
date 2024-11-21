@@ -204,9 +204,9 @@ namespace Events_Space
 					auto data = RE::TESDataHandler::GetSingleton();
 					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp")));
 				}
-
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
 				{
+					DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
 				}
 			}
 			break;
@@ -224,6 +224,22 @@ namespace Events_Space
 					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 13.0f);
 					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", true);
 				}
+			}
+			break;
+
+		case "DragonPassByEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
+				{
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
+				}
+				RE::NiPoint3 Tx;
+				Tx.x = 0.0f;
+				Tx.y = 0.0f;
+				Tx.x = -1.0f;
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
+				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
 			}
 			break;
 
