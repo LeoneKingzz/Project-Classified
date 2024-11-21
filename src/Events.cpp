@@ -308,6 +308,10 @@ namespace Events_Space
 			break;
 
 		case "Voice_SpellFire_Event"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
+			}
 
 			break;
 
