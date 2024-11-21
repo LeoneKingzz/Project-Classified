@@ -47,7 +47,7 @@ namespace Events_Space
 
 			if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
 			{
-				DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
+				DovahAI_Space::DovahAI::DeathWaitRagdoll(a_actor);
 			}
 
 			return RE::BSEventNotifyControl::kContinue;

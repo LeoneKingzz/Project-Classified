@@ -287,23 +287,50 @@ namespace DovahAI_Space{
             break;
 
         case 1:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 1); // DeathRagdoll
+            // if(a_actor){
+            //     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            //     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1600ms, "DeathRagdoll_Update");
+            //     GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            // } 
+            // DeathRagdoll
             break;
 
         case 2:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 2); // DeathAgony
+            if(a_actor){
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 25000ms, "DeathAgony_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            } 
+            // DeathAgony
             break;
 
         case 3:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 3); // DeathInjured
+            if(a_actor){
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 2600ms, "DeathInjured_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            } 
+            // DeathInjured
             break;
 
         case 4:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 4); // DeathBleedout
+            if(a_actor){
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1200ms, "DeathBleedout_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            } 
+            // DeathBleedout
             break;
 
         case 5:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 5); // DeathTimeTravel
+            if(a_actor){
+                auto H = RE::TESDataHandler::GetSingleton();
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 6200ms, "DeathTimeTravel_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            } 
+            // DeathTimeTravel
             break;
 
         default:
