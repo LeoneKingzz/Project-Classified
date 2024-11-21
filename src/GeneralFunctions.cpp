@@ -141,19 +141,7 @@ namespace GFunc_Space{
 							if (duration_cast<ms>(time_now - time_initial).count() >= time_required.count()){
 								auto function = std::get<3>(data);
 								switch (hash(function.c_str(), function.size())){
-								case "DeathRadollCrashLand_1"_h:
-
-									break;
-
-								case "BeginCastRight"_h:
-
-									break;
-
-								case "MLh_SpellFire_Event"_h:
-
-									break;
-
-								case "MRh_SpellFire_Event"_h:
+								case "TATripleThreat_Update"_h:
 
 									break;
 
