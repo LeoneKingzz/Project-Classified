@@ -29,6 +29,19 @@ namespace DovahAI_Space{
         return result;
     }
 
+    bool DovahAI::IsMQ206CutsceneDragons(RE::Actor *a_actor)
+    {
+        auto result = false;
+        if (auto AB = a_actor->GetActorBase())
+        {
+            if (AB == RE::TESForm::LookupByEditorID<RE::TESNPC>("MQ206AncientAlduin"))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
+
     void DovahAI::wait(int a_duration)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(a_duration));
@@ -172,6 +185,9 @@ namespace DovahAI_Space{
         }
         std::jthread waitThread1(wait, 800);
         a_actor->NotifyAnimationGraph("to_Flight_Kill_Grab_Action");
-        
+
+        auto data = RE::TESDataHandler::GetSingleton();
+        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+        caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); //talonAOE
     }
 }

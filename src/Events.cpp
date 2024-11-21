@@ -183,6 +183,21 @@ namespace Events_Space
 			}
 			break;
 
+		case "DragonLandEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
+				{
+					
+				}
+				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+				{
+					auto data = RE::TESDataHandler::GetSingleton();
+					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp")));
+				}
+			}
+			break;
+
 		default:
 			break;
 		}
