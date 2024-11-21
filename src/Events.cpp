@@ -304,15 +304,20 @@ namespace Events_Space
 			break;
 
 		case "BeginCastVoice"_h:
-
+		    if(a_actor->HasKeywordString("ActorTypeDragon")){
+				DovahAI_Space::DovahAI::GetEquippedShout(a_actor);
+			}
 			break;
 
 		case "Voice_SpellFire_Event"_h:
+			if (a_actor->HasKeywordString("ActorTypeDragon"))
+			{
+				DovahAI_Space::DovahAI::GetEquippedShout(a_actor);
+			}
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
 			}
-
 			break;
 
 		case "StampHitEvent"_h:
