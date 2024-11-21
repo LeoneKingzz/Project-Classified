@@ -258,9 +258,24 @@ namespace Events_Space
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
 						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
+
+						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
+						{
+							a_actor->SetGraphVariableBool("bLDP_TripleThreat_Faction", true);
+						}
 					}
 				}
-				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
+				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 13.0f);
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
+				{
+					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+					std::get<0>(data) = true;
+					std::get<1>(data) = std::chrono::steady_clock::now();
+					std::get<2>(data) = 1400ms;
+					std::get<3>(data) = "TATripleThreat_Update";
+					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+					
+				}
 			}
 			break;
 
@@ -305,12 +320,16 @@ namespace Events_Space
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
+				GFunc_Space::GFunc::GetSingleton()->Process_Updates(a_actor, std::chrono::steady_clock::now());
+
 				DovahAI_Space::DovahAI::Others(a_actor);
 
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect") && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kCruising)
 				{
 					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", false);
 				}
+
+				
 			}
 		}
 	}

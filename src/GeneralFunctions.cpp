@@ -161,7 +161,6 @@ namespace GFunc_Space{
 				}
 				break;
 			}
-			
 		}
 	}
 
