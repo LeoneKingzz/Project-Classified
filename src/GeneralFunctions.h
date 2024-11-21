@@ -86,7 +86,7 @@ namespace GFunc_Space{
 		float get_personal_threatRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		float get_personal_survivalRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		static void PushActorAway(RE::Actor *causer, RE::Actor *target, float magnitude);
-		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> bar);
+		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data);
 		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
 		float get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata);
 

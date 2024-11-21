@@ -128,8 +128,6 @@ namespace GFunc_Space{
 		}
 	}
 
-	
-
 	void GFunc::Process_Updates(RE::Actor *a_actor, GFunc_Space::Time::time_point time_now){
 		uniqueLocker lock(mtx_Timer);
 		for (auto it = _Timer.begin(); it != _Timer.end(); ++it){
@@ -162,6 +160,7 @@ namespace GFunc_Space{
 								default:
 									break;
 								}
+								//it->second.erase();
 							}
 						}
 					}
