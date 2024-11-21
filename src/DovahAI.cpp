@@ -273,6 +273,44 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::DeathWaitRagdoll(RE::Actor *a_actor)
+    {
+        switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DeathAnim_Faction"))
+        {
+        case 0:
+            if(a_actor){
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1600ms, "DeathDefault_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            }
+            // DeathDefault
+            break;
+
+        case 1:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 1); // DeathRagdoll
+            break;
+
+        case 2:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 2); // DeathAgony
+            break;
+
+        case 3:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 3); // DeathInjured
+            break;
+
+        case 4:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 4); // DeathBleedout
+            break;
+
+        case 5:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 5); // DeathTimeTravel
+            break;
+
+        default:
+            break;
+        }
+    }
+
     void DovahAI::GetEquippedShout(RE::Actor *actor, bool SpellFire)
     {
         auto limboshout = actor->GetActorRuntimeData().selectedPower;

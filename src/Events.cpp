@@ -39,14 +39,15 @@ namespace Events_Space
 		{
 			auto a_actor = event->actorDying->As<RE::Actor>();
 
-			if (!a_actor)
+			if (!a_actor || !a_actor->HasKeywordString("ActorTypeDragon"))
 			{
 				return RE::BSEventNotifyControl::kContinue;
 			}
+			a_actor->SetGraphVariableFloat("playbackSpeed", 1.0f);
 
-			if (a_actor->HasKeywordString("ActorTypeDragon")){
-				a_actor->SetGraphVariableFloat("playbackSpeed", 1.0f);
-			
+			if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
+			{
+				DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
 			}
 
 			return RE::BSEventNotifyControl::kContinue;

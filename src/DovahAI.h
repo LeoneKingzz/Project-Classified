@@ -31,6 +31,7 @@ namespace DovahAI_Space{
 		static void Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force);
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
 		static void GetEquippedShout(RE::Actor *actor, bool SpellFire = false);
+		static void DeathWaitRagdoll(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
