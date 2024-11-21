@@ -245,27 +245,27 @@ namespace DovahAI_Space{
         switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 5))
         {
         case 0:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 0);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 0); // DeathDefault
             break;
 
         case 1:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 1);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 1); // DeathRagdoll
             break;
 
         case 2:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 2);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 2); // DeathAgony
             break;
 
         case 3:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 3);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 3); // DeathInjured
             break;
 
         case 4:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 4);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 4); // DeathBleedout
             break;
 
         case 5:
-            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 5);
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 5); // DeathTimeTravel
             break;
 
         default:
