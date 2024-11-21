@@ -28,6 +28,7 @@ namespace DovahAI_Space{
 		static void TalonSmash(RE::Actor *a_actor);
 		static bool IsMQ206CutsceneDragons(RE::Actor *a_actor);
 		static void DamageTarget(RE::Actor *a_actor, float percentage);
+		static void Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force);
 
 	private:
 		DovahAI() = default;
