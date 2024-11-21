@@ -234,4 +234,42 @@ namespace DovahAI_Space{
             }
         }
     }
+
+    void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
+    {
+        if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+        {
+            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1);
+        }
+
+        switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 5))
+        {
+        case 0:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 0);
+            break;
+
+        case 1:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 1);
+            break;
+
+        case 2:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 2);
+            break;
+
+        case 3:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 3);
+            break;
+
+        case 4:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 4);
+            break;
+
+        case 5:
+            a_actor->SetGraphVariableInt("iLDP_DeathAnim_Faction", 5);
+            break;
+
+        default:
+            break;
+        }
+    }
 }
