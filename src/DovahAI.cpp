@@ -239,7 +239,7 @@ namespace DovahAI_Space{
     {
         if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
         {
-            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1);
+            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffVertical
         }
 
         switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 5))
