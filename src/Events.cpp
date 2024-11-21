@@ -187,8 +187,6 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				RE::NiPoint3 Tx;
-				Tx.x = 0.0f;
-				Tx.y = 0.0f;
 				Tx.x = -1.0f;
 				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
 			}
@@ -235,10 +233,33 @@ namespace Events_Space
 					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
 				RE::NiPoint3 Tx;
-				Tx.x = 0.0f;
-				Tx.y = 0.0f;
 				Tx.x = -1.0f;
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
+			}
+			break;
+
+		case "DragonTailAttackEffect"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
+				{
+					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
+				}
+				RE::NiPoint3 Tx;
+				Tx.x = -1.0f;
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
+				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
+				{
+					if (var < 2){
+						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", var += 1);
+					}else{
+						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
+					}
+				}
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
 			}
 			break;

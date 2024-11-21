@@ -120,7 +120,11 @@ namespace GFunc_Space{
 		auto itt = _Timer.find(a_actor);
 		if (itt == _Timer.end())
 		{
-			_Timer.insert({a_actor, bar});
+			std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>> Hen;
+			_Timer.insert({a_actor, Hen});
+			Hen.push_back(bar);
+		}else{
+			itt->second.push_back(bar);
 		}
 	}
 

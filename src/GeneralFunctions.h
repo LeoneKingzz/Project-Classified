@@ -374,7 +374,7 @@ namespace GFunc_Space{
 		std::random_device rd;
 
 		std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
-		std::unordered_map<RE::Actor *, std::tuple<bool, Time::time_point, ms, std::string>> _Timer;
+		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, Time::time_point, ms, std::string>>> _Timer;
 		std::shared_mutex mtx_Timer;
 		std::shared_mutex mtx_Inventory;
 
