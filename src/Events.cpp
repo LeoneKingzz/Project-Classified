@@ -303,6 +303,14 @@ namespace Events_Space
 			}
 			break;
 
+		case "BeginCastVoice"_h:
+
+			break;
+
+		case "Voice_SpellFire_Event"_h:
+
+			break;
+
 		default:
 			break;
 		}
