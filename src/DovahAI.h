@@ -23,6 +23,7 @@ namespace DovahAI_Space{
 		void ResetAI(RE::Actor *a_actor);
 		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
 		static void Others(RE::Actor *a_actor);
+		static void TalonSmash(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;

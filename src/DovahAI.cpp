@@ -159,4 +159,18 @@ namespace DovahAI_Space{
             a_actor->SetGraphVariableFloat("playbackSpeed", GetSingleton()->PercentageHealthAction(a_actor));
         }
     }
+
+    void DovahAI::TalonSmash(RE::Actor *a_actor)
+    {
+        a_actor->SetGraphVariableBool("bLDP_PreventFlyingTalonSmash", true);
+
+        while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") 
+        && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) 
+        && !GetBoolVariable(a_actor, "Injured"))
+        {
+            std::jthread waitThread(wait, 500);
+        }
+        std::jthread waitThread1(wait, 800);
+        
+    }
 }
