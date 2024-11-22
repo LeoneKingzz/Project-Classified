@@ -195,7 +195,7 @@ namespace DovahAI_Space{
         && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) 
         && !GetBoolVariable(a_actor, "Injured"))
         {
-            std::jthread waitThread(wait, 500);
+            std::jthread waitThread(wait, 100);
         }
         std::jthread waitThread1(wait, 800);
         a_actor->NotifyAnimationGraph("to_Flight_Kill_Grab_Action");
@@ -203,6 +203,10 @@ namespace DovahAI_Space{
         auto data = RE::TESDataHandler::GetSingleton();
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
         caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); //talonAOE
+        RE::NiPoint3 Tx;
+        Tx.x = -1.0f;
+        GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+        std::jthread waitThread2(wait, 900);
     }
 
     void DovahAI::DamageTarget(RE::Actor *a_actor, float percentage)
