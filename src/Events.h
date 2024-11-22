@@ -14,6 +14,13 @@ namespace Events_Space
 
 	using EventResult = RE::BSEventNotifyControl;
 
+	template <typename T>
+	T &Singleton()
+	{
+		static T single;
+		return single;
+	}
+
 	class animEventHandler
 	{
 	private:
@@ -133,6 +140,10 @@ namespace Events_Space
 		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
 
 	private:
+		
+
+		friend GSub &Singleton<GSub>();
+
 		GSub() = default;
 		GSub(const GSub &) = delete;
 		GSub(GSub &&) = delete;
