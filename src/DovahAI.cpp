@@ -197,16 +197,41 @@ namespace DovahAI_Space{
         {
             std::jthread waitThread(wait, 100);
         }
-        std::jthread waitThread1(wait, 800);
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 800ms, "TalonSmash_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+    }
+
+    void DovahAI::TalonSmash1(RE::Actor *a_actor)
+    {
         a_actor->NotifyAnimationGraph("to_Flight_Kill_Grab_Action");
 
-        auto data = RE::TESDataHandler::GetSingleton();
+        auto H = RE::TESDataHandler::GetSingleton();
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); //talonAOE
+        caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // talonAOE
         RE::NiPoint3 Tx;
         Tx.x = -1.0f;
-        GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
-        std::jthread waitThread2(wait, 900);
+        GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 900ms, "TalonSmash1_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+    }
+
+    void DovahAI::TalonSmash2(RE::Actor *a_actor)
+    {
+        if (GetBoolVariable(a_actor, "Injured"))
+        {
+            a_actor->SetGraphVariableBool("bLDP_PreventFlyingTalonSmash", false);
+            a_actor->SetGraphVariableBool("Injured", false);
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 4500ms, "TalonSmash2_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
+        else
+        {
+            a_actor->SetGraphVariableBool("bLDP_PreventFlyingTalonSmash", false);
+        }
     }
 
     void DovahAI::DamageTarget(RE::Actor *a_actor, float percentage)
