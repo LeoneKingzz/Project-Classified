@@ -148,9 +148,20 @@ namespace GFunc_Space{
 							auto time_required = std::get<2>(data);
 							if (duration_cast<ms>(time_now - time_initial).count() >= time_required.count()){
 								auto function = std::get<3>(data);
+								auto H = RE::TESDataHandler::GetSingleton();
 								switch (hash(function.c_str(), function.size())){
 								case "TATripleThreat_Update"_h:
 									a_actor->SetGraphVariableBool("bLDP_TripleThreat_Faction", false);
+									break;
+
+								case "DeathTimeTravel_Update"_h:
+									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+
+								case "DeathDefault_Update"_h:
+								case "DeathAgony_Update"_h:
+								case "DeathInjured_Update"_h:
+								case "DeathBleedout_Update"_h:
+									a_actor->NotifyAnimationGraph("Ragdoll");
 									break;
 
 								default:
