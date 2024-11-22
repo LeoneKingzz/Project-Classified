@@ -5,6 +5,8 @@ static float& g_deltaTime = (*(float*)RELOCATION_ID(523660, 410199).address());
 
 namespace Events_Space
 {
+	using uniqueLocker = std::unique_lock<std::shared_mutex>;
+	using sharedLocker = std::shared_lock<std::shared_mutex>;
 
 	using VM = RE::BSScript::Internal::VirtualMachine;
 	using StackID = RE::VMStackID;
@@ -122,6 +124,24 @@ namespace Events_Space
 			stl::write_vfunc<RE::Character, 0xAD, Actor_Update>();
 		}
 
+	};
+
+	class GSub : public GFunc_Space::GFunc
+	{friend class Events;
+	public:
+		
+		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
+
+	private:
+		GSub() = default;
+		GSub(const GSub &) = delete;
+		GSub(GSub &&) = delete;
+		~GSub() = default;
+
+		GSub &operator=(const GSub &) = delete;
+		GSub &operator=(GSub &&) = delete;
+
+	protected:
 	};
 
 	class Settings

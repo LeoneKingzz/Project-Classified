@@ -56,7 +56,7 @@ namespace GFunc_Space{
 
 	class GFunc
 	{
-	public:
+	public: 
 		static GFunc *GetSingleton()
 		{
 			static GFunc avInterface;
@@ -88,7 +88,6 @@ namespace GFunc_Space{
 		float get_personal_survivalRatio(RE::Actor *protagonist, RE::Actor *combat_target);
 		static void PushActorAway(RE::Actor *causer, RE::Actor *target, float magnitude);
 		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data);
-		void Process_Updates(RE::Actor *a_actor, std::chrono::steady_clock::time_point time_now);
 		float get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata);
 		static void set_tupledata(std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data, bool a, std::chrono::steady_clock::time_point b, GFunc_Space::ms c, std::string d);
 
@@ -376,8 +375,6 @@ namespace GFunc_Space{
 		std::random_device rd;
 
 		std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
-		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, Time::time_point, ms, std::string>>> _Timer;
-		std::shared_mutex mtx_Timer;
 		std::shared_mutex mtx_Inventory;
 
 		static int soundHelper_a(void *manager, RE::BSSoundHandle *a2, int a3, int a4) // sub_140BEEE70
@@ -409,6 +406,8 @@ namespace GFunc_Space{
 		}
 
 	protected:
+		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, std::chrono::steady_clock::time_point, std::chrono::milliseconds, std::string>>> _Timer;
+		std::shared_mutex mtx_Timer;
 	};
 }
 
