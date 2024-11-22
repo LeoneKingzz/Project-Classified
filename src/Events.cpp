@@ -375,12 +375,13 @@ namespace Events_Space
 		return true;
 	}
 
+
 	void Events::Update(RE::Actor* a_actor, [[maybe_unused]] float a_delta)
 	{
 		if (a_actor->GetActorRuntimeData().currentProcess && a_actor->GetActorRuntimeData().currentProcess->InHighProcess() && a_actor->Is3DLoaded()){
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::GetSingleton()->Process_Updates(a_actor, std::chrono::steady_clock::now());
+				Singleton<GSub>().Process_Updates(a_actor, std::chrono::steady_clock::now());
 
 				DovahAI_Space::DovahAI::Others(a_actor);
 
@@ -390,6 +391,75 @@ namespace Events_Space
 				}
 
 				
+			}
+		}
+	}
+
+	void GSub::Process_Updates(RE::Actor *a_actor, GFunc_Space::Time::time_point time_now)
+	{
+		uniqueLocker lock(mtx_Timer);
+		for (auto it = _Timer.begin(); it != _Timer.end(); ++it)
+		{
+			if (it->first == a_actor)
+			{
+				if (!it->second.empty())
+				{
+					for (auto data : it->second)
+					{
+						auto update = std::get<0>(data);
+						if (update)
+						{
+							auto time_initial = std::get<1>(data);
+							auto time_required = std::get<2>(data);
+							if (duration_cast<std::chrono::milliseconds>(time_now - time_initial).count() >= time_required.count())
+							{
+								auto function = std::get<3>(data);
+								auto H = RE::TESDataHandler::GetSingleton();
+								switch (hash(function.c_str(), function.size()))
+								{
+								case "TATripleThreat_Update"_h:
+									a_actor->SetGraphVariableBool("bLDP_TripleThreat_Faction", false);
+									break;
+
+								case "DeathTimeTravel_Update"_h:
+									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+
+								case "DeathDefault_Update"_h:
+								case "DeathAgony_Update"_h:
+								case "DeathInjured_Update"_h:
+								case "DeathBleedout_Update"_h:
+									a_actor->NotifyAnimationGraph("Ragdoll");
+									break;
+
+								case "TalonSmash_Update"_h:
+									DovahAI_Space::DovahAI::TalonSmash1(a_actor);
+									break;
+
+								case "TalonSmash1_Update"_h:
+									a_actor->NotifyAnimationGraph("Ragdoll");
+									break;
+
+								case "TalonSmash2_Update"_h:
+									a_actor->NotifyAnimationGraph("Ragdoll");
+									break;
+
+								default:
+									break;
+								}
+								std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>>::iterator position = std::find(it->second.begin(), it->second.end(), data);
+								if (position != it->second.end())
+								{
+									it->second.erase(position);
+								}
+							}
+						}
+					}
+				}
+				else
+				{
+					_Timer.erase(it);
+				}
+				break;
 			}
 		}
 	}
