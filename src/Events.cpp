@@ -436,11 +436,11 @@ namespace Events_Space
 									break;
 
 								case "TalonSmash1_Update"_h:
-									a_actor->NotifyAnimationGraph("Ragdoll");
+									DovahAI_Space::DovahAI::TalonSmash2(a_actor);
 									break;
 
 								case "TalonSmash2_Update"_h:
-									a_actor->NotifyAnimationGraph("Ragdoll");
+									a_actor->SetGraphVariableBool("Injured", true);
 									break;
 
 								default:
