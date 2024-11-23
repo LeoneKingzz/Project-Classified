@@ -158,6 +158,18 @@ namespace Events_Space
 				{
 					a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
 
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+					{
+						auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+						float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
+
+						if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
+						{
+						}else if (){
+							
+						}
+					}
+
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
 					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
 					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);

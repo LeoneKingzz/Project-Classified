@@ -194,7 +194,7 @@ namespace DovahAI_Space{
 
     void DovahAI::OnInitHPCalc(RE::Actor *a_actor)
     {
-        auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
+        auto perm_health = a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth);
         a_actor->SetGraphVariableInt("iLDP_Pre_HP", static_cast<int>(perm_health));
         a_actor->SetGraphVariableInt("iLDP_Front_HP", static_cast<int>(perm_health * 0.4));
         a_actor->SetGraphVariableInt("iLDP_Back_HP", static_cast<int>(perm_health * 0.25));
