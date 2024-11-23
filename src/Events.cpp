@@ -169,8 +169,28 @@ namespace Events_Space
 							a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
 							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
 							{
+								//headbroken spell
+								//additem
+								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+								{
+									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+								}
 							}
-						}else if (){
+						}
+						else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") > 0)
+						{
+							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP");
+							a_actor->SetGraphVariableInt("iLDP_Back_HP", val -= DiffHp);
+							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") <= 0)
+							{
+								// tailbroken spell
+								// additem (dragon bonemeal)
+								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+								{
+									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+								}
+							}
+						}else if(){
 
 						}
 					}
@@ -502,6 +522,15 @@ namespace Events_Space
 
 								case "BusyState_Update"_h:
 									a_actor->SetGraphVariableBool("bLDP_Busy_State", false);
+									break;
+
+								case "BleedOutState_Update"_h:
+									DovahAI_Space::DovahAI::BleedOut_state1(a_actor);
+									break;
+
+								case "BleedOutState1_Update"_h:
+									DovahAI_Space::DovahAI::Enrage(a_actor, 1);
+									a_actor->SetGraphVariableBool("bLDP_BleedOut_State", false);
 									break;
 
 								default:

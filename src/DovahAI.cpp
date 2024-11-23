@@ -228,9 +228,22 @@ namespace DovahAI_Space{
 
     void DovahAI::BleedOut_state(RE::Actor *a_actor)
     {
-        a_actor->SetGraphVariableBool("bLDP_BleedOut_State", true);
-        a_actor->NotifyAnimationGraph("Enrage");
-        
+        if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+        {
+            a_actor->SetGraphVariableBool("bLDP_BleedOut_State", true);
+            a_actor->NotifyAnimationGraph("BleedoutStart");
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 5000ms, "BleedOutState_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
+    }
+
+    void DovahAI::BleedOut_state1(RE::Actor *a_actor)
+    {
+        a_actor->NotifyAnimationGraph("BleedOutStop");
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 500ms, "BleedOutState1_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
     void DovahAI::Others(RE::Actor *a_actor)
