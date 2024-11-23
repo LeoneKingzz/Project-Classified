@@ -108,6 +108,7 @@ namespace Events_Space
 			case RE::ACTOR_COMBAT_STATE::kCombat:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", true);
 				a_actor->SetGraphVariableBool("bLDP_CrashLand_Faction", true);
+				DovahAI_Space::DovahAI::OnInitHPCalc(a_actor);
 				break;
 			case RE::ACTOR_COMBAT_STATE::kSearching:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
@@ -390,7 +391,10 @@ namespace Events_Space
 					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", false);
 				}
 
-				
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsEnraging") && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Enrage_Count") >= 10 && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+				{
+					DovahAI_Space::DovahAI::Enrage_state(a_actor);
+				}
 			}
 		}
 	}
