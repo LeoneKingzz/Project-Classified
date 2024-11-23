@@ -146,9 +146,22 @@ namespace Events_Space
 			{
 				return RE::BSEventNotifyControl::kContinue;
 			}
-			
-			if (event->cause->As<RE::Actor>())
+
+			if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat") || DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_Busy_State"))
 			{
+				return RE::BSEventNotifyControl::kContinue;
+			}
+
+			if (auto enemy = event->cause->As<RE::Actor>())
+			{
+				if (enemy->IsHostileToActor(a_actor))
+				{
+					a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
+
+					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
+					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+				}
 			}
 
 			return RE::BSEventNotifyControl::kContinue;
@@ -468,6 +481,10 @@ namespace Events_Space
 								case "EnrageState_Update"_h:
 									a_actor->SetGraphVariableBool("bNoStagger", false);
 									a_actor->SetGraphVariableBool("bLDP_IsEnraging", false);		
+									break;
+
+								case "BusyState_Update"_h:
+									a_actor->SetGraphVariableBool("bLDP_Busy_State", false);
 									break;
 
 								default:
