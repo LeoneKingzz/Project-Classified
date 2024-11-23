@@ -117,6 +117,7 @@ namespace Events_Space
 
 			case RE::ACTOR_COMBAT_STATE::kNone:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
+				a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 0);
 				break;
 
 			default:
@@ -197,9 +198,19 @@ namespace Events_Space
 							a_actor->SetGraphVariableInt("iLDP_Left_HP", val -= DiffHp);
 							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
 							{
-								// Wingsbroken spell
 								// additem (dragon claw)
-								a_actor->SetGraphVariableBool("bLDP_DownFlyRate", true);
+								switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+								{
+								case 0:
+									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+									break;
+								case 1:
+									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+									break;
+
+								default:
+									break;
+								}
 
 								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
 								{
@@ -213,9 +224,19 @@ namespace Events_Space
 							a_actor->SetGraphVariableInt("iLDP_Right_HP", val -= DiffHp);
 							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
 							{
-								// Wingsbroken spell
 								// additem (dragon claw)
-								a_actor->SetGraphVariableBool("bLDP_DownFlyRate", true);
+								switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+								{
+								case 0:
+									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+									break;
+								case 1:
+									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+									break;
+
+								default:
+									break;
+								}
 
 								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
 								{
