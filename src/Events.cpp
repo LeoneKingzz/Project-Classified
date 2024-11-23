@@ -190,8 +190,38 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
 								}
 							}
-						}else if(){
+						}
+						else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") > 0)
+						{
+							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP");
+							a_actor->SetGraphVariableInt("iLDP_Left_HP", val -= DiffHp);
+							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
+							{
+								// Wingsbroken spell
+								// additem (dragon claw)
+								a_actor->SetGraphVariableBool("bLDP_DownFlyRate", true);
 
+								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+								{
+									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+								}
+							}
+						}
+						else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") > 0)
+						{
+							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP");
+							a_actor->SetGraphVariableInt("iLDP_Right_HP", val -= DiffHp);
+							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
+							{
+								// Wingsbroken spell
+								// additem (dragon claw)
+								a_actor->SetGraphVariableBool("bLDP_DownFlyRate", true);
+
+								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+								{
+									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+								}
+							}
 						}
 					}
 
