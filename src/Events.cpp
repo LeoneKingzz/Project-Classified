@@ -447,6 +447,11 @@ namespace Events_Space
 									a_actor->SetGraphVariableBool("Injured", true);
 									break;
 
+								case "EnrageState_Update"_h:
+									a_actor->SetGraphVariableBool("bNoStagger", false);
+									a_actor->SetGraphVariableBool("bLDP_IsEnraging", false);		
+									break;
+
 								default:
 									break;
 								}
