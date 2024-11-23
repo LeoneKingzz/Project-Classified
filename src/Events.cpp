@@ -165,8 +165,13 @@ namespace Events_Space
 
 						if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
 						{
+							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP");
+							a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
+							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
+							{
+							}
 						}else if (){
-							
+
 						}
 					}
 

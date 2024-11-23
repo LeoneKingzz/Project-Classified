@@ -226,6 +226,13 @@ namespace DovahAI_Space{
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
+    void DovahAI::BleedOut_state(RE::Actor *a_actor)
+    {
+        a_actor->SetGraphVariableBool("bLDP_BleedOut_State", true);
+        a_actor->NotifyAnimationGraph("Enrage");
+        
+    }
+
     void DovahAI::Others(RE::Actor *a_actor)
     {
         if (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kSpeedMult) != 100.0f){
