@@ -223,6 +223,16 @@ namespace Events_Space
 								}
 							}
 						}
+
+						a_actor->SetGraphVariableInt("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+
+						auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Ratio_HP");
+
+						if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
+						{
+							DovahAI_Space::DovahAI::Enrage(a_actor, 3);
+							a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
+						}
 					}
 
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;

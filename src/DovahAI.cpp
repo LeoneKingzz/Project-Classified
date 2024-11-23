@@ -202,6 +202,18 @@ namespace DovahAI_Space{
         a_actor->SetGraphVariableInt("iLDP_Right_HP", static_cast<int>(perm_health * 0.3));
     }
 
+    float DovahAI::GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value)
+    {
+        auto result = 0.0f;
+        auto cur_value = a_actor->AsActorValueOwner()->GetActorValue(a_value);
+        auto perm_value = a_actor->AsActorValueOwner()->GetPermanentActorValue(a_value);
+
+        if(perm_value != 0.0f){
+            result = cur_value/perm_value;
+        }
+        return result;
+    }
+
     void DovahAI::Enrage(RE::Actor *a_actor, int count)
     {
         if (!GetBoolVariable(a_actor, "bLDP_IsEnraging"))

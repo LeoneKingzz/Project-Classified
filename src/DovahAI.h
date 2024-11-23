@@ -25,6 +25,12 @@ namespace DovahAI_Space{
 		void ResetAI(RE::Actor *a_actor);
 		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
 		static void Others(RE::Actor *a_actor);
+		static void OnInitHPCalc(RE::Actor *a_actor);
+		static float GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value);
+		static void Enrage(RE::Actor *a_actor, int count);
+		static void Enrage_state(RE::Actor *a_actor);
+		static void BleedOut_state(RE::Actor *a_actor);
+		static void BleedOut_state1(RE::Actor *a_actor);
 		static void TalonSmash(RE::Actor *a_actor);
 		static void TalonSmash1(RE::Actor *a_actor);
 		static void TalonSmash2(RE::Actor *a_actor);
