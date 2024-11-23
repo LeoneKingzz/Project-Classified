@@ -56,6 +56,19 @@ namespace DovahAI_Space{
         return result;
     }
 
+    bool DovahAI::IsUnSafeDragon(RE::Actor *a_actor)
+    {
+        auto result = false;
+        if (auto AB = a_actor->GetActorBase())
+        {
+            if (AB == RE::TESForm::LookupByEditorID<RE::TESNPC>("MQ206AncientAlduin"))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
+
     void DovahAI::wait(int a_duration)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(a_duration));
@@ -177,6 +190,16 @@ namespace DovahAI_Space{
         default:
             break;
         }
+    }
+
+    void DovahAI::OnInitHPCalc(RE::Actor *a_actor)
+    {
+        auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
+        a_actor->SetGraphVariableInt("iLDP_Pre_HP", static_cast<int>(perm_health));
+        a_actor->SetGraphVariableInt("iLDP_Front_HP", static_cast<int>(perm_health * 0.4));
+        a_actor->SetGraphVariableInt("iLDP_Back_HP", static_cast<int>(perm_health * 0.25));
+        a_actor->SetGraphVariableInt("iLDP_Left_HP", static_cast<int>(perm_health * 0.3));
+        a_actor->SetGraphVariableInt("iLDP_Right_HP", static_cast<int>(perm_health * 0.3));
     }
 
     void DovahAI::Others(RE::Actor *a_actor)
