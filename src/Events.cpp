@@ -233,6 +233,14 @@ namespace Events_Space
 							DovahAI_Space::DovahAI::Enrage(a_actor, 3);
 							a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
 						}
+
+						if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
+						{
+							if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsStaggering"))
+							{
+								DovahAI_Space::DovahAI::Enrage(a_actor, 1);
+							}
+						}
 					}
 
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
