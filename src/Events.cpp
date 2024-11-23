@@ -9,7 +9,8 @@ namespace Events_Space
 		public RE::BSTEventSink<RE::TESActorLocationChangeEvent>,
 		public RE::BSTEventSink<RE::TESSpellCastEvent>,
 		public RE::BSTEventSink<RE::TESDeathEvent>,
-		public RE::BSTEventSink<SKSE::ModCallbackEvent>
+		public RE::BSTEventSink<SKSE::ModCallbackEvent>,
+        public RE::BSTEventSink<RE::TESHitEvent>
 	{
 		OurEventSink() = default;
 		OurEventSink(const OurEventSink&) = delete;
@@ -133,6 +134,22 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
+
+			return RE::BSEventNotifyControl::kContinue;
+		}
+
+		RE::BSEventNotifyControl ProcessEvent(const RE::TESHitEvent *event, RE::BSTEventSource<RE::TESHitEvent> *)
+		{
+			auto a_actor = event->target->As<RE::Actor>();
+
+			if (!a_actor || !a_actor->HasKeywordString("ActorTypeDragon"))
+			{
+				return RE::BSEventNotifyControl::kContinue;
+			}
+			
+			if (event->cause->As<RE::Actor>())
+			{
+			}
 
 			return RE::BSEventNotifyControl::kContinue;
 		}
@@ -361,6 +378,7 @@ namespace Events_Space
 		//eventSourceHolder->AddEventSink<RE::TESActorLocationChangeEvent>(eventSink);
 		// eventSourceHolder->AddEventSink<RE::TESSpellCastEvent>(eventSink);
 		eventSourceHolder->AddEventSink<RE::TESDeathEvent>(eventSink);
+		eventSourceHolder->AddEventSink<RE::TESHitEvent>(eventSink);
 	}
 
 	void Events::install_pluginListener(){
