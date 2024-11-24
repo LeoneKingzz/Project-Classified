@@ -351,8 +351,39 @@ namespace DovahAI_Space{
 
     void DovahAI::DamageTarget(RE::Actor *a_actor, float percentage)
     {
-        auto perm_health = a_actor->AsActorValueOwner()->GetPermanentActorValue(RE::ActorValue::kHealth);
-        a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(perm_health * percentage));
+        if (const auto base = a_actor->GetActorBase())
+        {
+            auto level = base->GetLevel();
+            auto damage = 0.0f;
+            if (level <= 10){
+                damage = 25.0f;
+            }
+            else if (level > 10 && level <= 20)
+            {
+                damage = 25.0f;
+            }
+            else if (level > 20 && level <= 30)
+            {
+                damage = 25.0f;
+            }
+            else if (level > 30 && level <= 40)
+            {
+                damage = 25.0f;
+            }
+            else if (level > 40 && level <= 50)
+            {
+                damage = 25.0f;
+            }
+            else if (level > 50 && level <= 62)
+            {
+                damage = 25.0f;
+            }
+            else if (level > 62)
+            {
+                damage = 25.0f;
+            }
+            a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(damage));
+        }
     }
 
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
