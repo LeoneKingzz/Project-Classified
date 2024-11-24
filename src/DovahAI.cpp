@@ -349,40 +349,41 @@ namespace DovahAI_Space{
         }
     }
 
-    void DovahAI::DamageTarget(RE::Actor *a_actor, float percentage)
+    void DovahAI::DamageTarget(RE::Actor *a_actor, RE::Actor *enemy)
     {
         if (const auto base = a_actor->GetActorBase())
         {
             auto level = base->GetLevel();
             auto damage = 0.0f;
+
             if (level <= 10){
                 damage = 25.0f;
             }
             else if (level > 10 && level <= 20)
             {
-                damage = 25.0f;
+                damage = 50.0f;
             }
             else if (level > 20 && level <= 30)
             {
-                damage = 25.0f;
+                damage = 100.0f;
             }
             else if (level > 30 && level <= 40)
             {
-                damage = 25.0f;
+                damage = 150.0f;
             }
             else if (level > 40 && level <= 50)
             {
-                damage = 25.0f;
+                damage = 200.0f;
             }
             else if (level > 50 && level <= 62)
             {
-                damage = 25.0f;
+                damage = 250.0f;
             }
             else if (level > 62)
             {
-                damage = 25.0f;
+                damage = 300.0f;
             }
-            a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(damage));
+            enemy->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(damage));
         }
     }
 
@@ -399,7 +400,7 @@ namespace DovahAI_Space{
                     RE::Actor *Enemy = target.get();
                     if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 150.0f)
                     {
-                        DovahAI_Space::DovahAI::DamageTarget(Enemy, 0.25f);
+                        DovahAI_Space::DovahAI::DamageTarget(a_actor, Enemy);
                         if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
                         {
                             GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
