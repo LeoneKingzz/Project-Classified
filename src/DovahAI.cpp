@@ -223,6 +223,46 @@ namespace DovahAI_Space{
         }
     }
 
+    RE::BSFixedString DovahAI::DragonType(RE::Actor *a_actor)
+    {
+        RE::BSFixedString result = "Other";
+        
+        if (a_actor->HasKeywordString("AlduinUnitedKey"))
+        {
+            result = "Alduin";
+        }
+        else if (a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "AllD";
+        }
+        else if (a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "FireFrostD";
+        }
+        else if (a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "FireShockD";
+        }
+        else if (!a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "FrostShockD";
+        }
+        else if (a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "Fire";
+        }
+        else if (!a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "Frost";
+        }
+        else if (!a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            result = "Shock";
+        }
+
+        return result;
+    }
+
     void DovahAI::Enrage_state(RE::Actor *a_actor)
     {
         a_actor->SetGraphVariableBool("bLDP_IsEnraging", true);
