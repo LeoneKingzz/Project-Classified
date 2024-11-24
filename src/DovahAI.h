@@ -27,6 +27,7 @@ namespace DovahAI_Space{
 		static void Others(RE::Actor *a_actor);
 		static void OnInitHPCalc(RE::Actor *a_actor);
 		static float GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value);
+		static void DragonType(RE::Actor *a_actor);
 		static void Enrage(RE::Actor *a_actor, int count);
 		static void Enrage_state(RE::Actor *a_actor);
 		static void BleedOut_state(RE::Actor *a_actor);
