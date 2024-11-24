@@ -354,12 +354,9 @@ namespace DovahAI_Space{
         if (const auto base = a_actor->GetActorBase())
         {
             auto level = base->GetLevel();
-            auto damage = 0.0f;
+            auto damage = 25.0f;
 
-            if (level <= 10){
-                damage = 25.0f;
-            }
-            else if (level > 10 && level <= 20)
+            if (level > 10 && level <= 20)
             {
                 damage = 50.0f;
             }
