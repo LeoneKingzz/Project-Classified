@@ -384,6 +384,20 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::CalcLevelRank(RE::Actor *a_actor)
+    {
+        if (const auto base = a_actor->GetActorBase())
+        {
+            auto level = base->GetLevel();
+            int rank = 0;
+            while (rank * 10 < level && rank < 7)
+            {
+                rank += 1;
+            }
+            a_actor->SetGraphVariableInt("iLDP_Lvl_Rank", rank);
+        }
+    }
+
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
