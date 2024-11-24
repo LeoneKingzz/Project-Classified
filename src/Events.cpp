@@ -112,6 +112,10 @@ namespace Events_Space
 				DovahAI_Space::DovahAI::OnInitHPCalc(a_actor);
 				DovahAI_Space::DovahAI::DragonType(a_actor);
 				DovahAI_Space::DovahAI::CalcLevelRank(a_actor);
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_SetValues_Dragon"))
+				{
+					DovahAI_Space::DovahAI::SetValuesDragon(a_actor);
+				}
 				break;
 			case RE::ACTOR_COMBAT_STATE::kSearching:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);

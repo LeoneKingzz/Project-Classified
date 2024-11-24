@@ -388,6 +388,7 @@ namespace DovahAI_Space{
     {
         auto LvRank = GetIntVariable(a_actor, "iLDP_Lvl_Rank");
         a_actor->AsActorValueOwner()->SetActorValue(RE::ActorValue::kDamageResist, ((LvRank * 45.0) / (1.0 + abs(3.0 - log(RE::PlayerCharacter::GetSingleton()->GetLevel())) * pow(2.718, (-1.0 * LvRank)))));
+        a_actor->SetGraphVariableBool("bLDP_SetValues_Dragon", true);
     }
 
     void DovahAI::CalcLevelRank(RE::Actor *a_actor)
