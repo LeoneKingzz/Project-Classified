@@ -110,6 +110,7 @@ namespace Events_Space
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", true);
 				a_actor->SetGraphVariableBool("bLDP_CrashLand_Faction", true);
 				DovahAI_Space::DovahAI::OnInitHPCalc(a_actor);
+				DovahAI_Space::DovahAI::DragonType(a_actor);
 				break;
 			case RE::ACTOR_COMBAT_STATE::kSearching:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
