@@ -278,12 +278,16 @@ namespace DovahAI_Space{
     {
         Shout(a_actor);
         a_actor->SetGraphVariableBool("IsEnraging", true);
-        a_actor->SetGraphVariableInt("iLDP_Enrage_Count", 0);
-        a_actor->NotifyAnimationGraph("Enrage");
-        a_actor->SetGraphVariableBool("bNoStagger", true);
-        auto H = RE::TESDataHandler::GetSingleton();
-        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // EnrageSpell
+        
+        auto yt = GetSingleton()->Get_AttackList(a_actor);
+        std::get<0>(yt) = 4;
+        std::get<1>(yt)[0] = 0;
+        std::get<2>(yt)[2] = 0;
+        std::get<2>(yt)[4] = 0;
+        std::get<2>(yt)[5] = 6;
+        std::get<3>(yt)[0] = 0;
+        std::get<3>(yt)[2] = 1;
+        std::get<3>(yt)[4] = 18;
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 60000ms, "EnrageStart_Update");
