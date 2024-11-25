@@ -437,9 +437,12 @@ namespace DovahAI_Space{
             {
                 MeleeList[3] = 6;
             }
-            std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>> Hen;
-            // Hen.push_back(data);
-            //_Timer.insert({a_actor, Hen});
+            std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>> Hen;
+            std::get<0>(Hen) = NoDistRate;
+            std::get<1>(Hen) = NoDistList;
+            std::get<2>(Hen) = MeleeList;
+            std::get<3>(Hen) = RangedList;
+            _attackList.insert({a_actor, Hen});
         }
     }
 
