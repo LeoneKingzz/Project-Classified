@@ -638,15 +638,16 @@ namespace DovahAI_Space{
 
     void DovahAI::ControlDistanceRiddenAI(RE::Actor *a_actor)
     {
-        int i = 0;
-        while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 0.0f) 
-        && !a_actor->GetActorRuntimeData().currentCombatTarget.get().get()->IsDead() 
-        && a_actor->GetPosition().GetDistance(a_actor->GetActorRuntimeData().currentCombatTarget.get().get()->GetPosition()) <= 150.0f * 2.5f)
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
-            i += 1;
-            std::jthread waitThread(wait, 1000);
+            auto ct = targethandle.get();
+            int i = 0;
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 0.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            {
+                i += 1;
+                std::jthread waitThread(wait, 1000);
+            }
         }
-        
     }
 
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
