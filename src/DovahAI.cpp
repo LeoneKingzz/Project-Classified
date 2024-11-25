@@ -408,41 +408,48 @@ namespace DovahAI_Space{
     void DovahAI::CreateAttackList(RE::Actor *a_actor)
     {
         uniqueLocker lock(mtx_attackList);
+
+        int NoDistRate = 8;
+        std::vector<int> NoDistList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 0, 0, 0};
+        std::vector<int> MeleeList = {14 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 14, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 6, 6};
+        std::vector<int> RangedList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 9, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 12};
+
+        switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+        {
+        case 1:
+        case 2:
+            NoDistList[3] = 8;
+            NoDistList[4] = 12;
+            break;
+
+        case 5:
+        case 7:
+            NoDistList[1] = 8;
+            break;
+
+        default:
+            NoDistList[2] = 8;
+            break;
+        }
+        if (GetIntVariable(a_actor, "iLDP_Lvl_Rank") >= 4)
+        {
+            MeleeList[3] = 6;
+        }
+
         auto itt = _attackList.find(a_actor);
         if (itt == _attackList.end())
         {
-            int NoDistRate = 8;
-            std::vector<int> NoDistList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 0, 0, 0};
-            std::vector<int> MeleeList = {14 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 14, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 6, 6};
-            std::vector<int> RangedList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 9, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 12};
-
-            switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
-            {
-            case 1:
-            case 2:
-                NoDistList[3] = 8;
-		        NoDistList[4] = 12;
-                break;
-
-            case 5:
-            case 7:
-                NoDistList[1] = 8;
-                break;
-
-            default:
-                NoDistList[2] = 8;
-                break;
-            }
-            if (GetIntVariable(a_actor, "iLDP_Lvl_Rank") >= 4)
-            {
-                MeleeList[3] = 6;
-            }
             std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>> Hen;
             std::get<0>(Hen) = NoDistRate;
             std::get<1>(Hen) = NoDistList;
             std::get<2>(Hen) = MeleeList;
             std::get<3>(Hen) = RangedList;
             _attackList.insert({a_actor, Hen});
+        }else{
+            std::get<0>(itt->second) = NoDistRate;
+            std::get<1>(itt->second) = NoDistList;
+            std::get<2>(itt->second) = MeleeList;
+            std::get<3>(itt->second) = RangedList;
         }
     }
 
