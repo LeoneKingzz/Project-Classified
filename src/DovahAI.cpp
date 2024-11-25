@@ -636,6 +636,41 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::ControlDistanceRiddenAI(RE::Actor *a_actor)
+    {
+        int i = 0;
+        while (/* condition */)
+        {
+            /* code */
+        }
+        
+    }
+
+    int DovahAI::HoverWaitTime(RE::Actor *a_actor)
+    {
+        int result = 0;
+
+        switch (GetIntVariable(a_actor, "iLDP_PreferCombatStyle"))
+        {
+        case 0:
+            result = 4;
+            break;
+
+        case 1:
+            result = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(6, 8);
+            break;
+
+        case 2:
+            result = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(4, 6);
+            break;
+
+        default:
+            break;
+        }
+        
+        return result;
+    }
+
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
