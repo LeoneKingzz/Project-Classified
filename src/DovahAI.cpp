@@ -387,21 +387,23 @@ namespace DovahAI_Space{
 
     void DovahAI::Shout1(RE::Actor *a_actor)
     {
-        auto H = RE::TESDataHandler::GetSingleton();
-        auto box = GetSingleton()->Get_Box(a_actor);
-        box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
-        const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // EnrageSpell
+        if (auto box = GetSingleton()->Get_Box(a_actor))
+        {
+            auto H = RE::TESDataHandler::GetSingleton();
+            box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
+            const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+            caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, nullptr, 1, false, 0.0, a_actor); // EnrageSpell
+        }
     }
 
     void DovahAI::CastAreaEffect(RE::Actor *a_actor, RE::MagicItem* a_spell, RE::BSFixedString a_node)
     {
-        auto box = GetSingleton()->Get_Box(a_actor);
-        box->MoveToNode(a_actor, a_node);
-        const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(a_spell, true, a_actor, 1, false, 0.0, a_actor);
-        //Box.MovetoNode(akActor as ObjectReference, sNode)
-	    //Effect.RemoteCast(Box, akActor, none)
+        if (auto box = GetSingleton()->Get_Box(a_actor))
+        {
+            box->MoveToNode(a_actor, a_node);
+            const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+            caster->CastSpellImmediate(a_spell, true, nullptr, 1, false, 0.0, a_actor);
+        }
     }
 
     void DovahAI::BleedOut_state(RE::Actor *a_actor)
