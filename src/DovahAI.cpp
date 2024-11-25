@@ -357,7 +357,7 @@ namespace DovahAI_Space{
 		}
 	}
 
-    RE::TESObjectREFR* DovahAI::GetBox(RE::Actor *a_actor)
+    RE::TESObjectREFR* DovahAI::Get_Box(RE::Actor *a_actor)
     {
         uniqueLocker lock(mtx_Boxes);
         RE::TESObjectREFR* result = nullptr;
