@@ -387,9 +387,9 @@ namespace DovahAI_Space{
 
     void DovahAI::Shout1(RE::Actor *a_actor)
     {
-        // self.Cooldown(0.0660000)
-        // Box.MovetoNode(akActor as ObjectReference, "NPC Head MagicNode [Hmag]")
-        // Box.Placeatme(shoutexp as form, 1, false, false)
+        auto H = RE::TESDataHandler::GetSingleton();
+        auto box = GetSingleton()->Get_Box(a_actor);
+        box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
     }
 
     void DovahAI::CastAreaEffect(RE::Actor *a_actor, RE::MagicItem* a_spell, RE::BSFixedString a_node)
