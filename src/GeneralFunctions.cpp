@@ -78,6 +78,21 @@ namespace GFunc_Space{
 		return cond(params);
 	}
 
+	bool IsAllowedToFly(const RE::Actor *a_actor, float a_comparison_value)
+	{
+		static RE::TESConditionItem cond;
+		static std::once_flag flag;
+		std::call_once(flag, [&]()
+					   {
+        cond.data.functionData.function = RE::FUNCTION_DATA::FunctionID::kIsAllowedToFly;
+        cond.data.flags.opCode          = RE::CONDITION_ITEM_DATA::OpCode::kEqualTo;
+        cond.data.object                = RE::CONDITIONITEMOBJECT::kSelf;
+        cond.data.comparisonValue.f     = a_comparison_value; });
+
+		RE::ConditionCheckParams params(const_cast<RE::TESObjectREFR *>(a_actor->As<RE::TESObjectREFR>()), nullptr);
+		return cond(params);
+	}
+
 	bool GFunc::isHumanoid(RE::Actor *a_actor)
 	{
 		auto bodyPartData = a_actor->GetRace() ? a_actor->GetRace()->bodyPartData : nullptr;
