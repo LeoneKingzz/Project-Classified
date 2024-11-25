@@ -127,6 +127,7 @@ namespace Events_Space
 			case RE::ACTOR_COMBAT_STATE::kNone:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
 				a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 0);
+				DovahAI_Space::DovahAI::GetSingleton()->RemoveAttackList(a_actor);
 				break;
 
 			default:
