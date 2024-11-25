@@ -407,7 +407,40 @@ namespace DovahAI_Space{
 
     void DovahAI::CreateAttackList(RE::Actor *a_actor)
     {
-        
+        uniqueLocker lock(mtx_attackList);
+        auto itt = _attackList.find(a_actor);
+        if (itt == _attackList.end())
+        {
+            int NoDistRate = 8;
+            std::vector<int> NoDistList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 0, 0, 0};
+            std::vector<int> MeleeList = {14 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 14, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 0, 6, 6};
+            std::vector<int> RangedList = {10 - GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 9, GetIntVariable(a_actor, "iLDP_Lvl_Rank"), GetIntVariable(a_actor, "iLDP_Lvl_Rank"), 12};
+
+            switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+            {
+            case 1:
+            case 2:
+                NoDistList[3] = 8;
+		        NoDistList[4] = 12;
+                break;
+
+            case 5:
+            case 7:
+                NoDistList[1] = 8;
+                break;
+
+            default:
+                NoDistList[2] = 8;
+                break;
+            }
+            if (GetIntVariable(a_actor, "iLDP_Lvl_Rank") >= 4)
+            {
+                MeleeList[3] = 6;
+            }
+            std::vector<std::tuple<bool, GFunc_Space::Time::time_point, GFunc_Space::ms, std::string>> Hen;
+            // Hen.push_back(data);
+            //_Timer.insert({a_actor, Hen});
+        }
     }
 
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
@@ -474,7 +507,7 @@ namespace DovahAI_Space{
 
     void DovahAI::DeathWaitRagdoll(RE::Actor *a_actor)
     {
-        switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DeathAnim_Faction"))
+        switch (GetIntVariable(a_actor, "iLDP_DeathAnim_Faction"))
         {
         case 0:
             if(a_actor){

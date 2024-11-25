@@ -1,7 +1,8 @@
 #include "GeneralFunctions.h"
 
 namespace DovahAI_Space{
-
+	using uniqueLocker = std::unique_lock<std::shared_mutex>;
+	using sharedLocker = std::shared_lock<std::shared_mutex>;
 
 	class DovahAI
 	{
@@ -24,7 +25,6 @@ namespace DovahAI_Space{
 		void DeathRadollFly(RE::Actor *a_actor);
 		void ResetAI(RE::Actor *a_actor);
 		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
-		static void CreateAttackList(RE::Actor *a_actor);
 		static void Others(RE::Actor *a_actor);
 		static void OnInitHPCalc(RE::Actor *a_actor);
 		static float GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value);
@@ -40,6 +40,7 @@ namespace DovahAI_Space{
 		static bool IsUnSafeDragon(RE::Actor *a_actor);
 		static void DamageTarget(RE::Actor *a_actor, RE::Actor *enemy);
 		static void CalcLevelRank(RE::Actor *a_actor);
+		void CreateAttackList(RE::Actor *a_actor);
 		static void SetValuesDragon(RE::Actor *a_actor);
 		static void Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force);
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
@@ -58,6 +59,8 @@ namespace DovahAI_Space{
 		
 
 	protected:
+		std::unordered_map<RE::Actor *, std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>> _attackList;
+		std::shared_mutex mtx_attackList;
 	};
 }
 

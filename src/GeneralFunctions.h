@@ -90,6 +90,7 @@ namespace GFunc_Space{
 		void RegisterforUpdate(RE::Actor *a_actor, std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data);
 		float get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata);
 		static void set_tupledata(std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data, bool a, std::chrono::steady_clock::time_point b, GFunc_Space::ms c, std::string d);
+		void CreateAttackList(RE::Actor *a_actor);
 
 		struct PolarAngle
 		{
@@ -408,9 +409,6 @@ namespace GFunc_Space{
 	protected:
 		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, std::chrono::steady_clock::time_point, std::chrono::milliseconds, std::string>>> _Timer;
 		std::shared_mutex mtx_Timer;
-
-		std::unordered_map < RE::Actor *, std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>> _attackList;
-		std::shared_mutex mtx_attackList;
 	};
 }
 
