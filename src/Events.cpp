@@ -616,6 +616,12 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::Shout1(a_actor);
 									break;
 
+								case "EnrageStart_Update"_h:
+									a_actor->SetGraphVariableBool("IsEnraging", false);
+									DovahAI_Space::DovahAI::GetSingleton()->CreateAttackList(a_actor);
+
+									break;
+
 								default:
 									break;
 								}
