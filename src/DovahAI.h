@@ -50,6 +50,7 @@ namespace DovahAI_Space{
 		static void DeathWaitRagdoll(RE::Actor *a_actor);
 		void Set_Box(RE::Actor *actor);
 		void scan_activeBoxes(RE::Actor *a_actor, RE::TESObjectREFR *a_box, bool insert = false, bool clear = false, bool clear_all = false);
+		RE::TESObjectREFR *GetBox(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
