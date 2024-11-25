@@ -381,7 +381,7 @@ namespace DovahAI_Space{
     void DovahAI::Shout(RE::Actor *a_actor)
     {
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 66ms, "EnrageState_Update");
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 66ms, "Shout_Update");
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 

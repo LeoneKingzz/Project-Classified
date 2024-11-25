@@ -612,6 +612,10 @@ namespace Events_Space
 									a_actor->SetGraphVariableBool("bLDP_BleedOut_State", false);
 									break;
 
+								case "Shout_Update"_h:
+									DovahAI_Space::DovahAI::Shout1(a_actor);
+									break;
+
 								default:
 									break;
 								}
