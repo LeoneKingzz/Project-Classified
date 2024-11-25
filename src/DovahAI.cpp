@@ -393,6 +393,15 @@ namespace DovahAI_Space{
             box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
             const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
             caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, nullptr, 1, false, 0.0, a_actor); // EnrageSpell
+        }else{
+            GetSingleton()->Set_Box(a_actor);
+            if (auto box = GetSingleton()->Get_Box(a_actor))
+            {
+                auto H = RE::TESDataHandler::GetSingleton();
+                box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
+                const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+                caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, nullptr, 1, false, 0.0, a_actor); // EnrageSpell
+            }
         }
     }
 
@@ -403,6 +412,14 @@ namespace DovahAI_Space{
             box->MoveToNode(a_actor, a_node);
             const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
             caster->CastSpellImmediate(a_spell, true, nullptr, 1, false, 0.0, a_actor);
+        }else{
+            GetSingleton()->Set_Box(a_actor);
+            if (auto box = GetSingleton()->Get_Box(a_actor))
+            {
+                box->MoveToNode(a_actor, a_node);
+                const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+                caster->CastSpellImmediate(a_spell, true, nullptr, 1, false, 0.0, a_actor);
+            }
         }
     }
 
