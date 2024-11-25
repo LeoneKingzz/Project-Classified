@@ -51,6 +51,8 @@ namespace Events_Space
 				DovahAI_Space::DovahAI::DeathWaitRagdoll(a_actor);
 			}
 
+			DovahAI_Space::DovahAI::GetSingleton()->RemoveAttackList(a_actor);
+
 			return RE::BSEventNotifyControl::kContinue;
 		}
 
