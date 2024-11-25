@@ -378,6 +378,20 @@ namespace DovahAI_Space{
         return result;
     }
 
+    void DovahAI::Shout(RE::Actor *a_actor)
+    {
+        // self.Cooldown(0.0660000)
+	    // Box.MovetoNode(akActor as ObjectReference, "NPC Head MagicNode [Hmag]")
+	    // Box.Placeatme(shoutexp as form, 1, false, false)
+        
+    }
+
+    void DovahAI::CastAreaEffect(RE::Actor *a_actor, RE::MagicItem* a_spell, RE::BSFixedString a_node)
+    {
+        //Box.MovetoNode(akActor as ObjectReference, sNode)
+	    //Effect.RemoteCast(Box, akActor, none)
+    }
+
     void DovahAI::BleedOut_state(RE::Actor *a_actor)
     {
         if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)

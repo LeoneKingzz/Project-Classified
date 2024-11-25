@@ -51,6 +51,8 @@ namespace DovahAI_Space{
 		void Set_Box(RE::Actor *actor);
 		void scan_activeBoxes(RE::Actor *a_actor, RE::TESObjectREFR *a_box, bool insert = false, bool clear = false, bool clear_all = false);
 		RE::TESObjectREFR *Get_Box(RE::Actor *a_actor);
+		static void Shout(RE::Actor *a_actor);
+		static void CastAreaEffect(RE::Actor *a_actor, RE::MagicItem *a_spell, RE::BSFixedString a_node);
 
 	private:
 		DovahAI() = default;
