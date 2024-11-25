@@ -357,6 +357,27 @@ namespace DovahAI_Space{
 		}
 	}
 
+    RE::TESObjectREFR* DovahAI::GetBox(RE::Actor *a_actor)
+    {
+        uniqueLocker lock(mtx_Boxes);
+        RE::TESObjectREFR* result = nullptr;
+        for (auto it = _Boxes.begin(); it != _Boxes.end(); ++it){
+            if (it->first == a_actor) {
+                if (!it->second.empty()) {
+                    for (auto box : it->second) {
+                        if (box)
+                        {
+                            result = box;
+                            break;
+                        }
+                    }
+                }
+            }
+            continue;
+        }
+        return result;
+    }
+
     void DovahAI::BleedOut_state(RE::Actor *a_actor)
     {
         if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
