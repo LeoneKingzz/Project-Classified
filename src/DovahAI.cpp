@@ -286,9 +286,8 @@ namespace DovahAI_Space{
         caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // EnrageSpell
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 2000ms, "EnrageState_Update");
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 60000ms, "EnrageStart_Update");
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
-        
     }
 
     void DovahAI::Set_Box(RE::Actor *actor)
