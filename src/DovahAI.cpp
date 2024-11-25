@@ -277,7 +277,7 @@ namespace DovahAI_Space{
     void DovahAI::Enrage_start(RE::Actor *a_actor)
     {
         Shout(a_actor);
-        a_actor->SetGraphVariableBool("bLDP_IsEnraging", true);
+        a_actor->SetGraphVariableBool("IsEnraging", true);
         a_actor->SetGraphVariableInt("iLDP_Enrage_Count", 0);
         a_actor->NotifyAnimationGraph("Enrage");
         a_actor->SetGraphVariableBool("bNoStagger", true);
