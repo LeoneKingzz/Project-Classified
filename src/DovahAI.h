@@ -39,6 +39,7 @@ namespace DovahAI_Space{
 		static bool IsUnSafeDragon(RE::Actor *a_actor);
 		static void DamageTarget(RE::Actor *a_actor, RE::Actor *enemy);
 		static void CalcLevelRank(RE::Actor *a_actor);
+		static void SetValuesDragon(RE::Actor *a_actor);
 		static void Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force);
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
 		static void GetEquippedShout(RE::Actor *actor, bool SpellFire = false);
