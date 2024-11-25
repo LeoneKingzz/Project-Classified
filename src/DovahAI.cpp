@@ -405,6 +405,11 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::CreateAttackList(RE::Actor *a_actor)
+    {
+        
+    }
+
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);

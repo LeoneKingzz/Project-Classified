@@ -24,6 +24,7 @@ namespace DovahAI_Space{
 		void DeathRadollFly(RE::Actor *a_actor);
 		void ResetAI(RE::Actor *a_actor);
 		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
+		static void CreateAttackList(RE::Actor *a_actor);
 		static void Others(RE::Actor *a_actor);
 		static void OnInitHPCalc(RE::Actor *a_actor);
 		static float GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value);

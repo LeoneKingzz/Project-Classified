@@ -408,6 +408,9 @@ namespace GFunc_Space{
 	protected:
 		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, std::chrono::steady_clock::time_point, std::chrono::milliseconds, std::string>>> _Timer;
 		std::shared_mutex mtx_Timer;
+
+		std::unordered_map < RE::Actor *, std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>> _attackList;
+		std::shared_mutex mtx_attackList;
 	};
 }
 
