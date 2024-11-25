@@ -31,6 +31,7 @@ namespace DovahAI_Space{
 		static void DragonType(RE::Actor *a_actor);
 		static void Enrage(RE::Actor *a_actor, int count);
 		static void Enrage_state(RE::Actor *a_actor);
+		static void Enrage_start(RE::Actor *a_actor);
 		static void BleedOut_state(RE::Actor *a_actor);
 		static void BleedOut_state1(RE::Actor *a_actor);
 		static void TalonSmash(RE::Actor *a_actor);
@@ -47,6 +48,8 @@ namespace DovahAI_Space{
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
 		static void GetEquippedShout(RE::Actor *actor, bool SpellFire = false);
 		static void DeathWaitRagdoll(RE::Actor *a_actor);
+		void Set_Box(RE::Actor *actor);
+		void scan_activeBoxes(RE::Actor *a_actor, RE::TESObjectREFR *a_box, bool insert = false, bool clear = false, bool clear_all = false);
 
 	private:
 		DovahAI() = default;
@@ -62,6 +65,8 @@ namespace DovahAI_Space{
 	protected:
 		std::unordered_map<RE::Actor *, std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>> _attackList;
 		std::shared_mutex mtx_attackList;
+		std::unordered_map<RE::Actor *, std::vector<RE::TESObjectREFR *>> _Boxes;
+		std::shared_mutex mtx_Boxes;
 	};
 }
 

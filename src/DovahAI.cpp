@@ -287,7 +287,75 @@ namespace DovahAI_Space{
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 2000ms, "EnrageState_Update");
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        
     }
+
+    void DovahAI::Set_Box(RE::Actor *actor)
+    {
+        auto H = RE::TESDataHandler::GetSingleton();
+        auto Box = actor->PlaceObjectAtMe(H->LookupForm<RE::TESObjectACTI>(0xA342E7, "LeoneDragonProject.esp"), false).get(); //fxactivator
+        if (Box)
+        {
+            GetSingleton()->scan_activeBoxes(actor, Box, true);
+        }
+    }
+
+    void DovahAI::scan_activeBoxes([[maybe_unused]] RE::Actor *a_actor, [[maybe_unused]] RE::TESObjectREFR *a_box, bool insert, bool clear, bool clear_all)
+    {
+		uniqueLocker lock(mtx_Boxes);
+		if (insert){
+			auto itt = _Boxes.find(a_actor);
+			if (itt == _Boxes.end()){
+                std::vector<RE::TESObjectREFR *> Hen;
+                _Boxes.insert({a_actor, Hen});
+			}
+		}
+		
+		for (auto it = _Boxes.begin(); it != _Boxes.end(); ++it){
+			if (insert){
+				if (it->first == a_actor){
+					if (!it->second.empty()){
+						for (auto box : it->second){
+							if (box){
+								box = nullptr;
+							}
+						}
+						it->second.clear();
+					}
+					it->second.push_back(a_box);
+					break;
+				}
+			}
+			if (clear){
+				if (it->first == a_actor){
+					if (!it->second.empty()){
+						for (auto box : it->second){
+							if (box){
+								box = nullptr;
+							}
+						}
+						it->second.clear();
+					}
+					_Boxes.erase(it);
+					break;
+				}
+			}
+			if (clear_all){
+				if (it->first){
+					if (!it->second.empty()){
+						for (auto box : it->second){
+							if (box){
+								box = nullptr;
+							}
+						}
+						it->second.clear();
+					}
+					_Boxes.erase(it);
+				}
+			}
+			continue;
+		}
+	}
 
     void DovahAI::BleedOut_state(RE::Actor *a_actor)
     {
