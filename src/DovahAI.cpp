@@ -647,7 +647,22 @@ namespace DovahAI_Space{
                 i += 1;
                 std::jthread waitThread(wait, 1000);
             }
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "CDR_AI_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
         }
+    }
+
+    void DovahAI::ControlDistanceRiddenAI1(RE::Actor *a_actor)
+    {
+        while (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
+        {
+            GetSingleton()->ResetAI(a_actor);
+        }
+
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "CDR_AI2_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
