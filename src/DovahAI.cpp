@@ -446,6 +446,21 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::RemoveAttackList(RE::Actor *a_actor)
+    {
+        uniqueLocker lock(mtx_attackList);
+        for (auto it = _attackList.begin(); it != _attackList.end(); ++it)
+        {
+            if (it->first == a_actor)
+            {
+                _attackList.erase(it);
+
+                break;
+            }
+            continue;
+        }
+    }
+
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
