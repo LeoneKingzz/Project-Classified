@@ -116,6 +116,7 @@ namespace Events_Space
 				{
 					DovahAI_Space::DovahAI::SetValuesDragon(a_actor);
 				}
+				DovahAI_Space::DovahAI::GetSingleton()->CreateAttackList(a_actor);
 				break;
 			case RE::ACTOR_COMBAT_STATE::kSearching:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", false);
