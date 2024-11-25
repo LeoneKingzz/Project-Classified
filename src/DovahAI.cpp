@@ -278,7 +278,6 @@ namespace DovahAI_Space{
     {
         Shout(a_actor);
         a_actor->SetGraphVariableBool("IsEnraging", true);
-        
         auto yt = GetSingleton()->Get_AttackList(a_actor);
         std::get<0>(yt) = 4;
         std::get<1>(yt)[0] = 0;
