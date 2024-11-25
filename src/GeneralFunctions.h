@@ -53,6 +53,7 @@ namespace GFunc_Space{
 	void StartCombat(const RE::Actor *subject, const RE::Actor *target);
 	bool Has_Magiceffect_Keyword(const RE::Actor *a_actor, const RE::BGSKeyword *a_key);
 	bool HasBoundWeaponEquipped(const RE::Actor *a_actor, RE::MagicSystem::CastingSource type);
+	bool IsAllowedToFly(const RE::Actor *a_actor, float a_comparison_value);
 
 	class GFunc
 	{

@@ -639,9 +639,10 @@ namespace DovahAI_Space{
     void DovahAI::ControlDistanceRiddenAI(RE::Actor *a_actor)
     {
         int i = 0;
-        while (/* condition */)
+        while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 0.0f))
         {
-            /* code */
+            i += 1;
+            std::jthread waitThread(wait, 1000);
         }
         
     }
