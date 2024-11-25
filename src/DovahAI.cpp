@@ -378,6 +378,22 @@ namespace DovahAI_Space{
         return result;
     }
 
+    std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>> DovahAI::Get_AttackList(RE::Actor *a_actor)
+    {
+        uniqueLocker lock(mtx_attackList);
+        std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>  result ;
+        for (auto it = _attackList.begin(); it != _attackList.end(); ++it)
+        {
+            if (it->first == a_actor)
+            {
+                result = it->second;
+                break;
+            }
+            continue;
+        }
+        return result;
+    }
+
     void DovahAI::Shout(RE::Actor *a_actor)
     {
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
