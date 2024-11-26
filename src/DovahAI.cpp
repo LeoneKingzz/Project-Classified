@@ -489,6 +489,12 @@ namespace DovahAI_Space{
                     }
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
+
+                    while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
+                    {
+                        std::jthread waitThread1(wait, 1000);
+                    }
+                    GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 }
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
