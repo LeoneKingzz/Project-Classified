@@ -485,24 +485,25 @@ namespace DovahAI_Space{
 
                     while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
                     {
-                        std::jthread waitThread(wait, 1000);
+                        std::jthread waitThread(wait, 500);
                     }
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
 
                     while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
-                        std::jthread waitThread1(wait, 1000);
+                        std::jthread waitThread1(wait, 500);
                     }
                     GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 }
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 
             }else{
+                GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
         }
@@ -778,12 +779,12 @@ namespace DovahAI_Space{
     {
         if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
         {
-            DovahAI_Space::DovahAI::GroundAttackScene(a_actor);
+            GroundAttackScene(a_actor);
         }
         else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
         {
             GFunc_Space::GFunc::Set_iFrames(a_actor);
-            //talon smash scene
+            TalonSmashScene(a_actor);
         }
     }
 
