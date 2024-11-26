@@ -787,8 +787,16 @@ namespace DovahAI_Space{
                     {
                         std::jthread waitThread(wait, 1000);
                     }
-                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);  
+                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                 }
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+
+            }else{
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
         }
         
