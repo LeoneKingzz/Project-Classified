@@ -675,7 +675,7 @@ namespace DovahAI_Space{
             {
                 if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.75f)
                 {
-                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
                         if (GetActorValuePercent(a_actor, RE::ActorValue::kHealth) > 0.35f)
                         {
@@ -719,7 +719,7 @@ namespace DovahAI_Space{
         a_actor->NotifyAnimationGraph("HoverStopVertical");
         if (GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
         {
-            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.83f)
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 83.0f)
             {
                 // to ground attack scene
             }else{
@@ -787,7 +787,7 @@ namespace DovahAI_Space{
 
     void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
     {
-        if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+        if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
         {
             a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffVertical
         }
@@ -903,7 +903,7 @@ namespace DovahAI_Space{
             case "ks_DragonFlameWaveShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0, 1.0) <= 0.5f)
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Dragons shout with voice - KS2 Patch.esp")));
                     }
@@ -914,7 +914,7 @@ namespace DovahAI_Space{
                 }
                 else
                 {
-                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0, 1.0) <= 0.5f)
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Dragons shout with voice - KS2 Patch.esp")));
                     }
@@ -1609,7 +1609,7 @@ namespace DovahAI_Space{
             case "L_DragonFireBallShoutALDUIN2"_h:
                 if (SpellFire)
                 {
-                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0, 1.0) <= 0.5f)
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Dragons shout with voice - KS2 Patch.esp")));
                     }
@@ -1620,7 +1620,7 @@ namespace DovahAI_Space{
                 }
                 else
                 {
-                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0, 1.0) <= 0.5f)
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Dragons shout with voice - KS2 Patch.esp")));
                     }
