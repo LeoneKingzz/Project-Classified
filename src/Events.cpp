@@ -257,7 +257,7 @@ namespace Events_Space
 
 						a_actor->SetGraphVariableInt("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
 
-						auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Ratio_HP");
+						auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
 
 						if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
 						{
@@ -619,6 +619,20 @@ namespace Events_Space
 								case "EnrageStart_Update"_h:
 									a_actor->SetGraphVariableBool("IsEnraging", false);
 									DovahAI_Space::DovahAI::GetSingleton()->CreateAttackList(a_actor);
+									break;
+
+								case "CDR_AI_Update"_h:
+									DovahAI_Space::DovahAI::ControlDistanceRiddenAI1(a_actor);
+									break;
+
+								case "CDR_AI2_Update"_h:
+									a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", false);
+									break;
+
+								case "TakeOffCombat_AI_Update"_h:
+									a_actor->SetGraphVariableBool("bVoiceReady", false);
+									a_actor->SetGraphVariableBool("bVoiceReady", true);
+									DovahAI_Space::DovahAI::ToHoverAttackScene(a_actor);
 									break;
 
 								default:

@@ -665,6 +665,42 @@ namespace DovahAI_Space{
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
+    void DovahAI::TakeoffCombatAI(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (GetIntVariable(a_actor, "iLDP_TakeOff_Faction") == 1 && !GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
+            {
+                if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.75f)
+                {
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
+                    {
+                        if (GetActorValuePercent(a_actor, RE::ActorValue::kHealth) > 0.35f)
+                        {
+                            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
+                            {
+                                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 850ms, "TakeOffCombat_AI_Update");
+                                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                            }
+                            else if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
+                            {
+                                //ground attack vertical scene
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void DovahAI::ToHoverAttackScene(RE::Actor *a_actor)
+    {
+        
+    }
+
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
     {
         int result = 0;

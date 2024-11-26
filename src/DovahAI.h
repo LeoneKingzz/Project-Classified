@@ -56,6 +56,8 @@ namespace DovahAI_Space{
 		static void CastAreaEffect(RE::Actor *a_actor, RE::MagicItem *a_spell, RE::BSFixedString a_node);
 		std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>> Get_AttackList(RE::Actor *a_actor);
 		static void ControlDistanceRiddenAI(RE::Actor *a_actor);
+		static void ControlDistanceRiddenAI1(RE::Actor *a_actor);
+		static void TakeoffCombatAI(RE::Actor *a_actor);
 		static int HoverWaitTime(RE::Actor *a_actor);
 
 	private:
