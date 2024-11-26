@@ -771,10 +771,17 @@ namespace DovahAI_Space{
                             if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
                             {
                                 SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "to_Flight_Kill_Grab_Action", "to_Flight_Kill_Grab_Action_Failed", "None", "None");
+                                GetSingleton()->ResetAI(a_actor);
+                                GetSingleton()->ResetAI(a_actor);
+                                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "PBC_AI_Update");
+                                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                             }
-                            else
+                            else if (!GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.0f)
                             {
-                                ToGroundAttackScene(a_actor);
+                                a_actor->SetGraphVariableBool("bVoiceReady", false);
+                                a_actor->SetGraphVariableBool("bVoiceReady", true);
+                                DovahAI_Space::DovahAI::ToHoverAttackScene(a_actor);
                             }
                         }
                     }

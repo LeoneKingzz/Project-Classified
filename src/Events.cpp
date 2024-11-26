@@ -628,6 +628,8 @@ namespace Events_Space
 								case "CDR_AI2_Update"_h:
 								case "HAS_AI2_Update"_h:
 								case "GAS_AI_Update"_h:
+								case "TSS_AI_Update"_h:
+								case "PBC_AI_Update"_h:
 									a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", false);
 									break;
 
