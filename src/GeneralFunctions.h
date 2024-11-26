@@ -339,15 +339,11 @@ namespace GFunc_Space{
 			return func(vm, frame, self, afX, afY, afZ, afMagnitude);
 		}
 
-		inline auto SetForcedLandingMarker(RE::Actor *self, RE::TESObjectREFR *target)
+		inline void SetForcedLandingMarker(RE::Actor *self, RE::TESObjectREFR *target)
 		{
-			using func_t = void(RE::BSScript::Internal::VirtualMachine *, RE::VMStackID, RE::Actor *, RE::TESObjectREFR *);
-			RE::VMStackID frame = 0;
-
+			using func_t = decltype(&SetForcedLandingMarker);
 			REL::Relocation<func_t> func{RE::VTABLE_ExtraForcedLandingMarker[0]};
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-
-			return func(vm, frame, self, target);
+			return func(self, target);
 		}
 
 		static void RemoveFromFaction(RE::Actor *self, RE::TESFaction *a_faction)

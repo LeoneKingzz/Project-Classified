@@ -479,14 +479,15 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
                 {
-                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 1); //default landing faction
-                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", true);
-                
-                    while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
+                    GetSingleton()->SetLandingMarker(a_actor);
+                    a_actor->SetGraphVariableBool("bLDP_Talon_Faction", true);
+                    TalonSmash(a_actor);
+
+                    while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
                     {
                         std::jthread waitThread(wait, 1000);
                     }
-                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
+                    a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                 }
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
