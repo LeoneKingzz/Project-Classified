@@ -635,6 +635,10 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::ToHoverAttackScene(a_actor);
 									break;
 
+								case "HAS_AI_Update"_h:
+									DovahAI_Space::DovahAI::ToHoverAttackScene1(a_actor);
+									break;
+
 								default:
 									break;
 								}

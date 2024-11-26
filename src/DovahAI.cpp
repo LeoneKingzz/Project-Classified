@@ -642,7 +642,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
             int i = 0;
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 0.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
             {
                 i += 1;
                 std::jthread waitThread(wait, 1000);
@@ -698,7 +698,42 @@ namespace DovahAI_Space{
 
     void DovahAI::ToHoverAttackScene(RE::Actor *a_actor)
     {
-        
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            a_actor->NotifyAnimationGraph("FlyStartHover");
+            auto ct = targethandle.get();
+            int i = 0;
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            {
+                i += 1;
+                std::jthread waitThread(wait, 1000);
+            }
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "HAS_AI_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
+    }
+
+    void DovahAI::ToHoverAttackScene1(RE::Actor *a_actor)
+    {
+        a_actor->NotifyAnimationGraph("HoverStopVertical");
+        if (GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
+        {
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.83f)
+            {
+                // to ground attack scene
+            }else{
+                GetSingleton()->ResetAI(a_actor);
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "HAS_AI2_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            }
+        }else{
+            GetSingleton()->ResetAI(a_actor);
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "HAS_AI2_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
     }
 
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
