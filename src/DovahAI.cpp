@@ -755,11 +755,11 @@ namespace DovahAI_Space{
             break;
 
         case 1:
-            /* code */
+            SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "attackStartWingLeft", "attackStartWingRight", "None", "None");
             break;
 
         case 2:
-            /* code */
+            SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "attackStartStampLeft", "attackStartStampRight", "None", "None");
             break;
 
         case 3:
