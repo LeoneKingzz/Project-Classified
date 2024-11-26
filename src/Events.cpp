@@ -648,6 +648,7 @@ namespace Events_Space
 									break;
 
 								case "GC_front1_AI_Update"_h:
+								case "GC_back1_AI_Update"_h:
 									a_actor->NotifyAnimationGraph("attackStartTail");
 									break;
 

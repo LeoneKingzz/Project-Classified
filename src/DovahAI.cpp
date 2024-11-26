@@ -796,12 +796,94 @@ namespace DovahAI_Space{
 
     void DovahAI::GroundCombatAI_back(RE::Actor *a_actor)
     {
-        
+        switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 2))
+        {
+        case 0:
+            a_actor->NotifyAnimationGraph("attackStartTail");
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
+            {
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_back1_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            }
+            break;
+
+        case 1:
+            a_actor->NotifyAnimationGraph("attackStartTailWhip");
+            break;
+
+        case 2:
+            if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 2)
+            {
+                if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+            }
+            break;
+
+        default:
+            break;
+        }
     }
 
     void DovahAI::GroundCombatAI_left(RE::Actor *a_actor)
     {
-        
+        switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 2))
+        {
+        case 0:
+            SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "attackStartWingLeft", "attackStartTailLeft", "None", "None");
+            break;
+
+        case 1:
+            a_actor->NotifyAnimationGraph("attackStartStampLeft");
+            break;
+
+        case 2:
+            if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 2)
+            {
+                if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+            }
+            break;
+
+        default:
+            break;
+        }
     }
 
     void DovahAI::GroundCombatAI_right(RE::Actor *a_actor)
