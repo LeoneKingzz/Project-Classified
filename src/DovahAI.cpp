@@ -888,7 +888,45 @@ namespace DovahAI_Space{
 
     void DovahAI::GroundCombatAI_right(RE::Actor *a_actor)
     {
-        
+        switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 2))
+        {
+        case 0:
+            SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "attackStartWingRight", "attackStartTailRight", "None", "None");
+            break;
+
+        case 1:
+            a_actor->NotifyAnimationGraph("attackStartStampRight");
+            break;
+
+        case 2:
+            if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 2)
+            {
+                if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+            }
+            break;
+
+        default:
+            break;
+        }
     }
 
     void DovahAI::TakeoffCombatAI(RE::Actor *a_actor)
