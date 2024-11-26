@@ -784,6 +784,7 @@ namespace DovahAI_Space{
                             break;
                         }
                     }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
                 }
             }
             break;
