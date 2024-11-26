@@ -736,6 +736,19 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::ToGroundAttackScene(RE::Actor *a_actor)
+    {
+        if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
+        {
+            // ground attack vertical scene
+        }
+        else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
+        {
+            GFunc_Space::GFunc::Set_iFrames(a_actor);
+            //talon smash scene
+        }
+    }
+
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
     {
         int result = 0;

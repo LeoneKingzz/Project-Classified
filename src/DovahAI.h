@@ -61,6 +61,7 @@ namespace DovahAI_Space{
 		static int HoverWaitTime(RE::Actor *a_actor);
 		static void ToHoverAttackScene(RE::Actor *a_actor);
 		static void ToHoverAttackScene1(RE::Actor *a_actor);
+		static void ToGroundAttackScene(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
