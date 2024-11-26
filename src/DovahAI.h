@@ -59,6 +59,8 @@ namespace DovahAI_Space{
 		static void ControlDistanceRiddenAI1(RE::Actor *a_actor);
 		static void TakeoffCombatAI(RE::Actor *a_actor);
 		static int HoverWaitTime(RE::Actor *a_actor);
+		static void ToHoverAttackScene(RE::Actor *a_actor);
+		static void ToHoverAttackScene1(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
