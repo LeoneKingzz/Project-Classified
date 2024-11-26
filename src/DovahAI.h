@@ -35,6 +35,7 @@ namespace DovahAI_Space{
 		static void BleedOut_state(RE::Actor *a_actor);
 		static void BleedOut_state1(RE::Actor *a_actor);
 		static void TalonSmash(RE::Actor *a_actor);
+		static void TalonSmashScene(RE::Actor *a_actor);
 		static void TalonSmash1(RE::Actor *a_actor);
 		static void TalonSmash2(RE::Actor *a_actor);
 		static bool IsMQ206CutsceneDragons(RE::Actor *a_actor);
@@ -62,6 +63,7 @@ namespace DovahAI_Space{
 		static void ToHoverAttackScene(RE::Actor *a_actor);
 		static void ToHoverAttackScene1(RE::Actor *a_actor);
 		static void ToGroundAttackScene(RE::Actor *a_actor);
+		static void GroundAttackScene(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;

@@ -469,6 +469,36 @@ namespace DovahAI_Space{
             a_actor->SetGraphVariableFloat("playbackSpeed", GetSingleton()->PercentageHealthAction(a_actor));
         }
     }
+     void DovahAI::TalonSmashScene(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (ct->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+            {
+                if (GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
+                {
+                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 1); //default landing faction
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", true);
+                
+                    while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
+                    {
+                        std::jthread waitThread(wait, 1000);
+                    }
+                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
+                }
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+
+            }else{
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            }
+        }
+    }
 
     void DovahAI::TalonSmash(RE::Actor *a_actor)
     {
