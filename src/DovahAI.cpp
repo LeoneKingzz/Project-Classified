@@ -735,6 +735,55 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::PassByCombatAI(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            {
+                if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 83.0f && GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
+                {
+                    if (ct->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                    {
+                        if (GetActorValuePercent(a_actor, RE::ActorValue::kHealth) > 0.35f)
+                        {
+                            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance") && !GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.0f)
+                            {
+                                a_actor->SetGraphVariableBool("bVoiceReady", false);
+                                a_actor->SetGraphVariableBool("bVoiceReady", true);
+                                ToHoverAttackScene(a_actor);
+                            }
+                            else
+                            {
+                                ToGroundAttackScene(a_actor);
+                            }
+                        }
+                        else
+                        {
+                            GroundAttackScene(a_actor);
+                        }
+
+                    }else{
+                        if (GetActorValuePercent(a_actor, RE::ActorValue::kHealth) > 0.35f)
+                        {
+                            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
+                            {
+                                SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "to_Flight_Kill_Grab_Action", "to_Flight_Kill_Grab_Action_Failed", "None", "None");
+                            }
+                            else
+                            {
+                                ToGroundAttackScene(a_actor);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+
     void DovahAI::ToHoverAttackScene(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
