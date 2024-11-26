@@ -799,7 +799,6 @@ namespace DovahAI_Space{
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
         }
-        
     }
 
     int DovahAI::HoverWaitTime(RE::Actor *a_actor)
