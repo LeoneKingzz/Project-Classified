@@ -704,6 +704,88 @@ namespace DovahAI_Space{
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
+    void DovahAI::GroundCombatAI(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 75.0f)
+            {
+                if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) <= 45.0f) && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f) //front
+                {
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                    GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_front_AI_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                }
+                else if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) >= 135.0f) && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f)//back
+                {
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                    GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_back_AI_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                }
+                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < -45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.25f)//left
+                {
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                    GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_left_AI_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                }
+                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.25f)//right
+                {
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                    GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_right_AI_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                }
+            }
+        }
+    }
+
+    void DovahAI::GroundCombatAI_front(RE::Actor *a_actor)
+    {
+        switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 3))
+        {
+        case 0:
+            a_actor->NotifyAnimationGraph("attackStartTail");
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
+            {
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_front1_AI_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            }
+            break;
+
+        case 1:
+            /* code */
+            break;
+
+        case 2:
+            /* code */
+            break;
+
+        case 3:
+            /* code */
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    void DovahAI::GroundCombatAI_back(RE::Actor *a_actor)
+    {
+        
+    }
+
+    void DovahAI::GroundCombatAI_left(RE::Actor *a_actor)
+    {
+        
+    }
+
+    void DovahAI::GroundCombatAI_right(RE::Actor *a_actor)
+    {
+        
+    }
+
     void DovahAI::TakeoffCombatAI(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)

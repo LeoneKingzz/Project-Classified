@@ -24,7 +24,7 @@ namespace DovahAI_Space{
 		void SetLandingMarker(RE::Actor *a_actor);
 		void DeathRadollFly(RE::Actor *a_actor);
 		void ResetAI(RE::Actor *a_actor);
-		void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
+		static void SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04);
 		static void Others(RE::Actor *a_actor);
 		static void OnInitHPCalc(RE::Actor *a_actor);
 		static float GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value);
@@ -64,6 +64,12 @@ namespace DovahAI_Space{
 		static void ToHoverAttackScene1(RE::Actor *a_actor);
 		static void ToGroundAttackScene(RE::Actor *a_actor);
 		static void GroundAttackScene(RE::Actor *a_actor);
+		static void PassByCombatAI(RE::Actor *a_actor);
+		static void GroundCombatAI(RE::Actor *a_actor);
+		static void GroundCombatAI_front(RE::Actor *a_actor);
+		static void GroundCombatAI_back(RE::Actor *a_actor);
+		static void GroundCombatAI_left(RE::Actor *a_actor);
+		static void GroundCombatAI_right(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;

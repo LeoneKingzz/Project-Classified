@@ -647,6 +647,26 @@ namespace Events_Space
 									a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
 									break;
 
+								case "GC_front1_AI_Update"_h:
+									a_actor->NotifyAnimationGraph("attackStartTail");
+									break;
+
+								case "GC_front_AI_Update"_h:
+									DovahAI_Space::DovahAI::GroundCombatAI_front(a_actor);
+									break;
+
+								case "GC_back_AI_Update"_h:
+									DovahAI_Space::DovahAI::GroundCombatAI_back(a_actor);
+									break;
+
+								case "GC_left_AI_Update"_h:
+									DovahAI_Space::DovahAI::GroundCombatAI_left(a_actor);
+									break;
+
+								case "GC_right_AI_Update"_h:
+									DovahAI_Space::DovahAI::GroundCombatAI_right(a_actor);
+									break;
+
 								default:
 									break;
 								}
