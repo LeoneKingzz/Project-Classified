@@ -40,7 +40,7 @@ namespace GFunc_Space{
 		return angle;
 	}
 
-	bool Has_Magiceffect_Keyword(const RE::Actor *a_actor, const RE::BGSKeyword *a_key)
+	bool Has_Magiceffect_Keyword(const RE::Actor *a_actor, const RE::BGSKeyword *a_key, float a_comparison_value)
 	{
 		static RE::TESConditionItem cond;
 		static std::once_flag flag;
@@ -49,7 +49,7 @@ namespace GFunc_Space{
         cond.data.functionData.function = RE::FUNCTION_DATA::FunctionID::kHasMagicEffectKeyword;
         cond.data.flags.opCode          = RE::CONDITION_ITEM_DATA::OpCode::kEqualTo;
 		cond.data.object                = RE::CONDITIONITEMOBJECT::kSelf;
-        cond.data.comparisonValue.f     = 0.0f; });
+        cond.data.comparisonValue.f     = a_comparison_value; });
 
 		ConditionParam cond_param;
 		cond_param.form = const_cast<RE::BGSKeyword *>(a_key->As<RE::BGSKeyword>());
