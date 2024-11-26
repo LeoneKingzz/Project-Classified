@@ -721,7 +721,7 @@ namespace DovahAI_Space{
         {
             if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 83.0f)
             {
-                // to ground attack scene
+                DovahAI_Space::DovahAI::ToGroundAttackScene(a_actor);
             }else{
                 GetSingleton()->ResetAI(a_actor);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
@@ -740,7 +740,7 @@ namespace DovahAI_Space{
     {
         if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
         {
-            // ground attack vertical scene
+            DovahAI_Space::DovahAI::GroundAttackScene(a_actor);
         }
         else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
         {
