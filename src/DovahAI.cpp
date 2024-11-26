@@ -135,7 +135,7 @@ namespace DovahAI_Space{
     {
         if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
         {
-            GFunc_Space::GFunc::GetSingleton()->SetForcedLandingMarker(a_actor, combat_target_handle.get());
+            SetForcedLandingMarker(a_actor, combat_target_handle.get());
         }
     }
 

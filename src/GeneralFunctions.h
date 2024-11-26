@@ -339,7 +339,7 @@ namespace GFunc_Space{
 			return func(vm, frame, self, afX, afY, afZ, afMagnitude);
 		}
 
-		inline void SetForcedLandingMarker(RE::Actor *self, RE::TESObjectREFR *target)
+		static void SetForcedLandingMarker(RE::Actor *self, RE::TESObjectREFR *target)
 		{
 			using func_t = decltype(&SetForcedLandingMarker);
 			REL::Relocation<func_t> func{RE::VTABLE_ExtraForcedLandingMarker[0]};
