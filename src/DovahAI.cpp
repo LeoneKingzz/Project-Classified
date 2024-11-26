@@ -1069,6 +1069,11 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::MoveControllShout(RE::Actor *a_actor)
+    {
+        
+    }
+
     void DovahAI::GroundAttackScene(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
