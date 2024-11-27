@@ -1400,6 +1400,18 @@ namespace DovahAI_Space{
                     a_actor->NotifyAnimationGraph("Step");
                     break;
 
+                case 1:
+                    a_actor->NotifyAnimationGraph("ThreeTimesShout");
+                    break;
+
+                case 2:
+                    MagicSelector(a_actor, 4);
+                    break;
+
+                case 3:
+                    MagicSelector(a_actor, 7);
+                    break;
+
                 case 4:
                     switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
                     {
