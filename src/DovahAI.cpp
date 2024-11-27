@@ -1089,15 +1089,7 @@ namespace DovahAI_Space{
                     break;
                 }
             }
-            int i = 0;
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
-            {
-                i += 1;
-                std::jthread waitThread(wait, 1000);
-            }
-            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "HAS_AI_Update");
-            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.03);
         }
         
     }
