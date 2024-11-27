@@ -1405,11 +1405,27 @@ namespace DovahAI_Space{
                     break;
 
                 case 2:
-                    MagicSelector(a_actor, 4);
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 0:
+                        break;
+
+                    default:
+                        MagicSelector(a_actor, 4);
+                        break;
+                    }
                     break;
 
                 case 3:
-                    MagicSelector(a_actor, 7);
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 0:
+                        break;
+
+                    default:
+                        MagicSelector(a_actor, 7);
+                        break;
+                    }
                     break;
 
                 case 4:
@@ -1417,10 +1433,24 @@ namespace DovahAI_Space{
                     {
                     case 1:
                     case 2:
+                        break;
+
                     case 3:
+                        break;
+
                     case 4:
+                        break;
+
+                    case 5:
+                        break;
+
                     case 6:
-                        MagicSelector(a_actor, 10);
+                        break;
+
+                    case 7:
+                        break;
+
+                    case 8:
                         break;
 
                     default:
