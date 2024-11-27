@@ -1124,6 +1124,27 @@ namespace DovahAI_Space{
         std::get<2>(yt)[1] = 0;
     }
 
+    bool DovahAI::GetFuzzy(float value, float min, float max)
+    {
+        bool result = false;
+        
+        if(value < min){
+            result = true;
+
+        }else if(value <= max){
+            float grade = (value - min) / (max - min);
+            if(GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) > grade){
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    void DovahAI::AddBehavior(RE::Actor *a_actor)
+    {
+        
+    }
+
     void DovahAI::GroundAttackScene(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)

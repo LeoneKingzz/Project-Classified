@@ -72,6 +72,9 @@ namespace DovahAI_Space{
 		static void GroundCombatAI_right(RE::Actor *a_actor);
 		static void MoveControllShout(RE::Actor *a_actor);
 		static void MoveControllShout1(RE::Actor *a_actor);
+		static void MoveControllShout2(RE::Actor *a_actor);
+		static void AddBehavior(RE::Actor *a_actor);
+		static bool GetFuzzy(float value, float min, float max);
 
 	private:
 		DovahAI() = default;
