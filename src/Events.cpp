@@ -498,7 +498,7 @@ namespace Events_Space
 						{
 							if (Enemy->GetPosition().GetDistance(a_actor->GetPosition()) <= 530.0f && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr)) < 90.0f)
 							{
-								
+								DovahAI_Space::DovahAI::StartParry(Enemy);
 							}
 							break;
 						}
