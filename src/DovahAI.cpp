@@ -1127,7 +1127,7 @@ namespace DovahAI_Space{
     bool DovahAI::GetFuzzy(float value, float min, float max)
     {
         bool result = false;
-        
+
         if(value < min){
             result = true;
 
@@ -1142,7 +1142,19 @@ namespace DovahAI_Space{
 
     void DovahAI::AddBehavior(RE::Actor *a_actor)
     {
-        
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+            int i = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 100);
+            auto LvRank = GetIntVariable(a_actor, "iLDP_Lvl_Rank");
+            auto yt = GetSingleton()->Get_AttackList(a_actor);
+            if (i >= 80 + LvRank)
+            {
+                return;
+            }
+            auto distance = a_actor->GetPosition().GetDistance(ct->GetPosition());
+            auto headingAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr);
+        }
     }
 
     void DovahAI::GroundAttackScene(RE::Actor *a_actor)
