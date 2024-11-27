@@ -1381,8 +1381,10 @@ namespace DovahAI_Space{
                 case 5:
                     if (GetFuzzy(abs(headingAngle), 80.0000, 90.0000))
                     {
-                        a_actor->SetGraphVariableBool("bLDP_InParry_State", true);
-                        a_actor->NotifyAnimationGraph("parrywait");
+                        if(!GetBoolVariable(a_actor, "bLDP_InParry_State")){
+                            a_actor->SetGraphVariableBool("bLDP_InParry_State", true);
+                            a_actor->NotifyAnimationGraph("parrywait");
+                        }
                     }
                     break;
 
@@ -1392,7 +1394,31 @@ namespace DovahAI_Space{
             }
             else if (GetFuzzy(abs(headingAngle), 80.0, 90.0))
             {
-                
+                switch (Random(std::get<3>(yt)))
+                {
+                case 0:
+                    a_actor->NotifyAnimationGraph("Step");
+                    break;
+
+                case 4:
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 6:
+                        MagicSelector(a_actor, 10);
+                        break;
+
+                    default:
+                        break;
+                    }
+                    break;
+
+                default:
+                    break;
+                }
             }
         }
     }
