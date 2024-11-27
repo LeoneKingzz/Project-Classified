@@ -703,6 +703,7 @@ namespace Events_Space
 
 								case "startparry_AI_Update"_h:
 									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // WPNBashBlade
+									a_actor->SetGraphVariableBool("bLDP_InParry_State", false);
 									break;
 
 								default:
