@@ -712,13 +712,13 @@ namespace DovahAI_Space{
 
             if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 75.0f)
             {
-                if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) <= 45.0f) && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f) //front
+                if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) <= 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f) //front
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_front_AI_Update");
                     GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                 }
-                else if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) >= 135.0f) && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f)//back
+                else if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) >= 135.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f)//back
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_back_AI_Update");
@@ -1075,7 +1075,10 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
 
-            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 15.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 1500.0f && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < 80.0f))
+            auto degrees = abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr));
+            a_actor->SetGraphVariableFloat("fLDP_MoveCtrlShout_angle", degrees);
+
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 15.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 1500.0f && degrees < 80.0f)
             {
                 switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
                 {
@@ -1094,6 +1097,29 @@ namespace DovahAI_Space{
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1500ms, "MovShout_AI_Update");
             GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
         }
+    }
+
+    void DovahAI::MoveControllShout1(RE::Actor *a_actor)
+    {
+        auto trackspeed = pow(GetFloatVariable(a_actor, "fLDP_MoveCtrlShout_angle") * (1.0 + (GetIntVariable(a_actor, "iLDP_Lvl_Rank") / 50.0)) / 10.0, 3.0) / 10000.0;
+        a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", trackspeed);
+
+        int i = 0;
+        while ((GetBoolVariable(a_actor, "IsShouting")) && i < 12)
+        {
+            std::jthread waitThread(wait, 250);
+            i += 1;
+        }
+        a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Combat", 0.075);
+        a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.25);
+
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "MovShout2_AI_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+    }
+
+    void DovahAI::MoveControllShout2(RE::Actor *a_actor)
+    {
         
     }
 
