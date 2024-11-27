@@ -668,6 +668,14 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::GroundCombatAI_right(a_actor);
 									break;
 
+								case "MovShout_AI_Update"_h:
+									DovahAI_Space::DovahAI::MoveControllShout1(a_actor);
+									break;
+
+								case "MovShout2_AI_Update"_h:
+									DovahAI_Space::DovahAI::MoveControllShout2(a_actor);
+									break;
+
 								default:
 									break;
 								}
