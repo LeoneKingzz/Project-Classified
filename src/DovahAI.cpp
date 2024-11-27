@@ -1179,8 +1179,7 @@ namespace DovahAI_Space{
             auto headingAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr);
 
             if(i <= std::get<0>(yt)){
-
-
+                i = Random(std::get<1>(yt));
             }
             else if (GetFuzzy(distance, 530.0, 700.0))
             {
