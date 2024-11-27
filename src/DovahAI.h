@@ -70,6 +70,8 @@ namespace DovahAI_Space{
 		static void GroundCombatAI_back(RE::Actor *a_actor);
 		static void GroundCombatAI_left(RE::Actor *a_actor);
 		static void GroundCombatAI_right(RE::Actor *a_actor);
+		static void MoveControllShout(RE::Actor *a_actor);
+		static void MoveControllShout1(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
