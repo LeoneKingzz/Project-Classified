@@ -1140,6 +1140,29 @@ namespace DovahAI_Space{
         return result;
     }
 
+    int DovahAI::Random(std::vector<int> List)
+    {
+        //auto yt = GetSingleton()->Get_AttackList(a_actor);
+       // std::get<2>(yt)[1] = 0;
+       int i = 0;
+	   int sum = 0;
+       while (i < List.size())
+       {
+           sum += List[i];
+           i += 1;
+       }
+       int RandomResult = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, sum);
+       i = 0;
+
+       while (i < List.size() && RandomResult > 0)
+       {
+           RandomResult -= List[i];
+           i += 1;
+       }
+       i -= 1;
+       return i;
+    }
+
     void DovahAI::AddBehavior(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
@@ -1161,9 +1184,11 @@ namespace DovahAI_Space{
             }
             else if (GetFuzzy(distance, 530.0, 700.0))
             {
+
             }
             else if (GetFuzzy(abs(headingAngle), 80.0, 90.0))
             {
+                
             }
         }
     }
