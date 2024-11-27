@@ -701,6 +701,10 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::MagicSelector1(a_actor);
 									break;
 
+								case "startparry_AI_Update"_h:
+									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // WPNBashBlade
+									break;
+
 								default:
 									break;
 								}
