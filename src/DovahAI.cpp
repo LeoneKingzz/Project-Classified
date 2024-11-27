@@ -1264,7 +1264,8 @@ namespace DovahAI_Space{
 
     void DovahAI::MagicSelector1(RE::Actor *a_actor)
     {
-        
+        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, a_actor, 1, false, 0.0, a_actor);
     }
 
     void DovahAI::AddBehavior(RE::Actor *a_actor)
