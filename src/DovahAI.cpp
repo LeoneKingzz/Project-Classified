@@ -1165,7 +1165,96 @@ namespace DovahAI_Space{
 
     void DovahAI::MagicSelector(RE::Actor *a_actor, int value)
     {
-        
+        int RNGf = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 3);
+        int RNGfx = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 2);
+
+        switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+        {
+        case 1:
+        case 2:
+            switch (RNGf)
+            {
+            case 2:
+                value += 1;
+                break;
+
+            case 3:
+                value += 2;
+                break;
+
+            default:
+                break;
+            }
+            break;
+        case 3:
+            switch (RNGfx)
+            {
+            case 2:
+                value += 1;
+                break;
+
+            default:
+                break;
+            }
+            break;
+        case 4:
+            switch (RNGfx)
+            {
+            case 2:
+                value += 1;
+                break;
+
+            default:
+                break;
+            }
+            break;
+        case 5:
+            switch (RNGf)
+            {
+            case 2:
+                value += 1;
+                break;
+
+            case 3:
+                value += 2;
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        case 7:
+            switch (RNGfx)
+            {
+            case 2:
+                value += 1;
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        case 8:
+            switch (RNGfx)
+            {
+            case 2:
+                value += 2;
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        default:
+            break;
+        }
+
+        if(value > 10){
+            return;
+        }
     }
 
     void DovahAI::AddBehavior(RE::Actor *a_actor)
@@ -1193,6 +1282,7 @@ namespace DovahAI_Space{
                 case 4:
                     switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
                     {
+                    case 1:
                     case 2:
                     case 3:
                     case 4:
