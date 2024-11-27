@@ -76,6 +76,7 @@ namespace DovahAI_Space{
 		static void AddBehavior(RE::Actor *a_actor);
 		static bool GetFuzzy(float value, float min, float max);
 		static int Random(std::vector<int> List);
+		static void MagicSelector(RE::Actor *a_actor, int value);
 
 	private:
 		DovahAI() = default;

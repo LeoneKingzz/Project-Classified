@@ -1163,6 +1163,11 @@ namespace DovahAI_Space{
        return i;
     }
 
+    void DovahAI::MagicSelector(RE::Actor *a_actor, int value)
+    {
+        
+    }
+
     void DovahAI::AddBehavior(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
