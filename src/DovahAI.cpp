@@ -1179,7 +1179,30 @@ namespace DovahAI_Space{
             auto headingAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr);
 
             if(i <= std::get<0>(yt)){
-                i = Random(std::get<1>(yt));
+                switch (Random(std::get<1>(yt)))
+                {
+                case 0:
+                    a_actor->NotifyAnimationGraph("Step");
+                    break;
+
+                case 4:
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 6:
+                        /* code */
+                        break;
+                    
+                    default:
+                        break;
+                    }
+                    break;
+
+                default:
+                    break;
+                }
             }
             else if (GetFuzzy(distance, 530.0, 700.0))
             {

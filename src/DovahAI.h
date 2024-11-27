@@ -75,6 +75,7 @@ namespace DovahAI_Space{
 		static void MoveControllShout2(RE::Actor *a_actor);
 		static void AddBehavior(RE::Actor *a_actor);
 		static bool GetFuzzy(float value, float min, float max);
+		static int Random(std::vector<int> List);
 
 	private:
 		DovahAI() = default;
