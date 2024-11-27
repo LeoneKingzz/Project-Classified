@@ -1262,6 +1262,11 @@ namespace DovahAI_Space{
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
     }
 
+    void DovahAI::MagicSelector1(RE::Actor *a_actor, int value)
+    {
+        
+    }
+
     void DovahAI::AddBehavior(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
