@@ -486,6 +486,27 @@ namespace Events_Space
 			}
 			break;
 
+		case "preHitframe"_h:
+			if (const auto combatGroup = a_actor->GetCombatGroup())
+			{
+				for (auto &targetData : combatGroup->targets)
+				{
+					if (auto target = targetData.targetHandle.get())
+					{
+						RE::Actor *Enemy = target.get();
+						if (DovahAI_Space::DovahAI::GetBoolVariable(Enemy, "bLDP_IsinCombat") && DovahAI_Space::DovahAI::GetBoolVariable(Enemy, "bLDP_InParry_State"))
+						{
+							if (Enemy->GetPosition().GetDistance(a_actor->GetPosition()) <= 530.0f && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr)) < 90.0f)
+							{
+								
+							}
+							break;
+						}
+					}
+				}
+			}
+			break;
+
 		default:
 			break;
 		}

@@ -1268,6 +1268,21 @@ namespace DovahAI_Space{
         caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, a_actor, 1, false, 0.0, a_actor);
     }
 
+    void DovahAI::StartParry(RE::Actor *a_actor)
+    {
+        if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 75.0f)
+        {
+            a_actor->NotifyAnimationGraph("ParryAttack");
+        }else{
+            a_actor->NotifyAnimationGraph("Parry");
+        }
+        a_actor->NotifyAnimationGraph("RecoilLargeStart");
+
+        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 200ms, "startparry_AI_Update");
+        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+    }
+
     void DovahAI::AddBehavior(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
@@ -1312,7 +1327,68 @@ namespace DovahAI_Space{
             }
             else if (GetFuzzy(distance, 530.0, 700.0))
             {
+                switch (Random(std::get<2>(yt)))
+                {
+                case 1:
+                    if (headingAngle <= 180.000 && headingAngle > 0.000000)
+                    {
+                    }else{
 
+                    }
+                    break;
+
+                case 2:
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 0:
+                        break;
+
+                    default:
+                        MagicSelector(a_actor, 1);
+                        break;
+                    }
+                    break;
+
+                case 3:
+                    switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                    {
+                    case 0:
+                    case 8:
+                        break;
+
+                    default:
+                        a_actor->NotifyAnimationGraph("MarkedForDeath");
+                        break;
+                    }
+                    break;
+
+                case 4:
+                    if (GetFuzzy(abs(headingAngle), 80.0000, 90.0000))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                        {
+                        case 0:
+                        case 8:
+                            break;
+
+                        default:
+                            a_actor->NotifyAnimationGraph("SwingShout");
+                            break;
+                        }
+                    }
+                    break;
+
+                case 5:
+                    if (GetFuzzy(abs(headingAngle), 80.0000, 90.0000))
+                    {
+                        a_actor->SetGraphVariableBool("bLDP_InParry_State", true);
+                        a_actor->NotifyAnimationGraph("parrywait");
+                    }
+                    break;
+
+                default:
+                    break;
+                }
             }
             else if (GetFuzzy(abs(headingAngle), 80.0, 90.0))
             {

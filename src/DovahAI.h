@@ -78,6 +78,7 @@ namespace DovahAI_Space{
 		static int Random(std::vector<int> List);
 		static void MagicSelector(RE::Actor *a_actor, int value);
 		static void MagicSelector1(RE::Actor *a_actor);
+		static void StartParry(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
