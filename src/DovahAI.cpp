@@ -1071,6 +1071,34 @@ namespace DovahAI_Space{
 
     void DovahAI::MoveControllShout(RE::Actor *a_actor)
     {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 15.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 1500.0f && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < 80.0f))
+            {
+                switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                {
+                case 0:
+                case 8:
+                    //do nothing
+                    break;
+                
+                default:
+                    a_actor->NotifyAnimationGraph("SwingShout");
+                    break;
+                }
+            }
+            int i = 0;
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            {
+                i += 1;
+                std::jthread waitThread(wait, 1000);
+            }
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "HAS_AI_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
         
     }
 
