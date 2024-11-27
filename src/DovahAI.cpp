@@ -1090,6 +1090,9 @@ namespace DovahAI_Space{
                 }
             }
             a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.03);
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1500ms, "MovShout_AI_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
         }
         
     }
