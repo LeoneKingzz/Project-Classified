@@ -1120,7 +1120,8 @@ namespace DovahAI_Space{
 
     void DovahAI::MoveControllShout2(RE::Actor *a_actor)
     {
-        
+        auto yt = GetSingleton()->Get_AttackList(a_actor);
+        std::get<2>(yt)[1] = 0;
     }
 
     void DovahAI::GroundAttackScene(RE::Actor *a_actor)
