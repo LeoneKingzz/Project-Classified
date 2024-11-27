@@ -1298,7 +1298,7 @@ namespace DovahAI_Space{
                     case 3:
                     case 4:
                     case 6:
-                        /* code */
+                        MagicSelector(a_actor, 10);
                         break;
                     
                     default:

@@ -676,6 +676,10 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::MoveControllShout2(a_actor);
 									break;
 
+								case "MagicSelector_AI_Update"_h:
+									DovahAI_Space::DovahAI::MagicSelector1(a_actor);
+									break;
+
 								default:
 									break;
 								}
