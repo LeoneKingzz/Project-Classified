@@ -2064,7 +2064,8 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
                 {
-                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 1); // default landing faction
+                    GetSingleton()->SetLandingMarker(a_actor);
+                    a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 2); // vertical landing faction
                     a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", true);
                     switch (GetIntVariable(a_actor, "iLDP_PreferCombatStyle"))
                     {
@@ -2095,15 +2096,16 @@ namespace DovahAI_Space{
                         std::jthread waitThread(wait, 1000);
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
+                    GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
                 }
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAVS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
             else
             {
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+                GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAVS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
         }

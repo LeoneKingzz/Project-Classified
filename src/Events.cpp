@@ -653,6 +653,7 @@ namespace Events_Space
 								case "TSS_AI_Update"_h:
 								case "PBC_AI_Update"_h:
 								case "ControlDistanceFly_AI2_Update"_h:
+								case "GAVS_AI_Update"_h:
 									a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", false);
 									break;
 
