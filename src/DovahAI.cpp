@@ -1599,6 +1599,7 @@ namespace DovahAI_Space{
                 default:
                     break;
                 }
+                a_actor->NotifyAnimationGraph("ShoutFireBallStart");
             }
         }
     }
