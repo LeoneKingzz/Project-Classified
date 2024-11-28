@@ -1407,17 +1407,17 @@ namespace DovahAI_Space{
             switch (RNGy)
             {
             case 1:
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+               // fire
                 caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                // frost
                 caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 3:
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                // shock
                 caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
@@ -1427,26 +1427,71 @@ namespace DovahAI_Space{
             break;
 
         case 3:
+            switch (RNG)
+            {
+            case 1:
+                // fire
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            case 2:
+                // frost
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            default:
+                break;
+            }
             break;
 
         case 4:
+            switch (RNG)
+            {
+            case 1:
+                // fire
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            case 2:
+                // shock
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            default:
+                break;
+            }
             break;
 
         case 5:
+            switch (RNG)
+            {
+            case 1:
+                // shock
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            case 2:
+                // frost
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            default:
+                break;
+            }
             break;
 
         case 6:
-            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+            // fire
             caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 7:
-            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+            // frost
             caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 8:
-            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+            // frost
             caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
