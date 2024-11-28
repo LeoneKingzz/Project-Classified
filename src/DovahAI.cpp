@@ -1206,7 +1206,7 @@ namespace DovahAI_Space{
         {
             GroundAttackScene(a_actor);
         }
-        else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
+        else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_TalonAttackChance"))
         {
             GFunc_Space::GFunc::Set_iFrames(a_actor);
             TalonSmashScene(a_actor);
@@ -1217,13 +1217,36 @@ namespace DovahAI_Space{
     {
         if (a_actor->HasKeywordString("AlduinUnitedKey"))
         {
+            a_actor->SetGraphVariableInt("iLDP_PreferCombatStyle", 1);
         }
         else if (a_actor->HasKeywordString("MasterPaarthurnaxKey"))
         {
+            a_actor->SetGraphVariableInt("iLDP_PreferCombatStyle", 1);
         }
         else
         {
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 25.0f)
+            {
+                a_actor->SetGraphVariableInt("iLDP_PreferCombatStyle", 1);
+                a_actor->SetGraphVariableFloat("fLDP_TalonAttackChance", 25.0);
+                a_actor->SetGraphVariableFloat("fLDP_HoverAttackChance", 38.0);
+            }
+            else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
+            {
+                a_actor->SetGraphVariableInt("iLDP_PreferCombatStyle", 2);
+                a_actor->SetGraphVariableFloat("fLDP_TalonAttackChance", 6.0);
+                a_actor->SetGraphVariableFloat("fLDP_HoverAttackChance", 13.0);
+            }
+            else
+            {
+                a_actor->SetGraphVariableInt("iLDP_PreferCombatStyle", 0);
+                a_actor->SetGraphVariableFloat("fLDP_TalonAttackChance", 13.0);
+                a_actor->SetGraphVariableFloat("fLDP_HoverAttackChance", 25.0);
+            }
+            
+            
         }
+
         if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
         {
             GroundAttackScene(a_actor);
