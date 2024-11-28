@@ -1269,25 +1269,6 @@ namespace DovahAI_Space{
                 }
                 a_actor->SetGraphVariableBool("bTailTurnOneMore", false);
             }
-
-            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 15.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 1500.0f && degrees < 80.0f)
-            {
-                switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
-                {
-                case 0:
-                case 8:
-                    // do nothing
-                    break;
-
-                default:
-                    a_actor->NotifyAnimationGraph("SwingShout");
-                    break;
-                }
-            }
-            a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.03);
-            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1500ms, "MovShout_AI_Update");
-            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
         }
     }
 
