@@ -1215,6 +1215,15 @@ namespace DovahAI_Space{
 
     void DovahAI::CombatStylePref(RE::Actor *a_actor)
     {
+        if (a_actor->HasKeywordString("AlduinUnitedKey"))
+        {
+        }
+        else if (a_actor->HasKeywordString("MasterPaarthurnaxKey"))
+        {
+        }
+        else
+        {
+        }
         if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
         {
             GroundAttackScene(a_actor);
