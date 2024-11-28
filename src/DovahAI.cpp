@@ -1122,6 +1122,7 @@ namespace DovahAI_Space{
     {
         auto yt = GetSingleton()->Get_AttackList(a_actor);
         std::get<2>(yt)[1] = 0;
+        AddBehavior(a_actor);
     }
 
     bool DovahAI::GetFuzzy(float value, float min, float max)
