@@ -83,6 +83,7 @@ namespace DovahAI_Space{
 		static void LandingCombatAI1(RE::Actor *a_actor);
 		static void ControlDistanceAIFly(RE::Actor *a_actor);
 		static void ControlDistanceAIFly1(RE::Actor *a_actor);
+		static void ControlDistanceAIGround(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;

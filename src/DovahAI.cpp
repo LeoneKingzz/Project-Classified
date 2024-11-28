@@ -681,7 +681,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
             int i = 0;
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
                 std::jthread waitThread(wait, 1000);
@@ -712,25 +712,25 @@ namespace DovahAI_Space{
 
             if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 75.0f)
             {
-                if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) <= 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f) //front
+                if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) <= 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.13f) //front
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_front_AI_Update");
                     GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                 }
-                else if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) >= 135.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.13f)//back
+                else if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr)) >= 135.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.13f)//back
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_back_AI_Update");
                     GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                 }
-                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < -45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.25f)//left
+                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < -45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.25f)//left
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_left_AI_Update");
                     GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                 }
-                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.25f)//right
+                else if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr) < 45.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.25f)//right
                 {
                     std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                     GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "GC_right_AI_Update");
@@ -937,7 +937,7 @@ namespace DovahAI_Space{
 
             if (GetIntVariable(a_actor, "iLDP_TakeOff_Faction") == 1 && !GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
             {
-                if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 1.75f)
+                if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.75f)
                 {
                     if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
@@ -966,7 +966,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
 
-            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 83.0f && GFunc_Space::IsAllowedToFly(a_actor, 1.0f))
                 {
@@ -974,7 +974,7 @@ namespace DovahAI_Space{
                     {
                         if (GetActorValuePercent(a_actor, RE::ActorValue::kHealth) > 0.35f)
                         {
-                            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance") && !GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.0f)
+                            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance") && !GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.0f)
                             {
                                 a_actor->SetGraphVariableBool("bVoiceReady", false);
                                 a_actor->SetGraphVariableBool("bVoiceReady", true);
@@ -1002,7 +1002,7 @@ namespace DovahAI_Space{
                                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "PBC_AI_Update");
                                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
                             }
-                            else if (!GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.0f)
+                            else if (!GetBoolVariable(a_actor, "IsShouting") && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.0f)
                             {
                                 a_actor->SetGraphVariableBool("bVoiceReady", false);
                                 a_actor->SetGraphVariableBool("bVoiceReady", true);
@@ -1022,7 +1022,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
             int i = 0;
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
                 std::jthread waitThread(wait, 1000);
@@ -1030,6 +1030,93 @@ namespace DovahAI_Space{
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "ControlDistanceFly_AI_Update");
             GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+        }
+    }
+
+    void DovahAI::ControlDistanceAIGround(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 65.0f)
+            {
+                if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+            }
+            else if (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f)
+            {
+                while (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                {
+                    std::jthread waitThread(wait, 350);
+                }
+                if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+                
+            }
+            else
+            {
+                while (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                {
+                    std::jthread waitThread(wait, 350);
+                }
+                if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                {
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+                    {
+                        switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+                        {
+                        case 0:
+                            a_actor->NotifyAnimationGraph("Takeoff");
+                            break;
+
+                        case 1:
+                            a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
+                    a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+                }
+            }
         }
     }
 
@@ -1080,7 +1167,7 @@ namespace DovahAI_Space{
             a_actor->NotifyAnimationGraph("FlyStartHover");
             auto ct = targethandle.get();
             int i = 0;
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 2.5f)
+            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
                 std::jthread waitThread(wait, 1000);
@@ -1188,7 +1275,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
 
-            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 3.0f)
+            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 3.0f)
             {
                 if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 2)
                 {
@@ -1793,7 +1880,7 @@ namespace DovahAI_Space{
                 if (auto target = targetData.targetHandle.get())
                 {
                     RE::Actor *Enemy = target.get();
-                    if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 150.0f)
+                    if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 500.0f)
                     {
                         DovahAI_Space::DovahAI::DamageTarget(a_actor, Enemy);
                         if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
