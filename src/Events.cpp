@@ -706,6 +706,14 @@ namespace Events_Space
 									a_actor->SetGraphVariableBool("bLDP_InParry_State", false);
 									break;
 
+								case "ControlDistanceFly_AI_Update"_h:
+									DovahAI_Space::DovahAI::ControlDistanceAIFly1(a_actor);
+									break;
+
+								case "LandingCombat_AI_Update"_h:
+									DovahAI_Space::DovahAI::LandingCombatAI1(a_actor);
+									break;
+
 								default:
 									break;
 								}
