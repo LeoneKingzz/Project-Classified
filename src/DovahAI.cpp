@@ -1125,6 +1125,49 @@ namespace DovahAI_Space{
         AddBehavior(a_actor);
     }
 
+    void DovahAI::LandingCombatAI(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+        {
+            auto ct = targethandle.get();
+
+            if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 150.0f * 3.0f)
+            {
+                if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 2)
+                {
+                    if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
+                    {
+                        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "LandingCombat_AI_Update");
+                        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                    }
+                }
+            }
+            
+        }
+    }
+
+    void DovahAI::LandingCombatAI1(RE::Actor *a_actor)
+    {
+        if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("a_spell"))))
+        {
+            switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+            {
+            case 0:
+                a_actor->NotifyAnimationGraph("Takeoff");
+                break;
+
+            case 1:
+                a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                break;
+
+            default:
+                break;
+            }
+        }
+        a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+    }
+
     bool DovahAI::GetFuzzy(float value, float min, float max)
     {
         bool result = false;

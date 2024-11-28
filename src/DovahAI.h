@@ -79,6 +79,8 @@ namespace DovahAI_Space{
 		static void MagicSelector(RE::Actor *a_actor, int value);
 		static void MagicSelector1(RE::Actor *a_actor);
 		static void StartParry(RE::Actor *a_actor);
+		static void LandingCombatAI(RE::Actor *a_actor);
+		static void LandingCombatAI1(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
