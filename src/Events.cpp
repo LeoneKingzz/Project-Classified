@@ -465,6 +465,15 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
+				if(a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount()){
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering || a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kPerching)
+					{
+						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+						{
+							DovahAI_Space::DovahAI::ControlDistanceRiddenAI(a_actor);
+						}
+					}
+				}
 			}
 			break;
 

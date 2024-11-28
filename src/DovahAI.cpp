@@ -679,6 +679,7 @@ namespace DovahAI_Space{
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
+            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             auto ct = targethandle.get();
             int i = 0;
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
