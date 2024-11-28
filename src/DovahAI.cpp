@@ -1394,6 +1394,49 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::TripleShout(RE::Actor *a_actor)
+    {
+        int RNG = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 2);
+        auto H = RE::TESDataHandler::GetSingleton();
+        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+        switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+        {
+        case 1:
+        case 2:
+        case 3:
+            switch (RNG)
+            {
+            case 1:
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            case 2:
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        case 4:
+        case 6:
+            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            break;
+        case 5:
+        case 7:
+            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            break;
+
+        default:
+            break;
+        }
+    }
+
     void DovahAI::MagicSelector(RE::Actor *a_actor, int value)
     {
         int RNGf = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 3);
