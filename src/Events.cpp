@@ -585,6 +585,7 @@ namespace Events_Space
 							auto time_required = std::get<2>(data);
 							if (duration_cast<std::chrono::milliseconds>(time_now - time_initial).count() >= time_required.count())
 							{
+								std::get<0>(data) = false;
 								auto function = std::get<3>(data);
 								auto H = RE::TESDataHandler::GetSingleton();
 								switch (hash(function.c_str(), function.size()))
@@ -651,6 +652,7 @@ namespace Events_Space
 								case "GAS_AI_Update"_h:
 								case "TSS_AI_Update"_h:
 								case "PBC_AI_Update"_h:
+								case "ControlDistanceFly_AI2_Update"_h:
 									a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", false);
 									break;
 
