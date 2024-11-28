@@ -1394,6 +1394,9 @@ namespace DovahAI_Space{
             }
             else if (GetFuzzy(abs(headingAngle), 80.0, 90.0))
             {
+                int RNG = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 2);
+                int RNGy = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 3);
+                auto H = RE::TESDataHandler::GetSingleton();
                 switch (Random(std::get<3>(yt)))
                 {
                 case 0:
@@ -1432,25 +1435,160 @@ namespace DovahAI_Space{
                     switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
                     {
                     case 1:
+                        //Alduin voice
+                        switch (RNGy)
+                        {
+                        case 1:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                            break;
+
+                        case 2:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
+                            break;
+
+                        case 3:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                            break;
+
+                        default:
+                            break;
+                        }
+                        break;
                     case 2:
+                        //Dragon Voice
+                        switch (RNGy)
+                        {
+                        case 1:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                            break;
+
+                        case 2:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
+                            break;
+
+                        case 3:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                            break;
+
+                        default:
+                            break;
+                        }
                         break;
 
                     case 3:
+                        if (a_actor->HasKeywordString("MasterPaarthurnaxKey"))
+                        {
+                            switch (RNG)
+                            {
+                            case 1:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                                break;
+
+                            case 2:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                                break;
+
+                            default:
+                                break;
+                            }
+                        }
+                        else if (a_actor->HasKeywordString("OdahviingKey"))
+                        {
+                            switch (RNG)
+                            {
+                            case 1:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                                break;
+
+                            case 2:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                                break;
+
+                            default:
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            switch (RNG)
+                            {
+                            case 1:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                                break;
+
+                            case 2:
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                                break;
+
+                            default:
+                                break;
+                            }
+                        }
                         break;
 
                     case 4:
+                        //fireshock
+                        switch (RNG)
+                        {
+                        case 1:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
+                            break;
+
+                        case 2:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
+                            break;
+
+                        default:
+                            break;
+                        }
                         break;
 
                     case 5:
+                        //frostshock
+                        switch (RNG)
+                        {
+                        case 1:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
+                            break;
+
+                        case 2:
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
+                            break;
+
+                        default:
+                            break;
+                        }
                         break;
 
                     case 6:
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                        a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                         break;
 
                     case 7:
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                        a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                         break;
 
                     case 8:
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                        a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                         break;
 
                     default:
