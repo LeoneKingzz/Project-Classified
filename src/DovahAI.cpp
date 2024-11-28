@@ -1263,9 +1263,11 @@ namespace DovahAI_Space{
             if(!GetFuzzy(HeadAngle, 30.0, 90.0)){
                 if (HeadAngle < -30.0 && HeadAngle > -180.0)
                 {
+                    a_actor->NotifyAnimationGraph("SwingShout");
                 }
                 else if (HeadAngle > 30.0 && HeadAngle < 180.0)
                 {
+                    a_actor->NotifyAnimationGraph("SwingShout");
                 }
                 a_actor->SetGraphVariableBool("bTailTurnOneMore", false);
             }
