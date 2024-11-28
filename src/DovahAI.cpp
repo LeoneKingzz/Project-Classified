@@ -1243,18 +1243,51 @@ namespace DovahAI_Space{
                 a_actor->SetGraphVariableFloat("fLDP_TalonAttackChance", 13.0);
                 a_actor->SetGraphVariableFloat("fLDP_HoverAttackChance", 25.0);
             }
-            
-            
         }
+    }
 
-        if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
+    void DovahAI::OneMoreTailTurn(RE::Actor *a_actor)
+    {
+        if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
-            GroundAttackScene(a_actor);
-        }
-        else if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= GetFloatVariable(a_actor, "fLDP_HoverAttackChance"))
-        {
-            GFunc_Space::GFunc::Set_iFrames(a_actor);
-            TalonSmashScene(a_actor);
+            auto ct = targethandle.get();
+
+            if (!GetBoolVariable(a_actor, "bTailTurnOneMore"))
+            {
+                a_actor->SetGraphVariableBool("bTailTurnOneMore", true);
+                return;
+            }
+
+            auto HeadAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, ct, nullptr);
+
+            if(!GetFuzzy(HeadAngle, 30.0, 90.0)){
+                if (HeadAngle < -30.0 && HeadAngle > -180.0)
+                {
+                }
+                else if (HeadAngle > 30.0 && HeadAngle < 180.0)
+                {
+                }
+                a_actor->SetGraphVariableBool("bTailTurnOneMore", false);
+            }
+
+            if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 15.0f && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 1500.0f && degrees < 80.0f)
+            {
+                switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
+                {
+                case 0:
+                case 8:
+                    // do nothing
+                    break;
+
+                default:
+                    a_actor->NotifyAnimationGraph("SwingShout");
+                    break;
+                }
+            }
+            a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.03);
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1500ms, "MovShout_AI_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
         }
     }
 
