@@ -640,6 +640,46 @@ namespace Events_Space
 			}
 			break;
 
+		case "MarkedForDeathEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					//DovahAI_Space::DovahAI::OneMoreTailTurn(a_actor);
+				}
+			}
+			break;
+
+		case "SwingShoutEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					DovahAI_Space::DovahAI::StartShout(a_actor);
+				}
+			}
+			break;
+
+		case "SwingShoutEndEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					//DovahAI_Space::DovahAI::OneMoreTailTurn(a_actor);
+				}
+			}
+			break;
+
+		case "InterruptCast"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					a_actor->InterruptCast(false);
+				}
+			}
+			break;
+
 		case "preHitframe"_h:
 			if (const auto combatGroup = a_actor->GetCombatGroup())
 			{
