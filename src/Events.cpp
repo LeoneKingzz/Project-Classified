@@ -337,6 +337,10 @@ namespace Events_Space
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
 				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				{
+					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
+				}
 			}
 		case "DragonLandEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
@@ -484,7 +488,6 @@ namespace Events_Space
 		case "endGroundAttack"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					auto yt = DovahAI_Space::DovahAI::GetSingleton()->Get_AttackList(a_actor);

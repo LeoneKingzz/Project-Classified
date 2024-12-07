@@ -496,11 +496,13 @@ namespace DovahAI_Space{
                     }
                     GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 }
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 
             }else{
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
@@ -679,7 +681,6 @@ namespace DovahAI_Space{
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
-            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             auto ct = targethandle.get();
             int i = 0;
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
@@ -699,7 +700,7 @@ namespace DovahAI_Space{
         {
             GetSingleton()->ResetAI(a_actor);
         }
-
+        a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "CDR_AI2_Update");
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -999,6 +1000,7 @@ namespace DovahAI_Space{
                                 SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "to_Flight_Kill_Grab_Action", "to_Flight_Kill_Grab_Action_Failed", "None", "None");
                                 GetSingleton()->ResetAI(a_actor);
                                 GetSingleton()->ResetAI(a_actor);
+                                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "PBC_AI_Update");
                                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -1142,7 +1144,7 @@ namespace DovahAI_Space{
                 {
                     GetSingleton()->ResetAI(a_actor);
                 }
-
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "ControlDistanceFly_AI2_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -1154,7 +1156,7 @@ namespace DovahAI_Space{
             {
                 GetSingleton()->ResetAI(a_actor);
             }
-
+            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "ControlDistanceFly_AI2_Update");
             GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -1189,12 +1191,14 @@ namespace DovahAI_Space{
                 DovahAI_Space::DovahAI::ToGroundAttackScene(a_actor);
             }else{
                 GetSingleton()->ResetAI(a_actor);
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "HAS_AI2_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
         }else{
             GetSingleton()->ResetAI(a_actor);
+            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "HAS_AI2_Update");
             GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -1686,7 +1690,6 @@ namespace DovahAI_Space{
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
-            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             auto ct = targethandle.get();
             int i = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 100);
             auto LvRank = GetIntVariable(a_actor, "iLDP_Lvl_Rank");
@@ -2044,11 +2047,13 @@ namespace DovahAI_Space{
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                 }
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 
             }else{
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -2100,12 +2105,14 @@ namespace DovahAI_Space{
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
                 }
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAVS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
             }
             else
             {
+                a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAVS_AI_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
