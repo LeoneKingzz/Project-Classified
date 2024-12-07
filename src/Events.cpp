@@ -399,6 +399,16 @@ namespace Events_Space
 			}
 			break;
 
+		case "weaponSwing"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				{
+					DovahAI_Space::DovahAI::GroundCombatAI(a_actor);
+				}
+			}
+			break;
+
 		case "DragonTailAttackEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
