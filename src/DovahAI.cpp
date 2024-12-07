@@ -999,7 +999,6 @@ namespace DovahAI_Space{
                             {
                                 SendRandomAnimationEvent(a_actor, GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 1), "to_Flight_Kill_Grab_Action", "to_Flight_Kill_Grab_Action_Failed", "None", "None");
                                 GetSingleton()->ResetAI(a_actor);
-                                GetSingleton()->ResetAI(a_actor);
                                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "PBC_AI_Update");

@@ -391,6 +391,11 @@ namespace Events_Space
 				Tx.x = -1.0f;
 				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
+
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				{
+					DovahAI_Space::DovahAI::PassByCombatAI(a_actor);
+				}
 			}
 			break;
 
