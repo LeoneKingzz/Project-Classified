@@ -547,6 +547,13 @@ namespace Events_Space
 			}
 			break;
 
+		case "EnrageEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat") && DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+			{
+				DovahAI_Space::DovahAI::Enrage_start(a_actor);
+			}
+			break;
+
 		case "SoundPlay.NPCDragonKillMove"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
@@ -571,6 +578,64 @@ namespace Events_Space
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
 					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight")? "NPC RLegToe1" : "NPC LLegFoot";
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, data->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), Node);
+				}
+			}
+			break;
+
+		case "TailTurnHitEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight") ? "NPC RLegToe1" : "NPC LLegFoot";
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, data->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), Node);
+				}
+			}
+			break;
+
+		case "TailTurnEndEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					DovahAI_Space::DovahAI::OneMoreTailTurn(a_actor);
+				}
+			}
+			break;
+
+		case "ShoutFireBallEvent"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
+				{
+					if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+					{
+						auto ct = targethandle.get();
+						const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+						switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Shout_to_Cast"))
+						{
+						case 1:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							break;
+
+						case 2:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							break;
+
+						case 3:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							break;
+
+						default:
+							break;
+						}
+					}
+					
 				}
 			}
 			break;
