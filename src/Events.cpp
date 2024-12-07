@@ -418,9 +418,12 @@ namespace Events_Space
 						}
 					}
 				}
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
 				{
-					DovahAI_Space::DovahAI::GroundCombatAI(a_actor);
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+					{
+						DovahAI_Space::DovahAI::ControlDistanceAIGround(a_actor);
+					}
 				}
 			}
 			break;
@@ -516,6 +519,13 @@ namespace Events_Space
 						
 					}else{
 						DovahAI_Space::DovahAI::ControlDistanceAIFly(a_actor);
+					}
+				}
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
+				{
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+					{
+						DovahAI_Space::DovahAI::ControlDistanceAIGround(a_actor);
 					}
 				}
 			}
