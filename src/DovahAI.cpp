@@ -952,7 +952,7 @@ namespace DovahAI_Space{
                             }
                             else if (GetIntVariable(a_actor, "iLDP_PreferCombatStyle") != 1)
                             {
-                                //ground attack vertical scene
+                                GroundAttackVerticalScene(a_actor);
                             }
                         }
                     }
@@ -1686,6 +1686,7 @@ namespace DovahAI_Space{
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
+            a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             auto ct = targethandle.get();
             int i = GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(1, 100);
             auto LvRank = GetIntVariable(a_actor, "iLDP_Lvl_Rank");
