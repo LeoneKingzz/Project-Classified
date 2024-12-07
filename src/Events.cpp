@@ -402,6 +402,22 @@ namespace Events_Space
 		case "weaponSwing"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
+				if (a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount())
+				{
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+					{
+						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+						{
+							if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
+							{
+								DovahAI_Space::DovahAI::MoveControllShout(a_actor);
+							}else{
+								DovahAI_Space::DovahAI::GroundCombatAI(a_actor);
+							}
+							
+						}
+					}
+				}
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::GroundCombatAI(a_actor);
@@ -488,13 +504,18 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
-				if(a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount()){
-					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering || a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kPerching)
+
+				if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering || a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kPerching)
+				{
+					if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 					{
-						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+						if (a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount())
 						{
 							DovahAI_Space::DovahAI::ControlDistanceRiddenAI(a_actor);
 						}
+						
+					}else{
+						DovahAI_Space::DovahAI::ControlDistanceRiddenAI(a_actor);
 					}
 				}
 			}
