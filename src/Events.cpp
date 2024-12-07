@@ -515,7 +515,7 @@ namespace Events_Space
 						}
 						
 					}else{
-						DovahAI_Space::DovahAI::ControlDistanceRiddenAI(a_actor);
+						DovahAI_Space::DovahAI::ControlDistanceAIFly(a_actor);
 					}
 				}
 			}
@@ -529,6 +529,16 @@ namespace Events_Space
 					auto yt = DovahAI_Space::DovahAI::GetSingleton()->Get_AttackList(a_actor);
 					std::get<2>(yt)[1] = 3;
 					DovahAI_Space::DovahAI::AddBehavior(a_actor);
+				}
+			}
+			break;
+
+		case "SoundPlay.NPCDragonKillMove"_h:
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				{
+					DovahAI_Space::DovahAI::TripleShout(a_actor);
 				}
 			}
 			break;
