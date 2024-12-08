@@ -289,28 +289,36 @@ namespace Events_Space
 					{
 						if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->source))
 						{
-							if (form && form->Is(RE::FormType::Spell))
+							if (form)
 							{
-								if (auto a_spell = form->As<RE::SpellItem>())
+								switch (form->GetFormType())
 								{
-									std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
-									switch (hash(Lsht.c_str(), Lsht.size()))
+								case RE::FormType::Spell:
+									if (auto a_spell = form->As<RE::SpellItem>())
 									{
-									case "BiteAttack_LDP"_h:
-										/* code */
-										break;
+										std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
+										switch (hash(Lsht.c_str(), Lsht.size()))
+										{
+										case "BiteAttack_LDP"_h:
+											/* code */
+											break;
 
-									case "LeftWingAttack_LDP"_h:
-										/* code */
-										break;
+										case "LeftWingAttack_LDP"_h:
+											/* code */
+											break;
 
-									case "RightWingAttack_LDP"_h:
-										/* code */
-										break;
+										case "RightWingAttack_LDP"_h:
+											/* code */
+											break;
 
-									default:
-										break;
+										default:
+											break;
+										}
 									}
+									break;
+								
+								default:
+									break;
 								}
 							}
 						}
