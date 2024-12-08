@@ -2187,16 +2187,16 @@ namespace DovahAI_Space{
                 case 1:
                 case 2:
                 case 5:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
                     break;
 
                 case 4:
                 case 6:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
                     break;
 
                 case 3:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
                     break;
 
                 default:
@@ -2220,12 +2220,96 @@ namespace DovahAI_Space{
 
     void DovahAI::LeftWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
     {
-        
+        if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, a_target, nullptr) < -45.0f)
+        {
+            auto H = RE::TESDataHandler::GetSingleton();
+            if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+            {
+                if (GetBoolVariable(a_target, "IsBlocking"))
+                {
+                    return;
+                }
+                else if (GetBoolVariable(a_target, "IsAttacking"))
+                {
+                    a_target->NotifyAnimationGraph("recoilLargeStart");
+                    switch (GFunc_Space::GFunc::GetEquippedItemType(a_target, false))
+                    {
+                    case 1:
+                    case 2:
+                    case 5:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
+                        break;
+
+                    case 4:
+                    case 6:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
+                        break;
+
+                    case 3:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
+                        break;
+
+                    default:
+                        break;
+                    }
+                }
+                else
+                {
+                    GFunc_Space::GFunc::PushActorAway(a_actor, a_target, 13.0);
+                }
+            }
+            else
+            {
+                GFunc_Space::GFunc::PushActorAway(a_actor, a_target, 13.0);
+            }
+        }
     }
 
     void DovahAI::RightWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
     {
-        
+        if (GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, a_target, nullptr) > 45.0f)
+        {
+            auto H = RE::TESDataHandler::GetSingleton();
+            if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+            {
+                if (GetBoolVariable(a_target, "IsBlocking"))
+                {
+                    return;
+                }
+                else if (GetBoolVariable(a_target, "IsAttacking"))
+                {
+                    a_target->NotifyAnimationGraph("recoilLargeStart");
+                    switch (GFunc_Space::GFunc::GetEquippedItemType(a_target, false))
+                    {
+                    case 1:
+                    case 2:
+                    case 5:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
+                        break;
+
+                    case 4:
+                    case 6:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
+                        break;
+
+                    case 3:
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
+                        break;
+
+                    default:
+                        break;
+                    }
+                }
+                else
+                {
+                    GFunc_Space::GFunc::PushActorAway(a_actor, a_target, 13.0);
+                }
+            }
+            else
+            {
+                GFunc_Space::GFunc::PushActorAway(a_actor, a_target, 13.0);
+            }
+        }
     }
 
     void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
