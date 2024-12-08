@@ -2172,7 +2172,50 @@ namespace DovahAI_Space{
 
     void DovahAI::BiteAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
     {
-        
+        auto H = RE::TESDataHandler::GetSingleton();
+        if (abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+        {
+            if (GetBoolVariable(a_target, "IsBlocking"))
+            {
+                return;
+            }
+            else if (GetBoolVariable(a_target, "IsAttacking"))
+            {
+                a_target->NotifyAnimationGraph("recoilLargeStart");
+                switch (GFunc_Space::GFunc::GetEquippedItemType(a_target, false))
+                {
+                case 1:
+                case 2:
+                case 5:
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    break;
+
+                case 4:
+                case 6:
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    break;
+
+                case 3:
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                    break;
+
+                default:
+                    break;
+                }
+            }
+            else
+            {
+                a_target->NotifyAnimationGraph("staggerStop");
+                a_target->SetGraphVariableFloat("staggerDirection", 0.0);
+                a_target->SetGraphVariableFloat("staggerMagnitude", 1.0);
+                a_target->NotifyAnimationGraph("staggerStart");
+            }
+        }else{
+            a_target->NotifyAnimationGraph("staggerStop");
+            a_target->SetGraphVariableFloat("staggerDirection", 0.0);
+            a_target->SetGraphVariableFloat("staggerMagnitude", 1.0);
+            a_target->NotifyAnimationGraph("staggerStart");
+        }
     }
 
     void DovahAI::LeftWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)

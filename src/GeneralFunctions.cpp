@@ -78,25 +78,6 @@ namespace GFunc_Space{
 		return cond(params);
 	}
 
-	bool GetEquippedItemType(const RE::Actor *a_actor, RE::MagicSystem::CastingSource type, float a_comparison_value)
-	{
-		static RE::TESConditionItem cond;
-		static std::once_flag flag;
-		std::call_once(flag, [&]()
-					   {
-        cond.data.functionData.function = RE::FUNCTION_DATA::FunctionID::kGetEquippedItemType;
-        cond.data.flags.opCode          = RE::CONDITION_ITEM_DATA::OpCode::kEqualTo;
-        cond.data.object                = RE::CONDITIONITEMOBJECT::kSelf;
-        cond.data.comparisonValue.f     = a_comparison_value; });
-
-		ConditionParam cond_param;
-		cond_param.i = static_cast<int32_t>(type);
-		cond.data.functionData.params[0] = std::bit_cast<void *>(cond_param);
-
-		RE::ConditionCheckParams params(const_cast<RE::TESObjectREFR *>(a_actor->As<RE::TESObjectREFR>()), nullptr);
-		return cond(params);
-	}
-
 	bool IsAllowedToFly(const RE::Actor *a_actor, float a_comparison_value)
 	{
 		static RE::TESConditionItem cond;
@@ -386,7 +367,7 @@ namespace GFunc_Space{
 				}
 			}
 		}
-		
+
 		return result;
 	}
 

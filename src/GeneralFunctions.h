@@ -54,7 +54,6 @@ namespace GFunc_Space{
 	bool Has_Magiceffect_Keyword(const RE::Actor *a_actor, const RE::BGSKeyword *a_key, float a_comparison_value);
 	bool HasBoundWeaponEquipped(const RE::Actor *a_actor, RE::MagicSystem::CastingSource type);
 	bool IsAllowedToFly(const RE::Actor *a_actor, float a_comparison_value);
-	bool GetEquippedItemType(const RE::Actor *a_actor, RE::MagicSystem::CastingSource type, float a_comparison_value);
 
 	class GFunc
 	{
@@ -77,7 +76,8 @@ namespace GFunc_Space{
 		static bool IsCasting(RE::Actor *a_actor);
 		static void UpdateCombatTarget(RE::Actor *a_actor);
 		static bool isHumanoid(RE::Actor *a_actor);
-		static std::vector<RE::TESForm *> GetEquippedForm(RE::Actor *actor);
+		static std::vector<RE::TESForm *> GetEquippedForm(RE::Actor *actor, bool right = false, bool left = false);
+		static int GetEquippedItemType(RE::Actor *actor, bool lefthand);
 		static bool IsWeaponOut(RE::Actor *actor);
 		float AV_Mod(RE::Actor *a_actor, int a_aggression, float input, float mod);
 		int GenerateRandomInt(int value_a, int value_b);
