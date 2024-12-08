@@ -469,7 +469,8 @@ namespace DovahAI_Space{
             a_actor->SetGraphVariableFloat("playbackSpeed", GetSingleton()->PercentageHealthAction(a_actor));
         }
     }
-     void DovahAI::TalonSmashScene(RE::Actor *a_actor)
+
+    void DovahAI::TalonSmashScene(RE::Actor *a_actor)
     {
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
