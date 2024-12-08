@@ -341,40 +341,52 @@ namespace GFunc_Space{
 					default:
 						break;
 					}
+					if (result != -1)
+					{
+						break;
+					}
 				}
 				continue;
 			}
 		}
 
-		auto combatCtrl = actor->GetActorRuntimeData().combatController;
-		auto CombatInv = combatCtrl ? combatCtrl->inventory : nullptr;
-		if (CombatInv)
+		if (result == -1)
 		{
-			for (const auto item : CombatInv->equippedItems)
+			auto combatCtrl = actor->GetActorRuntimeData().combatController;
+			auto CombatInv = combatCtrl ? combatCtrl->inventory : nullptr;
+			if (CombatInv)
 			{
-				if (item.item)
+				for (const auto item : CombatInv->equippedItems)
 				{
-					switch (item.item->GetType())
+					if (item.item)
 					{
-					case TYPE::kTorch:
-						result = 11;
-						break;
+						switch (item.item->GetType())
+						{
+						case TYPE::kTorch:
+							result = 11;
+							break;
 
-					case TYPE::kShield:
-						result = 10;
-						break;
+						case TYPE::kShield:
+							result = 10;
+							break;
 
-					case TYPE::kScroll:
-					case TYPE::kMagic:
-						result = 9;
-						break;
+						case TYPE::kScroll:
+						case TYPE::kMagic:
+							result = 9;
+							break;
 
-					default:
+						default:
+							break;
+						}
+					}
+					if (result != -1)
+					{
 						break;
 					}
 				}
 			}
 		}
+		
 		return result;
 	}
 
