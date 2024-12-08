@@ -916,6 +916,7 @@ namespace DovahAI_Space{
 
                         case 1:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+                            // 2 == takeoff_fast
                             break;
 
                         default:
