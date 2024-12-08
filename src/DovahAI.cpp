@@ -2170,6 +2170,21 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::BiteAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
+    {
+        
+    }
+
+    void DovahAI::LeftWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
+    {
+        
+    }
+
+    void DovahAI::RightWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
+    {
+        
+    }
+
     void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
     {
         if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)

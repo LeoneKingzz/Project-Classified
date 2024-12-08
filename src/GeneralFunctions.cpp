@@ -78,6 +78,25 @@ namespace GFunc_Space{
 		return cond(params);
 	}
 
+	bool GetEquippedItemType(const RE::Actor *a_actor, RE::MagicSystem::CastingSource type, float a_comparison_value)
+	{
+		static RE::TESConditionItem cond;
+		static std::once_flag flag;
+		std::call_once(flag, [&]()
+					   {
+        cond.data.functionData.function = RE::FUNCTION_DATA::FunctionID::kGetEquippedItemType;
+        cond.data.flags.opCode          = RE::CONDITION_ITEM_DATA::OpCode::kEqualTo;
+        cond.data.object                = RE::CONDITIONITEMOBJECT::kSelf;
+        cond.data.comparisonValue.f     = a_comparison_value; });
+
+		ConditionParam cond_param;
+		cond_param.i = static_cast<int32_t>(type);
+		cond.data.functionData.params[0] = std::bit_cast<void *>(cond_param);
+
+		RE::ConditionCheckParams params(const_cast<RE::TESObjectREFR *>(a_actor->As<RE::TESObjectREFR>()), nullptr);
+		return cond(params);
+	}
+
 	bool IsAllowedToFly(const RE::Actor *a_actor, float a_comparison_value)
 	{
 		static RE::TESConditionItem cond;
@@ -235,22 +254,128 @@ namespace GFunc_Space{
 		a_actor->NotifyAnimationGraph("staggerStop");
 	}
 
-	std::vector<RE::TESForm *> GFunc::GetEquippedForm(RE::Actor *actor)
+	std::vector<RE::TESForm *> GFunc::GetEquippedForm(RE::Actor *actor, bool right, bool left)
 	{
 		std::vector<RE::TESForm *> Hen;
 
 		auto limboform = actor->GetActorRuntimeData().currentProcess;
 
-		if (limboform && limboform->GetEquippedLeftHand())
-		{
-			Hen.push_back(limboform->GetEquippedLeftHand());
+		if(right){
+			if (limboform && limboform->GetEquippedRightHand())
+			{
+				Hen.push_back(limboform->GetEquippedRightHand());
+			}
+		}else if(left){
+			if (limboform && limboform->GetEquippedLeftHand())
+			{
+				Hen.push_back(limboform->GetEquippedLeftHand());
+			}
+		}else{
+			if (limboform && limboform->GetEquippedLeftHand())
+			{
+				Hen.push_back(limboform->GetEquippedLeftHand());
+			}
+			if (limboform && limboform->GetEquippedRightHand())
+			{
+				Hen.push_back(limboform->GetEquippedRightHand());
+			}
 		}
-		if (limboform && limboform->GetEquippedRightHand())
+		return Hen;
+	}
+
+	int GFunc::GetEquippedItemType(RE::Actor *actor, bool lefthand)
+	{
+		using TYPE = RE::CombatInventoryItem::TYPE;
+		int result = -1;
+		auto form_list = lefthand ? GetEquippedForm(actor, false, true) : GetEquippedForm(actor, true);
+
+		if (!form_list.empty())
 		{
-			Hen.push_back(limboform->GetEquippedRightHand());
+			for (auto form : form_list)
+			{
+				if (form)
+				{
+					switch (*form->formType)
+					{
+					case RE::FormType::Weapon:
+						if (const auto equippedWeapon = form->As<RE::TESObjectWEAP>())
+						{
+							switch (equippedWeapon->GetWeaponType())
+							{
+							case RE::WEAPON_TYPE::kHandToHandMelee:
+								result = 0;
+								break;
+							case RE::WEAPON_TYPE::kOneHandSword:
+								result = 1;
+								break;
+							case RE::WEAPON_TYPE::kOneHandDagger:
+								result = 2;
+								break;
+							case RE::WEAPON_TYPE::kOneHandAxe:
+								result = 3;
+								break;
+							case RE::WEAPON_TYPE::kOneHandMace:
+								result = 4;
+								break;
+							case RE::WEAPON_TYPE::kTwoHandSword:
+								result = 5;
+								break;
+							case RE::WEAPON_TYPE::kTwoHandAxe:
+								result = 6;
+								break;
+							case RE::WEAPON_TYPE::kBow:
+								result = 7;
+								break;
+							case RE::WEAPON_TYPE::kStaff:
+								result = 8;
+								break;
+							case RE::WEAPON_TYPE::kCrossbow:
+								result = 12;
+								break;
+							default:
+								break;
+							}
+						}
+						break;
+
+					default:
+						break;
+					}
+				}
+				continue;
+			}
 		}
 
-		return Hen;
+		auto combatCtrl = actor->GetActorRuntimeData().combatController;
+		auto CombatInv = combatCtrl ? combatCtrl->inventory : nullptr;
+		if (CombatInv)
+		{
+			for (const auto item : CombatInv->equippedItems)
+			{
+				if (item.item)
+				{
+					switch (item.item->GetType())
+					{
+					case TYPE::kTorch:
+						result = 11;
+						break;
+
+					case TYPE::kShield:
+						result = 10;
+						break;
+
+					case TYPE::kScroll:
+					case TYPE::kMagic:
+						result = 9;
+						break;
+
+					default:
+						break;
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 	bool GFunc::IsWeaponOut(RE::Actor *actor)
