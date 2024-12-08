@@ -300,15 +300,15 @@ namespace Events_Space
 										switch (hash(Lsht.c_str(), Lsht.size()))
 										{
 										case "BiteAttack_LDP"_h:
-											/* code */
+											DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
 											break;
 
 										case "LeftWingAttack_LDP"_h:
-											/* code */
+											DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
 											break;
 
 										case "RightWingAttack_LDP"_h:
-											/* code */
+											DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
 											break;
 
 										default:
