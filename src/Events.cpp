@@ -153,130 +153,169 @@ namespace Events_Space
 		{
 			auto a_actor = event->target->As<RE::Actor>();
 
-			if (!a_actor || !a_actor->HasKeywordString("ActorTypeDragon"))
+			if (!a_actor)
 			{
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat") || DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_Busy_State"))
+			if (a_actor->HasKeywordString("ActorTypeDragon"))
 			{
-				return RE::BSEventNotifyControl::kContinue;
-			}
-
-			if (auto enemy = event->cause->As<RE::Actor>())
-			{
-				if (enemy->IsHostileToActor(a_actor))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat") || DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_Busy_State"))
 				{
-					a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
+					return RE::BSEventNotifyControl::kContinue;
+				}
 
-					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+				if (auto enemy = event->cause->As<RE::Actor>())
+				{
+					if (enemy->IsHostileToActor(a_actor))
 					{
-						auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
-						float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
+						a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
 
-						if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
+						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 						{
-							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP");
-							a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
-							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
+							auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+							float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
+
+							if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
 							{
-								//headbroken spell
-								//additem
-								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP");
+								a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
 								{
-									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+									// headbroken spell
+									// additem
+									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+									{
+										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+									}
+								}
+							}
+							else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") > 0)
+							{
+								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP");
+								a_actor->SetGraphVariableInt("iLDP_Back_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") <= 0)
+								{
+									// tailbroken spell
+									// additem (dragon bonemeal)
+									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+									{
+										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+									}
+								}
+							}
+							else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") > 0)
+							{
+								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP");
+								a_actor->SetGraphVariableInt("iLDP_Left_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
+								{
+									// additem (dragon claw)
+									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+									{
+									case 0:
+										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+										break;
+									case 1:
+										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+										break;
+
+									default:
+										break;
+									}
+
+									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+									{
+										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+									}
+								}
+							}
+							else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") > 0)
+							{
+								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP");
+								a_actor->SetGraphVariableInt("iLDP_Right_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
+								{
+									// additem (dragon claw)
+									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+									{
+									case 0:
+										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+										break;
+									case 1:
+										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+										break;
+
+									default:
+										break;
+									}
+
+									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+									{
+										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+									}
+								}
+							}
+
+							a_actor->SetGraphVariableInt("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+
+							auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
+
+							if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
+							{
+								DovahAI_Space::DovahAI::Enrage(a_actor, 3);
+								a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
+							}
+
+							if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
+							{
+								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsStaggering"))
+								{
+									DovahAI_Space::DovahAI::Enrage(a_actor, 1);
 								}
 							}
 						}
-						else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") > 0)
-						{
-							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP");
-							a_actor->SetGraphVariableInt("iLDP_Back_HP", val -= DiffHp);
-							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") <= 0)
-							{
-								// tailbroken spell
-								// additem (dragon bonemeal)
-								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-								{
-									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-								}
-							}
-						}
-						else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") > 0)
-						{
-							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP");
-							a_actor->SetGraphVariableInt("iLDP_Left_HP", val -= DiffHp);
-							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
-							{
-								// additem (dragon claw)
-								switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
-								{
-								case 0:
-									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
-									break;
-								case 1:
-									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
-									break;
 
-								default:
-									break;
-								}
-
-								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-								{
-									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-								}
-							}
-						}
-						else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") > 0)
-						{
-							auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP");
-							a_actor->SetGraphVariableInt("iLDP_Right_HP", val -= DiffHp);
-							if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
-							{
-								// additem (dragon claw)
-								switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
-								{
-								case 0:
-									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
-									break;
-								case 1:
-									a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
-									break;
-
-								default:
-									break;
-								}
-
-								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-								{
-									DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-								}
-							}
-						}
-
-						a_actor->SetGraphVariableInt("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
-
-						auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
-
-						if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
-						{
-							DovahAI_Space::DovahAI::Enrage(a_actor, 3);
-							a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
-						}
-
-						if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
-						{
-							if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsStaggering"))
-							{
-								DovahAI_Space::DovahAI::Enrage(a_actor, 1);
-							}
-						}
+						std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+						GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
+						GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 					}
+				}
 
-					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
-					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+			}else{
+				if (auto enemy = event->cause->As<RE::Actor>())
+				{
+					if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat") && enemy->IsHostileToActor(a_actor))
+					{
+						if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->source))
+						{
+							if (form && form->Is(RE::FormType::Spell))
+							{
+								if (auto a_spell = form->As<RE::SpellItem>())
+								{
+									std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
+									switch (hash(Lsht.c_str(), Lsht.size()))
+									{
+									case "BiteAttack_LDP"_h:
+										/* code */
+										break;
+
+									case "LeftWingAttack_LDP"_h:
+										/* code */
+										break;
+
+									case "RightWingAttack_LDP"_h:
+										/* code */
+										break;
+
+									default:
+										break;
+									}
+								}
+							}
+						}
+						
+					}
 				}
 			}
 

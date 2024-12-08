@@ -775,11 +775,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -824,11 +824,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -867,11 +867,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -910,11 +910,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             // 2 == takeoff_fast
                             break;
@@ -939,7 +939,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
 
-            if (GetIntVariable(a_actor, "iLDP_TakeOff_Faction") == 1 && !GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
+            if (GetIntVariable(a_actor, "iLDP_TakeOff_Faction") == 2 && !GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
             {
                 if (a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 1.75f)
                 {
@@ -1051,11 +1051,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -1078,11 +1078,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -1106,11 +1106,11 @@ namespace DovahAI_Space{
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
-                        case 0:
+                        case 1:
                             a_actor->NotifyAnimationGraph("Takeoff");
                             break;
 
-                        case 1:
+                        case 2:
                             a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                             break;
 
@@ -1364,11 +1364,11 @@ namespace DovahAI_Space{
         {
             switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
             {
-            case 0:
+            case 1:
                 a_actor->NotifyAnimationGraph("Takeoff");
                 break;
 
-            case 1:
+            case 2:
                 a_actor->NotifyAnimationGraph("Takeoff_Vertical");
                 break;
 
@@ -2174,7 +2174,9 @@ namespace DovahAI_Space{
     {
         if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
         {
-            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffVertical
+            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffDefault
+        }else{
+            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 2); // TakeOffVertical
         }
 
         switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 5))
