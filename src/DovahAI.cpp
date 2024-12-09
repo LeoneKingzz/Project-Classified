@@ -2434,7 +2434,7 @@ namespace DovahAI_Space{
                 {
                     if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
-                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Dragons shout with voice - KS2 Patch.esp")));
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Leone Dragon Project Voicing.esp")));
                     }
                     else
                     {
@@ -2445,7 +2445,7 @@ namespace DovahAI_Space{
                 {
                     if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
-                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Dragons shout with voice - KS2 Patch.esp")));
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Leone Dragon Project Voicing.esp")));
                     }
                     else
                     {
@@ -2457,44 +2457,44 @@ namespace DovahAI_Space{
             case "005SummonShouts"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81D, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81C, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsDECIEVE"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x9CC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x9CC, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005SahloknirStormShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82E, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82E, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsBLOOD"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -2502,44 +2502,44 @@ namespace DovahAI_Space{
             case "005GoldenFireballConcSpell06"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F3, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F2, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F2, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005UniqueBreathShoutsALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F9, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F9, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F8, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F8, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005UniqueBreathShoutsODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x903, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x903, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x902, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x902, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005UniqueBreathShoutsPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FF, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FF, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FE, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FE, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -2548,108 +2548,108 @@ namespace DovahAI_Space{
             case "005DragonIceStormConcSpell03"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F1, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F1, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F0, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
             case "005VolleyBreathShoutsALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F7, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F7, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F6, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005VolleyBreathShoutsODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x901, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x901, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x900, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x900, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005VolleyBreathShoutsPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FD, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FC, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "PaarthurnaxElementalFury"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E3, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E2, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E2, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "PaarthurnaxWhirlwindTempest"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E1, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E1, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E0, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonMoonBlast"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D1, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D1, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D0, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonMoonBlastALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C4, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C3, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsFROST"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CF, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CF, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CE, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CE, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
             case "zz005AlduinFroststorms"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C2, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C2, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C1, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C1, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -2659,275 +2659,275 @@ namespace DovahAI_Space{
             case "MQ206AlduinFirestormShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A8, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A8, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A7, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A7, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsFIRE"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x859, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x859, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x858, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x858, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "zz005DevourSoul_Alduin"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BE, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BE, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BD, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsSHOCK"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x832, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x832, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x831, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x831, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "zz005AlduinLightningstorms"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BC, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BB, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BB, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonCycloneShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x837, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x837, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x836, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x836, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonCycloneShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B6, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B5, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonCycloneShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x890, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x890, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88F, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonCycloneShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DF, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DF, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DE, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DE, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonDrainVitalityShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x820, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x820, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81F, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonDrainVitalityShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B4, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B3, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonDrainVitalityShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88E, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88E, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88D, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "KS_DLC2BendWillShout_Alduin"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA81, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA81, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_GravityBlastShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x828, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x828, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x827, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x827, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_GravityBlastShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AE, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AE, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_GravityBlastShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x888, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x888, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x887, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x887, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_GravityBlastShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DB, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DB, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DA, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DA, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_BackfireRecoilShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82A, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x829, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x829, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_BackfireRecoilShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AC, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AB, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AB, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_BackfireRecoilShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x886, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x886, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x885, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x885, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_BackfireRecoilShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D9, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D9, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D8, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D8, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonBecomeEtherealShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x834, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x834, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x833, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x833, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonBecomeEtherealShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A6, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A5, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonBecomeEtherealShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x880, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x880, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87F, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonBecomeEtherealShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D5, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D4, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -2960,11 +2960,11 @@ namespace DovahAI_Space{
             case "ks_DragonUnrelentingForceAreaShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x874, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x874, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x873, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x873, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3005,11 +3005,11 @@ namespace DovahAI_Space{
             case "ks_DragonDismayAreaShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x876, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x876, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x875, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x875, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3052,11 +3052,11 @@ namespace DovahAI_Space{
             case "005FrostForgetShoutsODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x878, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x878, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x877, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x877, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3097,11 +3097,11 @@ namespace DovahAI_Space{
             case "ks_DragonDisarmShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87A, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x879, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x879, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3140,7 +3140,7 @@ namespace DovahAI_Space{
                 {
                     if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
-                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Dragons shout with voice - KS2 Patch.esp")));
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A0, "Leone Dragon Project Voicing.esp")));
                     }
                     else
                     {
@@ -3151,7 +3151,7 @@ namespace DovahAI_Space{
                 {
                     if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
                     {
-                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Dragons shout with voice - KS2 Patch.esp")));
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8C, "Leone Dragon Project Voicing.esp")));
                     }
                     else
                     {
@@ -3165,11 +3165,11 @@ namespace DovahAI_Space{
             case "ks_DragonFlameWaveShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87C, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87B, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3192,11 +3192,11 @@ namespace DovahAI_Space{
             case "005AncientDragonFrost01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81B, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81A, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3204,11 +3204,11 @@ namespace DovahAI_Space{
             case "L_DragonFrostIceStormShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A4, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A3, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3216,11 +3216,11 @@ namespace DovahAI_Space{
             case "L_DragonFrostIceStormShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87E, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87E, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x87D, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3228,99 +3228,99 @@ namespace DovahAI_Space{
             case "L_DragonFrostIceStormShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D3, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D3, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D2, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D2, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_ChainSuppressionShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x826, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x826, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x825, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x825, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_ChainSuppressionShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AA, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AA, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A9, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A9, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_ChainSuppressionShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x884, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x884, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x883, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x883, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_ChainSuppressionShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D7, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D7, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8D6, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_StaggerSpikesShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x824, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x824, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x823, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x823, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_StaggerSpikesShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B0, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AF, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AF, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_StaggerSpikesShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88A, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x889, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x889, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_StaggerSpikesShoutPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DD, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DC, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3328,11 +3328,11 @@ namespace DovahAI_Space{
             case "Serio_EDR_MarkedForDeathShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82C, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82B, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3340,11 +3340,11 @@ namespace DovahAI_Space{
             case "Serio_EDR_MarkedForDeathShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B2, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B2, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B1, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B1, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3352,11 +3352,11 @@ namespace DovahAI_Space{
             case "Serio_EDR_MarkedForDeathShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88C, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88B, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3366,11 +3366,11 @@ namespace DovahAI_Space{
             case "005StormDragonVoiceDragonLightningBreath01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x830, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x830, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82F, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3378,176 +3378,176 @@ namespace DovahAI_Space{
             case "L_DragonShockBallShoutALDUIN2"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B8, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B8, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B7, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B7, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonSoulTearShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x822, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x822, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x821, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x821, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "ks_DragonSoulTearShout_ALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BA, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BA, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B9, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B9, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_DevourMoonLightShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C9, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C9, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C8, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C8, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_DevourMoonLightShoutALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C0, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BF, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BF, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_DevourMoonLightShoutODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C6, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C5, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005StormShoutsALLD"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CB, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CB, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CA, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CA, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "Serio_EDR_StormBarrageShout"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CD, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CD, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CC, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CC, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "PaarthurnaxClearSkies"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E5, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8E4, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "PaarthurnaxBattleFury"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90D, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90C, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005ShockForgetShouts"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F5, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F4, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005ShockForgetShoutsALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FB, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FB, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FA, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8FA, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005FireForgetShouts"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90B, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90A, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005FireForgetShoutsALDUIN"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x909, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x909, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x908, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x908, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005FireForgetShoutsODAH"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x905, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x905, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x904, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x904, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005FireForgetShoutsPAAR"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x907, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x907, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x906, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x906, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3560,33 +3560,33 @@ namespace DovahAI_Space{
             case "005ApoGreenPoisonBreath60"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8F, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8E, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8E, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005SandAshBreath01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA92, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA92, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA91, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA91, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005AcidDragonBreathSpray01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA96, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA96, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA95, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA95, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3595,11 +3595,11 @@ namespace DovahAI_Space{
             case "005LakeDragonVoiceDragonWaterBreath01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA94, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA94, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA93, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA93, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3607,33 +3607,33 @@ namespace DovahAI_Space{
             case "005DragonTornadeConcSpell01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA98, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA98, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA97, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA97, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005SerpentDragonMassParryzeConc"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9A, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9A, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA99, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA99, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "005DragonGreatWaterBallConcSpell05"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9C, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9C, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9B, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9B, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3641,11 +3641,11 @@ namespace DovahAI_Space{
             case "005DragonSandballConcSpell01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9E, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9E, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9D, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9D, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3653,33 +3653,33 @@ namespace DovahAI_Space{
             case "005DragonAcidballConcSpell01"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAA0, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAA0, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9F, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA9F, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "KS_MistofSouls_Alduin"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC5, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC5, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC4, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC4, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
             case "KS_SlowTime_Alduin"_h:
                 if (SpellFire)
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC7, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC7, "Leone Dragon Project Voicing.esp")));
                 }
                 else
                 {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC6, "Dragons shout with voice - KS2 Patch.esp")));
+                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC6, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
