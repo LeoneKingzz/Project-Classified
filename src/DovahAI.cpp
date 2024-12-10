@@ -2425,9 +2425,13 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
-                    if (SpellFire){
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x10FF06, "Skyrim.esm")));
                     }
-                    else{
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x10FF05, "Skyrim.esm")));
                     }
                     break;
 
@@ -2446,9 +2450,13 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
-                    if (SpellFire){
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x874, "Leone Dragon Project Voicing.esp")));
                     }
-                    else{
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x873, "Leone Dragon Project Voicing.esp")));
                     }
                     break;
 
@@ -2468,9 +2476,13 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
-                    if (SpellFire){
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E27, "Skyrim.esm")));
                     }
-                    else{
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E26, "Skyrim.esm")));
                     }
                     break;
 
@@ -2490,9 +2502,13 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
-                    if (SpellFire){
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E53, "Skyrim.esm")));
                     }
-                    else{
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E50, "Skyrim.esm")));
                     }
                     break;
 
