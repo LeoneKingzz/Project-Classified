@@ -543,16 +543,34 @@ namespace Events_Space
 			break;
 
 		case "BeginCastVoice"_h:
-		    if(a_actor->HasKeywordString("ActorTypeDragon")){
-				DovahAI_Space::DovahAI::GetEquippedShout(a_actor);
+		    if(a_actor->HasKeywordString("AlduinUnitedKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Alduin(a_actor);
+			}
+			if(a_actor->HasKeywordString("MasterPaarthurnaxKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Paarthurnax(a_actor);
+			}
+			if(a_actor->HasKeywordString("OdahviingKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Odahviing(a_actor);
+			}
+			if(a_actor->HasKeywordString("DragonVoiceKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Dragon(a_actor);
 			}
 			break;
 
 		case "Voice_SpellFire_Event"_h:
-			if (a_actor->HasKeywordString("ActorTypeDragon"))
-			{
-				DovahAI_Space::DovahAI::GetEquippedShout(a_actor, true);
+			if(a_actor->HasKeywordString("AlduinUnitedKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Alduin(a_actor, true);
 			}
+			if(a_actor->HasKeywordString("MasterPaarthurnaxKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Paarthurnax(a_actor, true);
+			}
+			if(a_actor->HasKeywordString("OdahviingKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Odahviing(a_actor, true);
+			}
+			if(a_actor->HasKeywordString("DragonVoiceKey")){
+				DovahAI_Space::DovahAI::GetEquippedShout_Dragon(a_actor, true);
+			}
+			
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
