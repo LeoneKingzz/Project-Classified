@@ -2417,6 +2417,92 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::GetEquippedShout_Alduin(RE::Actor *actor, bool SpellFire){
+        if (auto limboshout = actor->GetActorRuntimeData().selectedPower) {
+            if (limboshout->Is(RE::FormType::Shout)){
+                auto data = RE::TESDataHandler::GetSingleton();
+                std::string Lsht = (clib_util::editorID::get_editorID(limboshout));
+
+                switch (hash(Lsht.c_str(), Lsht.size())){
+                case "LDP_UnrelentingForceShout"_h:
+                    if (SpellFire){
+                    }
+                    else{
+                    }
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    void DovahAI::GetEquippedShout_Odahviing(RE::Actor *actor, bool SpellFire){
+        if (auto limboshout = actor->GetActorRuntimeData().selectedPower) {
+            if (limboshout->Is(RE::FormType::Shout)){
+                auto data = RE::TESDataHandler::GetSingleton();
+                std::string Lsht = (clib_util::editorID::get_editorID(limboshout));
+
+                switch (hash(Lsht.c_str(), Lsht.size())){
+                case "LDP_UnrelentingForceShout"_h:
+                    if (SpellFire){
+                    }
+                    else{
+                    }
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    void DovahAI::GetEquippedShout_Paarthurnax(RE::Actor *actor, bool SpellFire)
+    {
+        if (auto limboshout = actor->GetActorRuntimeData().selectedPower) {
+            if (limboshout->Is(RE::FormType::Shout)){
+                auto data = RE::TESDataHandler::GetSingleton();
+                std::string Lsht = (clib_util::editorID::get_editorID(limboshout));
+
+                switch (hash(Lsht.c_str(), Lsht.size())){
+                case "LDP_UnrelentingForceShout"_h:
+                    if (SpellFire){
+                    }
+                    else{
+                    }
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    void DovahAI::GetEquippedShout_Dragon(RE::Actor *actor, bool SpellFire)
+    {
+        if (auto limboshout = actor->GetActorRuntimeData().selectedPower) {
+            if (limboshout->Is(RE::FormType::Shout)){
+                auto data = RE::TESDataHandler::GetSingleton();
+                std::string Lsht = (clib_util::editorID::get_editorID(limboshout));
+
+                switch (hash(Lsht.c_str(), Lsht.size())){
+                case "LDP_UnrelentingForceShout"_h:
+                    if (SpellFire){
+                    }
+                    else{
+                    }
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
     void DovahAI::GetEquippedShout(RE::Actor *actor, bool SpellFire)
     {
         auto limboshout = actor->GetActorRuntimeData().selectedPower;

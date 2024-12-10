@@ -551,7 +551,7 @@ namespace Events_Space
 		case "Voice_SpellFire_Event"_h:
 			if (a_actor->HasKeywordString("ActorTypeDragon"))
 			{
-				DovahAI_Space::DovahAI::GetEquippedShout(a_actor);
+				DovahAI_Space::DovahAI::GetEquippedShout(a_actor, true);
 			}
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
