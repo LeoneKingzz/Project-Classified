@@ -2404,7 +2404,7 @@ namespace DovahAI_Space{
         case 5:
             if(a_actor){
                 auto H = RE::TESDataHandler::GetSingleton();
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // k/s_NPCDragonKillMove
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 6200ms, "DeathTimeTravel_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
