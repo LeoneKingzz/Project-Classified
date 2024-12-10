@@ -51,6 +51,10 @@ namespace DovahAI_Space{
 		static void RightWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target);
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
 		static void GetEquippedShout(RE::Actor *actor, bool SpellFire = false);
+		static void GetEquippedShout_Alduin(RE::Actor *actor, bool SpellFire = false);
+		static void GetEquippedShout_Paarthurnax(RE::Actor *actor, bool SpellFire = false);
+		static void GetEquippedShout_Odahviing(RE::Actor *actor, bool SpellFire = false);
+		static void GetEquippedShout_Dragon(RE::Actor *actor, bool SpellFire = false);
 		static void DeathWaitRagdoll(RE::Actor *a_actor);
 		void Set_Box(RE::Actor *actor);
 		void scan_activeBoxes(RE::Actor *a_actor, RE::TESObjectREFR *a_box, bool insert = false, bool clear = false, bool clear_all = false);
