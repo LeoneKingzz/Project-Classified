@@ -2468,6 +2468,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_MarkedForDeathShout_Area"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B2, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B1, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -2523,6 +2534,17 @@ namespace DovahAI_Space{
                     else
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C5, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                case "LDP_MarkedForDeathShout_Area"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88C, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88B, "Leone Dragon Project Voicing.esp")));
                     }
                     break;
 
@@ -2630,6 +2652,17 @@ namespace DovahAI_Space{
                     else
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C8, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                case "LDP_MarkedForDeathShout_Area"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82C, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82B, "Leone Dragon Project Voicing.esp")));
                     }
                     break;
 
