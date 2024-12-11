@@ -2312,6 +2312,25 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::Unarm_effect(RE::Actor *a_actor)
+    {
+        GFunc_Space::GFunc::InterruptAttack(a_actor);
+
+        auto form_list = GFunc_Space::GFunc::GetEquippedForm(a_actor);
+
+        if (!form_list.empty())
+        {
+            for (auto form : form_list)
+            {
+                if (form)
+                {
+                    GFunc_Space::GFunc::EquipfromInvent(a_actor, form->formID, true);
+                }
+                continue;
+            }
+        }
+    }
+
     void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
     {
         if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)

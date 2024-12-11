@@ -70,7 +70,7 @@ namespace GFunc_Space{
 
 		static void InterruptAttack(RE::Actor *a_actor);
 
-		static void EquipfromInvent(RE::Actor *a_actor, RE::FormID a_formID);
+		static void EquipfromInvent(RE::Actor *a_actor, RE::FormID a_formID, bool unequip = false);
 
 		static bool isPowerAttacking(RE::Actor *a_actor);
 		static bool IsCasting(RE::Actor *a_actor);

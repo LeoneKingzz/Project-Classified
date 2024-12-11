@@ -457,7 +457,7 @@ namespace GFunc_Space{
 		return result;
 	}
 
-	void GFunc::EquipfromInvent(RE::Actor *a_actor, RE::FormID a_formID)
+	void GFunc::EquipfromInvent(RE::Actor *a_actor, RE::FormID a_formID, bool unequip)
 	{
 		auto inv = a_actor->GetInventory();
 		for (auto &[item, data] : inv)
@@ -465,7 +465,11 @@ namespace GFunc_Space{
 			const auto &[count, entry] = data;
 			if (count > 0 && entry->object->formID == a_formID)
 			{
-				RE::ActorEquipManager::GetSingleton()->EquipObject(a_actor, entry->object);
+				if (unequip){
+					RE::ActorEquipManager::GetSingleton()->UnequipObject(a_actor, entry->object);
+				}else{
+					RE::ActorEquipManager::GetSingleton()->EquipObject(a_actor, entry->object);
+				}
 				break;
 			}
 			continue;
