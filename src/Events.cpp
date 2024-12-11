@@ -362,7 +362,7 @@ namespace Events_Space
 										break;
 
 									case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
-										DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+										DovahAI_Space::DovahAI::Unarm_effect(a_actor);
 										break;
 
 									default:
