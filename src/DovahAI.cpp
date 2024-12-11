@@ -2425,6 +2425,7 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
+                case "LDP_DragonUnrelentingForceAreaShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x10FF06, "Skyrim.esm")));
@@ -2479,6 +2480,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_SlowTimeShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC7, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC6, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -2494,6 +2506,7 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
+                case "LDP_DragonUnrelentingForceAreaShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x874, "Leone Dragon Project Voicing.esp")));
@@ -2548,6 +2561,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_SlowTimeShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x888, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x887, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -2564,6 +2588,7 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
+                case "LDP_DragonUnrelentingForceAreaShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E27, "Skyrim.esm")));
@@ -2596,6 +2621,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_SlowTimeShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DB, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8DA, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -2612,6 +2648,7 @@ namespace DovahAI_Space{
 
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
+                case "LDP_DragonUnrelentingForceAreaShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E53, "Skyrim.esm")));
