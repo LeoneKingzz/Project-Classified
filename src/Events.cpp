@@ -340,6 +340,45 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
+			if (auto enemy = event->caster->As<RE::Actor>()){
+				if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat")){
+					if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->magicEffect)){
+						if (form){
+							switch (form->GetFormType()){
+							case RE::FormType::MagicEffect:
+								if (auto a_effect = form->As<RE::EffectSetting>()){
+									std::string Lsht = (clib_util::editorID::get_editorID(a_effect));
+									switch (hash(Lsht.c_str(), Lsht.size())){
+									case "BiteEffect_LDP"_h:
+										DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
+										break;
+
+									case "LeftWingAttackEffect_LDP"_h:
+										DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
+										break;
+
+									case "RightWingAttackEffect_LDP"_h:
+										DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+										break;
+
+									case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
+										DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+										break;
+
+									default:
+										break;
+									}
+								}
+								break;
+
+							default:
+								break;
+							}
+						}
+					}
+				}
+			}
+
 			return RE::BSEventNotifyControl::kContinue;
 		}
 
