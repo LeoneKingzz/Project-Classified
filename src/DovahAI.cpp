@@ -2489,6 +2489,7 @@ namespace DovahAI_Space{
                     break;
 
                 case "LDP_MarkedForDeathShout_Area"_h:
+                case "LDP_DragonMarkedforDeathShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B2, "Leone Dragon Project Voicing.esp")));
@@ -2603,6 +2604,7 @@ namespace DovahAI_Space{
                     break;
 
                 case "LDP_MarkedForDeathShout_Area"_h:
+                case "LDP_DragonMarkedforDeathShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88C, "Leone Dragon Project Voicing.esp")));
@@ -2811,6 +2813,7 @@ namespace DovahAI_Space{
                     break;
 
                 case "LDP_MarkedForDeathShout_Area"_h:
+                case "LDP_DragonMarkedforDeathShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82C, "Leone Dragon Project Voicing.esp")));
