@@ -2599,6 +2599,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_DLC2BendWillShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA81, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -3323,18 +3334,6 @@ namespace DovahAI_Space{
                 }
                 break;
 
-            
-
-            case "KS_DLC2BendWillShout_Alduin"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA81, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8AD, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
 
             case "Serio_EDR_GravityBlastShout"_h:
                 if (SpellFire)
