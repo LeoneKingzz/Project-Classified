@@ -2566,6 +2566,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_DragonSoulTearShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BA, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B9, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -2912,6 +2923,16 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_DragonSoulTearShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x822, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x821, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
 
                 default:
                     break;
