@@ -2544,6 +2544,19 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_DragonDrainVitalityShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B4, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B3, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                
+
                 default:
                     break;
                 }
@@ -2656,6 +2669,17 @@ namespace DovahAI_Space{
                     else
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x875, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                case "LDP_DragonDrainVitalityShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88E, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88D, "Leone Dragon Project Voicing.esp")));
                     }
                     break;
 
@@ -2856,6 +2880,19 @@ namespace DovahAI_Space{
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x16E59, "Skyrim.esm")));
                     }
                     break;
+
+                case "LDP_DragonDrainVitalityShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x820, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81F, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                
 
                 default:
                     break;
@@ -3202,38 +3239,7 @@ namespace DovahAI_Space{
                 }
                 break;
 
-            case "ks_DragonDrainVitalityShout"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x820, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x81F, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "ks_DragonDrainVitalityShoutALDUIN"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B4, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8B3, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "ks_DragonDrainVitalityShoutODAH"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88E, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x88D, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
+            
 
             case "KS_DLC2BendWillShout_Alduin"_h:
                 if (SpellFire)
