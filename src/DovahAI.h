@@ -49,6 +49,7 @@ namespace DovahAI_Space{
 		static void BiteAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target);
 		static void LeftWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target);
 		static void RightWingAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target);
+		static void Unarm_effect(RE::Actor *a_actor);
 		static void Random_TakeOffandDeath_Anims(RE::Actor *a_actor);
 		static void GetEquippedShout(RE::Actor *actor, bool SpellFire = false);
 		static void GetEquippedShout_Alduin(RE::Actor *actor, bool SpellFire = false);
