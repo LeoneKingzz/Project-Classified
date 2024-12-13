@@ -2993,6 +2993,17 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_PaarthurnaxBattleFury"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90D, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90C, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -4020,17 +4031,6 @@ namespace DovahAI_Space{
                 else
                 {
                     GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CC, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "PaarthurnaxBattleFury"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90D, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x90C, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
