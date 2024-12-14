@@ -2695,6 +2695,28 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_MistofSouls_Alduin"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC5, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC4, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                case "LDP_zz005DevourSoul_Alduin"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BE, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BD, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -3483,17 +3505,6 @@ namespace DovahAI_Space{
                 }
                 break;
 
-            case "zz005DevourSoul_Alduin"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BE, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8BD, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
             case "005StormShoutsSHOCK"_h:
                 if (SpellFire)
                 {
@@ -4224,16 +4235,6 @@ namespace DovahAI_Space{
                 }
                 break;
 
-            case "KS_MistofSouls_Alduin"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC5, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xAC4, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
 
             case "KS_SlowTime_Alduin"_h:
                 if (SpellFire)
