@@ -2682,6 +2682,19 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_zz05AlduinFirestorms"_h:
+                case "dunCGDragonStormCallShout"_h:
+                case "MQ206AlduinFirestormShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A8, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A7, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
