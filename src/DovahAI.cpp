@@ -3459,6 +3459,109 @@ namespace DovahAI_Space{
                     }
                     break;
 
+                case "LDP_005StormShoutsALL"_h:
+                    switch (GetIntVariable(actor, "iLDP_StormCall_Type"))
+                    {
+                    case 1:
+                        //ALLD
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CB, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CA, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    case 2:
+                        //Fire
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x859, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x858, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    case 3:
+                        //Frost
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CF, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CE, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    case 4:
+                        //Shock
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x832, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x831, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    case 5:
+                        //Blood
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    case 6:
+                        //Decieve
+                        if (SpellFire)
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x9CC, "Leone Dragon Project Voicing.esp")));
+                        }
+                        else
+                        {
+                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
+                        }
+                        break;
+
+                    default:
+                        break;
+                    }
+
+                    break;
+
+                case "LDP_005SahloknirStormShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82E, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
+                case "LDP_SkyShiftShout"_h:
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CD, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CC, "Leone Dragon Project Voicing.esp")));
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -3500,39 +3603,6 @@ namespace DovahAI_Space{
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x10F562, "Skyrim.esm")));
                     }
-                }
-                break;
-
-            case "005StormShoutsDECIEVE"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x9CC, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "005SahloknirStormShout"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82E, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x82D, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "005StormShoutsBLOOD"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -3649,17 +3719,6 @@ namespace DovahAI_Space{
                 }
                 break;
 
-            case "005StormShoutsFROST"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CF, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CE, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
             case "zz05AlduinFirestorms"_h:
             case "zz05AlduinFirestormsSERIO"_h:
             case "dunCGDragonStormCallShout"_h:
@@ -3671,28 +3730,6 @@ namespace DovahAI_Space{
                 else
                 {
                     GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8A7, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "005StormShoutsFIRE"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x859, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x858, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "005StormShoutsSHOCK"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x832, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x831, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
@@ -4214,28 +4251,6 @@ namespace DovahAI_Space{
                 else
                 {
                     GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8C5, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "005StormShoutsALLD"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CB, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CA, "Leone Dragon Project Voicing.esp")));
-                }
-                break;
-
-            case "Serio_EDR_StormBarrageShout"_h:
-                if (SpellFire)
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CD, "Leone Dragon Project Voicing.esp")));
-                }
-                else
-                {
-                    GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8CC, "Leone Dragon Project Voicing.esp")));
                 }
                 break;
 
