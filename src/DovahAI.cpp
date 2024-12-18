@@ -232,6 +232,7 @@ namespace DovahAI_Space{
         else if (a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
         {
             a_actor->SetGraphVariableInt("iLDP_Dragon_Type", 2); // "AllD";
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 1); // "Vul Vaaz Daan";
         }
         else if (a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey"))
         {
@@ -256,6 +257,27 @@ namespace DovahAI_Space{
         else if (!a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
         {
             a_actor->SetGraphVariableInt("iLDP_Dragon_Type", 8); // "Shock";
+        }
+
+        if (a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey") && !a_actor->HasKeywordString("BloodCloakKey"))
+        {
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 2); // "Gaar Toor Nah";
+
+        }else if (!a_actor->HasKeywordString("FireUnitedKey") && a_actor->HasKeywordString("FrostUnitedKey") && !a_actor->HasKeywordString("ShockUnitedKey") && !a_actor->HasKeywordString("DeceiverKey"))
+        {
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 3); // "Jiid So Daan";
+
+        }else if (!a_actor->HasKeywordString("FireUnitedKey") && !a_actor->HasKeywordString("FrostUnitedKey") && a_actor->HasKeywordString("ShockUnitedKey"))
+        {
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 4); // "Strun Bah Qo";
+
+        }else if (a_actor->HasKeywordString("BloodCloakKey"))
+        {
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 5); // "Lun So Haas";
+
+        }else if (a_actor->HasKeywordString("DeceiverKey"))
+        {
+            a_actor->SetGraphVariableInt("iLDP_StormCall_Type", 6); // "Fiik Lo Sah";
         }
     }
 
