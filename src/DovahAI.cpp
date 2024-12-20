@@ -3436,6 +3436,8 @@ namespace DovahAI_Space{
                     break;
 
                 case "LDP_FrostConc_VolleyBreathShouts"_h:
+                case "005DragonIceStormConcSpell02"_h:
+                case "005DragonIceStormConcSpell03"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F1, "Leone Dragon Project Voicing.esp")));
@@ -3770,8 +3772,7 @@ namespace DovahAI_Space{
                 break;
 
             case "005VolleyBreathShouts"_h:
-            case "005DragonIceStormConcSpell02"_h:
-            case "005DragonIceStormConcSpell03"_h:
+            
                 if (SpellFire)
                 {
                     GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x8F1, "Leone Dragon Project Voicing.esp")));
