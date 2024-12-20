@@ -3576,6 +3576,7 @@ namespace DovahAI_Space{
                 case "LDP_005PinkPoisonBreathShout01"_h:
                 case "LDP_005PurplePoisonBreathShout03"_h:
                 case "LDP_005ApocryphaPoisonBreathShout06"_h:
+                case "LDP_005SerpentDragonPoisonBreathShout07"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xA8F, "Leone Dragon Project Voicing.esp")));
