@@ -3522,18 +3522,6 @@ namespace DovahAI_Space{
                         }
                         break;
 
-                    case 5:
-                        //Blood
-                        if (SpellFire)
-                        {
-                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Leone Dragon Project Voicing.esp")));
-                        }
-                        else
-                        {
-                            GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Leone Dragon Project Voicing.esp")));
-                        }
-                        break;
-
                     case 6:
                         //Decieve
                         if (SpellFire)
@@ -3550,6 +3538,18 @@ namespace DovahAI_Space{
                         break;
                     }
 
+                    break;
+
+                case "LDP_005ViljoDarkBallShout01"_h:
+                    // 5; Blood
+                    if (SpellFire)
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x949, "Leone Dragon Project Voicing.esp")));
+                    }
+                    else
+                    {
+                        GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x948, "Leone Dragon Project Voicing.esp")));
+                    }
                     break;
 
                 case "LDP_005SahloknirStormShout"_h:
