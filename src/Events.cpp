@@ -343,37 +343,38 @@ namespace Events_Space
 			if (auto enemy = event->caster->As<RE::Actor>()){
 				if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat")){
 					if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->magicEffect)){
-						if (form){
-							switch (form->GetFormType()){
-							case RE::FormType::MagicEffect:
-								if (auto a_effect = form->As<RE::EffectSetting>()){
-									std::string Lsht = (clib_util::editorID::get_editorID(a_effect));
-									switch (hash(Lsht.c_str(), Lsht.size())){
-									case "BiteEffect_LDP"_h:
-										DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
-										break;
+						switch (form->GetFormType())
+						{
+						case RE::FormType::MagicEffect:
+							if (auto a_effect = form->As<RE::EffectSetting>())
+							{
+								std::string Lsht = (clib_util::editorID::get_editorID(a_effect));
+								switch (hash(Lsht.c_str(), Lsht.size()))
+								{
+								case "BiteEffect_LDP"_h:
+									DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
+									break;
 
-									case "LeftWingAttackEffect_LDP"_h:
-										DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
-										break;
+								case "LeftWingAttackEffect_LDP"_h:
+									DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
+									break;
 
-									case "RightWingAttackEffect_LDP"_h:
-										DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
-										break;
+								case "RightWingAttackEffect_LDP"_h:
+									DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+									break;
 
-									case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
-										DovahAI_Space::DovahAI::Unarm_effect(a_actor);
-										break;
+								case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
+									DovahAI_Space::DovahAI::Unarm_effect(a_actor);
+									break;
 
-									default:
-										break;
-									}
+								default:
+									break;
 								}
-								break;
-
-							default:
-								break;
 							}
+							break;
+
+						default:
+							break;
 						}
 					}
 				}
@@ -394,13 +395,27 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			auto eSpell = RE::TESForm::LookupByID(event->spell);
+			auto H = RE::TESDataHandler::GetSingleton();
+			const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
 
-			if (eSpell && eSpell->Is(RE::FormType::Spell)) {
-				auto rSpell = eSpell->As<RE::SpellItem>();
-				switch (rSpell->GetSpellType()) {
-				case RE::MagicSystem::SpellType::kSpell:
-				    
+			if (auto form = RE::TESForm::LookupByID(event->spell)){
+
+				switch (form->GetFormType())
+				{
+				case RE::FormType::Spell:
+					if (auto a_spell = form->As<RE::SpellItem>())
+					{
+						std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
+						switch (hash(Lsht.c_str(), Lsht.size()))
+						{
+						case "LDP_005VijoDarkBallAbsorbSpell"_h:
+							caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0x9C4, "Leone Dragon Project Shouts 2.esp"), true, a_actor, 1, false, 50.0, a_actor); // Blood Cloak
+							break;
+
+						default:
+							break;
+						}
+					}
 					break;
 
 				default:
