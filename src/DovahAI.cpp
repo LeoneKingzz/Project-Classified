@@ -1454,12 +1454,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); //fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); //frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1497,17 +1497,17 @@ namespace DovahAI_Space{
             {
             case 1:
                // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 3:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1520,12 +1520,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1538,12 +1538,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1556,12 +1556,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1571,17 +1571,17 @@ namespace DovahAI_Space{
 
         case 6:
             // fire
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 7:
             // frost
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 8:
-            // frost
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            // shock
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         default:
