@@ -784,15 +784,15 @@ namespace Events_Space
 						switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Shout_to_Cast"))
 						{
 						case 1:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_VoiceDragonFrostBall01SPELLSHOUT"), true, ct, 1, false, 0.0, a_actor);
 							break;
 
 						case 2:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_ShockBallSpellShoutversion"), true, ct, 1, false, 0.0, a_actor);
 							break;
 
 						case 3:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("L_VoiceDragonFireBall01"), true, ct, 1, false, 0.0, a_actor);
 							break;
 
 						default:
