@@ -2195,39 +2195,71 @@ namespace DovahAI_Space{
         }
     }
 
-    void DovahAI::UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target)
+    void DovahAI::UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target, bool tailwhip)
     {
         auto H = RE::TESDataHandler::GetSingleton();
         GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xAF664, "Skyrim.esm"))); // FXMeleePunchLarge [SNDR:000AF664]
-        // LDP_UDImpactKeywords_List [FLST:FE172861]
-        if (const auto key_list = H->LookupForm<RE::BGSListForm>(0x861, "Leone Dragon Project Misc.esp"))
-        {
-            int WornCount = 0;
-            auto inv = a_actor->GetInventory();
-            for (auto &[item, data] : inv)
+        if (tailwhip){
+            // LDP_UDImpactKeywords1_List [FLST:FE172861]
+            if (const auto key_list = H->LookupForm<RE::BGSListForm>(0x861, "Leone Dragon Project Misc.esp"))
             {
-                const auto &[count, entry] = data;
-                if (count > 0 && entry->IsWorn() && item->HasKeywordInList(key_list, false))
+                int WornCount = 0;
+                auto inv = a_actor->GetInventory();
+                for (auto &[item, data] : inv)
                 {
-                    WornCount += 1;
+                    const auto &[count, entry] = data;
+                    if (count > 0 && entry->IsWorn() && item->HasKeywordInList(key_list, false))
+                    {
+                        WornCount += 1;
+                    }
                 }
-            }
-            float ReducePerc = (a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kDamageResist) + (WornCount * 25.0f)) * 0.12f;
+                float ReducePerc = (a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kDamageResist) + (WornCount * 25.0f)) * 0.12f;
 
-            if (ReducePerc >= 80.0f)
+                if (ReducePerc >= 80.0f)
+                {
+                    ReducePerc >= 80.0f;
+                }
+
+                float Damage = a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kUnarmedDamage) * 1.8f / 100.0f / (100.0f - ReducePerc);
+
+                if (a_target->IsBlocking() && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+                {
+                    float BlockPerc = 30.0f + 0.2f * 25.0f * (1.0f + a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kBlock) * 0.015f);
+                    Damage /= 100.0f / (100.0f - BlockPerc);
+                }
+                a_target->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(Damage));
+            }
+        }else{
+            // LDP_UDImpactKeywords1_List [FLST:FE172862]
+            if (const auto key_list = H->LookupForm<RE::BGSListForm>(0x862, "Leone Dragon Project Misc.esp"))
             {
-                ReducePerc >= 80.0f;
-            }
+                int WornCount = 0;
+                auto inv = a_actor->GetInventory();
+                for (auto &[item, data] : inv)
+                {
+                    const auto &[count, entry] = data;
+                    if (count > 0 && entry->IsWorn() && item->HasKeywordInList(key_list, false))
+                    {
+                        WornCount += 1;
+                    }
+                }
+                float ReducePerc = (a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kDamageResist) + (WornCount * 25.0f)) * 0.12f;
 
-            float Damage = a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kUnarmedDamage) * 1.8f / 100.0f / (100.0f - ReducePerc);
+                if (ReducePerc >= 80.0f)
+                {
+                    ReducePerc >= 80.0f;
+                }
 
-            if (a_target->IsBlocking() && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
-            {
-                float BlockPerc = 30.0f + 0.2f * 25.0f * (1.0f + a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kBlock) * 0.015f);
-                Damage /= 100.0f / (100.0f - BlockPerc);
+                float Damage = a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kUnarmedDamage) * 1.8f / 100.0f / (100.0f - ReducePerc);
+
+                if (a_target->IsBlocking() && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+                {
+                    float BlockPerc = 30.0f + 0.2f * 25.0f * (1.0f + a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kBlock) * 0.015f);
+                    Damage /= 100.0f / (100.0f - BlockPerc);
+                }
+                a_target->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(Damage));
             }
-            a_target->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(Damage));
-        }
+        } 
     }
 
     void DovahAI::BiteAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
