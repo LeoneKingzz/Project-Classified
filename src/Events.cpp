@@ -330,6 +330,14 @@ namespace Events_Space
 											DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
 											break;
 
+										case "LDP_aaaUDTailTurnSpell"_h:
+											DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor, true);
+											break;
+
+										case "LDP_aaaUDStampSpell"_h:
+											DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor);
+											break;
+
 										default:
 											break;
 										}
