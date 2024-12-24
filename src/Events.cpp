@@ -484,7 +484,7 @@ namespace Events_Space
 				}
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
-					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp")));
+					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 				}
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
 				{
@@ -952,7 +952,7 @@ namespace Events_Space
 									break;
 
 								case "DeathTimeTravel_Update"_h:
-									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
+									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 
 								case "DeathDefault_Update"_h:
 								case "DeathAgony_Update"_h:
@@ -1062,7 +1062,7 @@ namespace Events_Space
 									break;
 
 								case "startparry_AI_Update"_h:
-									GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // WPNBashBlade
+								    GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C7C5, "Skyrim.esm"))); // WPNBashBladeSD [SNDR:0003C7C5]
 									a_actor->SetGraphVariableBool("bLDP_InParry_State", false);
 									break;
 
