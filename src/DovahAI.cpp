@@ -1454,12 +1454,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); //fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); //frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), true, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1470,12 +1470,12 @@ namespace DovahAI_Space{
         case 4:
         case 6:
             GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), true, nullptr, 1, false, 0.0, a_actor);
             break;
         case 5:
         case 7:
             GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), true, nullptr, 1, false, 0.0, a_actor);
             break;
 
         default:
