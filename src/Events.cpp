@@ -188,8 +188,6 @@ namespace Events_Space
 								}
 								break;
 							}
-							
-							
 						}
 
 						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
@@ -854,10 +852,10 @@ namespace Events_Space
 			break;
 
 		case "BowRelease"_h:
-			if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 1.0))
+			if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("Backfire_CoolKey"), 1.0))
 			{
 				const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-				caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("a_spell"), true, a_actor, 1, false, 0.0, a_actor);
+				caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), true, a_actor, 1, false, 0.0, a_actor);
 			}
 
 		default:
