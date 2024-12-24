@@ -2195,6 +2195,39 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target)
+    {
+        auto H = RE::TESDataHandler::GetSingleton();
+        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xAF664, "Skyrim.esm"))); // FXMeleePunchLarge [SNDR:000AF664]
+        int WornCount = 0;
+
+
+
+        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), true, a_actor, 1, false, 0.0, a_actor);
+        if (const auto combatGroup = a_actor->GetCombatGroup())
+        {
+            for (auto &targetData : combatGroup->targets)
+            {
+                if (auto target = targetData.targetHandle.get())
+                {
+                    RE::Actor *Enemy = target.get();
+                    if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 500.0f)
+                    {
+                        DovahAI_Space::DovahAI::DamageTarget(a_actor, Enemy);
+                        if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
+                        {
+                            if (!Enemy->HasKeywordString("ActorTypeDragon"))
+                            {
+                                GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     void DovahAI::BiteAttack_Impact(RE::Actor *a_actor, RE::Actor *a_target)
     {
         auto H = RE::TESDataHandler::GetSingleton();
