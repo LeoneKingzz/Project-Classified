@@ -792,7 +792,7 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) 
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) 
                     && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -842,7 +842,7 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -885,7 +885,7 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -928,7 +928,7 @@ namespace DovahAI_Space{
             {
                 if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 35.0f)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -1069,7 +1069,7 @@ namespace DovahAI_Space{
             {
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -1096,7 +1096,7 @@ namespace DovahAI_Space{
                 }
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -1124,7 +1124,7 @@ namespace DovahAI_Space{
                 }
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+                    if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
@@ -1382,7 +1382,7 @@ namespace DovahAI_Space{
 
     void DovahAI::LandingCombatAI1(RE::Actor *a_actor)
     {
-        if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("a_spell"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+        if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
         {
             switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
             {
