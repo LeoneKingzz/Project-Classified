@@ -584,7 +584,7 @@ namespace Events_Space
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
 						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", Tx, 512.0f, false, false);
 
 						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonTripleThreat
 						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
