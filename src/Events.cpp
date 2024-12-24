@@ -468,7 +468,8 @@ namespace Events_Space
 			{
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Pelvis", Tx, 512.0f, false, false);
+				// FXDragonTakeoffImpactSet [IPDS:00019A01]
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -521,7 +522,8 @@ namespace Events_Space
 				}
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+				// FXDragonTakeoffImpactSet [IPDS:00019A01]
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -579,8 +581,10 @@ namespace Events_Space
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", var += 1);
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
+						// FXDragonTakeoffImpactSet [IPDS:00019A01]
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+						// FXDragonLandingImpactSet [IPDS:0002BD39]
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "LeoneDragonProject.esp"), "NPC Tail8", Tx, 512.0f, false, false);
 
 						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonTripleThreat
 						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // ks_NPCDragonKillMove
