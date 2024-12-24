@@ -737,7 +737,7 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight")? "NPC RLegToe1" : "NPC LLegFoot";
-					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, data->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), Node);
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDStampSpell"), Node);
 				}
 			}
 			break;
@@ -748,7 +748,7 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight") ? "NPC RLegToe1" : "NPC LLegFoot";
-					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, data->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), Node);
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDTailTurnSpell"), Node);
 				}
 			}
 			break;
