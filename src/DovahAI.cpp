@@ -554,11 +554,11 @@ namespace DovahAI_Space{
         a_actor->NotifyAnimationGraph("to_Flight_Kill_Grab_Action");
 
         auto H = RE::TESDataHandler::GetSingleton();
-        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // talonAOE
+        Physical_Impact(a_actor, "LDP_Talon", 10.0f);
         RE::NiPoint3 Tx;
         Tx.x = -1.0f;
-        GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+        // FXDragonLandingImpactSet [IPDS:0002BD39]
+        GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 900ms, "TalonSmash1_Update");
