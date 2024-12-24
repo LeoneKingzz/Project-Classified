@@ -2199,32 +2199,34 @@ namespace DovahAI_Space{
     {
         auto H = RE::TESDataHandler::GetSingleton();
         GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xAF664, "Skyrim.esm"))); // FXMeleePunchLarge [SNDR:000AF664]
-        int WornCount = 0;
-
-
-
-        const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), true, a_actor, 1, false, 0.0, a_actor);
-        if (const auto combatGroup = a_actor->GetCombatGroup())
+        // LDP_UDImpactKeywords_List [FLST:FE172861]
+        if (const auto key_list = H->LookupForm<RE::BGSListForm>(0x861, "Leone Dragon Project Misc.esp"))
         {
-            for (auto &targetData : combatGroup->targets)
+            int WornCount = 0;
+            auto inv = a_actor->GetInventory();
+            for (auto &[item, data] : inv)
             {
-                if (auto target = targetData.targetHandle.get())
+                const auto &[count, entry] = data;
+                if (count > 0 && entry->IsWorn() && item->HasKeywordInList(key_list, false))
                 {
-                    RE::Actor *Enemy = target.get();
-                    if (a_actor->GetPosition().GetDistance(Enemy->GetPosition()) <= 500.0f)
-                    {
-                        DovahAI_Space::DovahAI::DamageTarget(a_actor, Enemy);
-                        if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
-                        {
-                            if (!Enemy->HasKeywordString("ActorTypeDragon"))
-                            {
-                                GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
-                            }
-                        }
-                    }
+                    WornCount += 1;
                 }
             }
+            float ReducePerc = (a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kDamageResist) + (WornCount * 25.0f)) * 0.12f;
+
+            if (ReducePerc >= 80.0f)
+            {
+                ReducePerc >= 80.0f;
+            }
+
+            float Damage = a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kUnarmedDamage) * 1.8f / 100.0f / (100.0f - ReducePerc);
+
+            if (a_target->IsBlocking() && abs(GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_target, a_actor, nullptr)) <= 45.0f)
+            {
+                float BlockPerc = 30.0f + 0.2f * 25.0f * (1.0f + a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kBlock) * 0.015f);
+                Damage /= 100.0f / (100.0f - BlockPerc);
+            }
+            a_target->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -(Damage));
         }
     }
 
