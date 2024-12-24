@@ -287,9 +287,9 @@ namespace DovahAI_Space{
         a_actor->SetGraphVariableInt("iLDP_Enrage_Count", 0);
         a_actor->NotifyAnimationGraph("Enrage");
         a_actor->SetGraphVariableBool("bNoStagger", true);
-        auto H = RE::TESDataHandler::GetSingleton();
+        //auto H = RE::TESDataHandler::GetSingleton();
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"), true, a_actor, 1, false, 0.0, a_actor); // EnrageSpell
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDEnrageSpell"), true, a_actor, 1, false, 0.0, a_actor); // LDP_aaaUDEnrageSpell "Enrage Effect" [SPEL:FE172805]
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 2000ms, "EnrageState_Update");
@@ -430,18 +430,18 @@ namespace DovahAI_Space{
     {
         if (auto box = GetSingleton()->Get_Box(a_actor))
         {
-            auto H = RE::TESDataHandler::GetSingleton();
+            //auto H = RE::TESDataHandler::GetSingleton();
             box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
             const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-            caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, nullptr, 1, false, 0.0, a_actor); // EnrageSpell
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), true, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
         }else{
             GetSingleton()->Set_Box(a_actor);
             if (auto box = GetSingleton()->Get_Box(a_actor))
             {
-                auto H = RE::TESDataHandler::GetSingleton();
+                //auto H = RE::TESDataHandler::GetSingleton();
                 box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
                 const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-                caster->CastSpellImmediate(H->LookupForm<RE::MagicItem>(0xA342E7, "LeoneDragonProject.esp"), true, nullptr, 1, false, 0.0, a_actor); // EnrageSpell
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), true, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
             }
         }
     }
