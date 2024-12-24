@@ -172,6 +172,26 @@ namespace Events_Space
 					{
 						a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
 
+						if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("StaggerSpikes_CoolKey"), 1.0))
+						{
+							switch (GFunc_Space::GFunc::GetEquippedItemType(enemy, false))
+							{
+							case 7:
+							case 8:
+								//do nothing
+								break;
+
+							default:
+								if (const auto caster = enemy->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant))
+								{
+									caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), true, enemy, 1, false, 1.0, enemy);
+								}
+								break;
+							}
+							
+							
+						}
+
 						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 						{
 							auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
@@ -797,7 +817,7 @@ namespace Events_Space
 			{
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
-					//DovahAI_Space::DovahAI::OneMoreTailTurn(a_actor);
+					// sound.StopInstance(instanceID);
 				}
 			}
 			break;
