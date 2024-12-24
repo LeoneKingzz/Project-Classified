@@ -581,7 +581,8 @@ namespace Events_Space
 				}
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0xA342E7, "LeoneDragonProject.esp"), "", Tx, 512.0f, false, false);
+				// FXDragonTakeoffImpactSet [IPDS:00019A01]
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
