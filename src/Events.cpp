@@ -491,7 +491,7 @@ namespace Events_Space
 			{
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
 				{
-					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
+					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_Landing", 10.0f);
 				}
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
@@ -514,7 +514,7 @@ namespace Events_Space
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect"))
 				{
-					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 13.0f);
+					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_Takeoff", 13.0f);
 					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", true);
 				}
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -535,7 +535,7 @@ namespace Events_Space
 				Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
 				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
-				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 10.0f);
+				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
@@ -607,7 +607,7 @@ namespace Events_Space
 						}
 					}
 				}
-				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LimboSpell", 13.0f);
+				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_TailAttack", 10.0f);
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
 				{
 					std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
