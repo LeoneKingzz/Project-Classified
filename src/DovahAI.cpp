@@ -2192,6 +2192,117 @@ namespace DovahAI_Space{
         }
     }
 
+    void DovahAI::NameGenerating(RE::Actor *a_actor)
+    {
+        auto H = RE::TESDataHandler::GetSingleton();
+        bool namegen = false;
+        RE::BGSListForm* flPartOne = nullptr;
+        RE::BGSListForm* flPartTwo = nullptr;
+        RE::BGSListForm* flPartThree = nullptr;
+
+        while (!namegen)
+        {
+            switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 3))
+            {
+            case 0:
+                if (auto DragonNameWordList01A = H->LookupForm<RE::BGSListForm>(0x800, "LDP_DovahNames.esp"))
+                {
+                    flPartOne = DragonNameWordList01A;
+                }
+                if (auto DragonNameWordList01B = H->LookupForm<RE::BGSListForm>(0x801, "LDP_DovahNames.esp"))
+                {
+                    flPartTwo = DragonNameWordList01B;
+                }
+                if (auto DragonNameWordList01C = H->LookupForm<RE::BGSListForm>(0x802, "LDP_DovahNames.esp"))
+                {
+                    flPartThree = DragonNameWordList01C;
+                }
+                break;
+
+            case 1:
+                if (auto DragonNameWordList02A = H->LookupForm<RE::BGSListForm>(0x803, "LDP_DovahNames.esp"))
+                {
+                    flPartOne = DragonNameWordList02A;
+                }
+                if (auto DragonNameWordList02B = H->LookupForm<RE::BGSListForm>(0x80B, "LDP_DovahNames.esp"))
+                {
+                    flPartTwo = DragonNameWordList02B;
+                }
+                if (auto DragonNameWordList02C = H->LookupForm<RE::BGSListForm>(0x807, "LDP_DovahNames.esp"))
+                {
+                    flPartThree = DragonNameWordList02C;
+                }
+                break;
+
+            case 2:
+                if (auto DragonNameWordList03A = H->LookupForm<RE::BGSListForm>(0x804, "LDP_DovahNames.esp"))
+                {
+                    flPartOne = DragonNameWordList03A;
+                }
+                if (auto DragonNameWordList03B = H->LookupForm<RE::BGSListForm>(0x805, "LDP_DovahNames.esp"))
+                {
+                    flPartTwo = DragonNameWordList03B;
+                }
+                if (auto DragonNameWordList03C = H->LookupForm<RE::BGSListForm>(0x806, "LDP_DovahNames.esp"))
+                {
+                    flPartThree = DragonNameWordList03C;
+                }
+                break;
+
+            case 3:
+                if (auto DragonNameWordList04A = H->LookupForm<RE::BGSListForm>(0x808, "LDP_DovahNames.esp"))
+                {
+                    flPartOne = DragonNameWordList04A;
+                }
+                if (auto DragonNameWordList04B = H->LookupForm<RE::BGSListForm>(0x80A, "LDP_DovahNames.esp"))
+                {
+                    flPartTwo = DragonNameWordList04B;
+                }
+                if (auto DragonNameWordList04C = H->LookupForm<RE::BGSListForm>(0x809, "LDP_DovahNames.esp"))
+                {
+                    flPartThree = DragonNameWordList04C;
+                }
+                break;
+
+            default:
+                break;
+            }
+
+            if (!(flPartOne || flPartTwo || flPartThree)){
+                continue;
+            }
+
+            std::vector<RE::BGSMessage *> flPartOne_vector;
+            std::vector<RE::BGSMessage *> flPartTwo_vector;
+            std::vector<RE::BGSMessage *> flPartThree_vector;
+
+            for (auto i_form : flPartOne->forms)
+            {
+                if(i_form && i_form->Is(RE::FormType::Message)){
+                    flPartOne_vector.push_back(i_form->As<RE::BGSMessage>());
+                }
+            }
+            for (auto i_form : flPartTwo->forms)
+            {
+                if(i_form && i_form->Is(RE::FormType::Message)){
+                    flPartTwo_vector.push_back(i_form->As<RE::BGSMessage>());
+                }
+            }
+            for (auto i_form : flPartThree->forms)
+            {
+                if(i_form && i_form->Is(RE::FormType::Message)){
+                    flPartThree_vector.push_back(i_form->As<RE::BGSMessage>());
+                }
+            }
+
+            std::string FirstWord = (flPartOne_vector[floor(GetSingleton()->rd() * flPartOne_vector.size())])->GetName();
+            std::string SecondWord = (flPartTwo_vector[floor(GetSingleton()->rd() * flPartTwo_vector.size())])->GetName();
+            std::string ThirdWord = (flPartThree_vector[floor(GetSingleton()->rd() * flPartThree_vector.size())])->GetName();
+            std::string Setup = FirstWord + SecondWord + ThirdWord;
+        }
+        
+    }
+
     void DovahAI::UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target, bool tailwhip)
     {
         auto H = RE::TESDataHandler::GetSingleton();
@@ -2200,6 +2311,7 @@ namespace DovahAI_Space{
             // LDP_UDImpactKeywords1_List [FLST:FE172861]
             if (const auto key_list = H->LookupForm<RE::BGSListForm>(0x861, "Leone Dragon Project Misc.esp"))
             {
+                
                 int WornCount = 0;
                 auto inv = a_actor->GetInventory();
                 for (auto &[item, data] : inv)

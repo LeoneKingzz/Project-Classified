@@ -98,6 +98,7 @@ namespace DovahAI_Space{
 		static void OneMoreTailTurn(RE::Actor *a_actor);
 		static void GroundAttackVerticalScene(RE::Actor *a_actor);
 		static void UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target, bool tailwhip = false);
+		static void NameGenerating(RE::Actor *a_actor);
 
 	private:
 		DovahAI() = default;
@@ -108,7 +109,7 @@ namespace DovahAI_Space{
 		DovahAI &operator=(const DovahAI &) = delete;
 		DovahAI &operator=(DovahAI &&) = delete;
 
-		
+		std::random_device rd;
 
 	protected:
 		std::unordered_map<RE::Actor *, std::tuple<int, std::vector<int>, std::vector<int>, std::vector<int>>> _attackList;
