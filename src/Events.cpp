@@ -201,8 +201,7 @@ namespace Events_Space
 								a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
 								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
 								{
-									// headbroken spell
-									// additem
+									// headbroken flag
 									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
 									{
 										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
@@ -215,7 +214,7 @@ namespace Events_Space
 								a_actor->SetGraphVariableInt("iLDP_Back_HP", val -= DiffHp);
 								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") <= 0)
 								{
-									// tailbroken spell
+									// tailbroken flag
 									// additem (dragon bonemeal)
 									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
 									{

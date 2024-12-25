@@ -97,6 +97,7 @@ namespace DovahAI_Space{
 		static void CombatStylePref(RE::Actor *a_actor);
 		static void OneMoreTailTurn(RE::Actor *a_actor);
 		static void GroundAttackVerticalScene(RE::Actor *a_actor);
+		static void UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target, bool tailwhip = false);
 
 	private:
 		DovahAI() = default;
