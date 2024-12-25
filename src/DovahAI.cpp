@@ -2407,6 +2407,9 @@ namespace DovahAI_Space{
     void DovahAI::Unarm_effect(RE::Actor *a_actor)
     {
         GFunc_Space::GFunc::InterruptAttack(a_actor);
+        a_actor->SetGraphVariableFloat("staggerDirection", 0.0);
+        a_actor->SetGraphVariableFloat("staggerMagnitude", 1.0);
+        a_actor->NotifyAnimationGraph("staggerStart");
 
         auto form_list = GFunc_Space::GFunc::GetEquippedForm(a_actor);
 
