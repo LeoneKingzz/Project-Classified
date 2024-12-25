@@ -340,6 +340,17 @@ namespace GFunc_Space{
 			return func(vm, frame, self, afX, afY, afZ, afMagnitude);
 		}
 
+		inline auto AddItem(RE::TESObjectREFR *self, RE::TESForm* item, bool abSilent)
+		{
+			using func_t = void(RE::BSScript::Internal::VirtualMachine *, RE::VMStackID, RE::TESObjectREFR *, RE::TESForm *, bool);
+			RE::VMStackID frame = 0;
+
+			REL::Relocation<func_t> func{RE::VTABLE_SkyrimScript____AddItemFunctor[0]};
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+
+			return func(vm, frame, self, item, abSilent);
+		}
+
 		static void SetForcedLandingMarker(RE::Actor *self, RE::TESObjectREFR *target)
 		{
 			using func_t = decltype(&SetForcedLandingMarker);
