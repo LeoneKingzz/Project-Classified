@@ -2184,10 +2184,7 @@ namespace DovahAI_Space{
                         DovahAI_Space::DovahAI::DamageTarget(a_actor, Enemy);
                         if (!(Enemy->IsBlocking() && GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(Enemy, a_actor, nullptr) <= 45.0f))
                         {
-                            if (!Enemy->HasKeywordString("ActorTypeDragon"))
-                            {
-                                GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
-                            }
+                            GFunc_Space::GFunc::PushActorAway(a_actor, Enemy, p_force);
                         }
                     }
                 }

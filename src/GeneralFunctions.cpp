@@ -659,10 +659,13 @@ namespace GFunc_Space{
 
 	void GFunc::PushActorAway(RE::Actor *causer, RE::Actor *target, float magnitude)
 	{
-		auto targetPoint = causer->GetNodeByName(causer->GetActorRuntimeData().race->bodyPartData->parts[0]->targetName.c_str());
-		RE::NiPoint3 vec = targetPoint->world.translate;
-		// RE::NiPoint3 vec = causer->GetPosition();
-		pushActorAway(causer->GetActorRuntimeData().currentProcess, target, vec, magnitude);
+		if (!target->HasKeywordString("ActorTypeDragon"))
+		{
+			auto targetPoint = causer->GetNodeByName(causer->GetActorRuntimeData().race->bodyPartData->parts[0]->targetName.c_str());
+			RE::NiPoint3 vec = targetPoint->world.translate;
+			// RE::NiPoint3 vec = causer->GetPosition();
+			pushActorAway(causer->GetActorRuntimeData().currentProcess, target, vec, magnitude);
+		}
 	}
 
 	
