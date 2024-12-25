@@ -2194,11 +2194,26 @@ namespace DovahAI_Space{
 
     void DovahAI::NameGenerating(RE::Actor *a_actor)
     {
+        if (GetBoolVariable(a_actor, "bLDP_NameGenerated_Faction"))
+        {
+            return;
+        }
+
+        std::string DN = a_actor->GetDisplayFullName();
+
+        if (DN == "Alduin" || DN == "Paarthurnax" || DN == "Odahviing" || DN == "Durnehviir" || DN == "Krosulhah" || DN == "Mirmulnir" || DN == "Naaslaarum" 
+        || DN == "Nahagliiv" || DN == "Relonikiv" || DN == "Sahloknir" || DN == "Sahrotaar" || DN == "Viinturuth" || DN == "Vuljotnaak" || DN == "Vulthuryol" 
+        || DN == "Voslaarum" || DN == "Faallokaar" || DN == "Thanatos" || DN == "Behemoth")
+        {
+            return;
+        }
+
         auto H = RE::TESDataHandler::GetSingleton();
         bool namegen = false;
         RE::BGSListForm* flPartOne = nullptr;
         RE::BGSListForm* flPartTwo = nullptr;
         RE::BGSListForm* flPartThree = nullptr;
+        std::string DragonName_Gen;
 
         while (!namegen)
         {
@@ -2299,8 +2314,31 @@ namespace DovahAI_Space{
             std::string SecondWord = (flPartTwo_vector[floor(GetSingleton()->rd() * flPartTwo_vector.size())])->GetName();
             std::string ThirdWord = (flPartThree_vector[floor(GetSingleton()->rd() * flPartThree_vector.size())])->GetName();
             std::string Setup = FirstWord + SecondWord + ThirdWord;
+            std::string FirstChange = Setup.substr(0, Setup.find("2")) + Setup.substr(Setup.find("2") + 1);
+            std::string SecondChange = FirstChange.substr(0, FirstChange.size() - 1);
+            DragonName_Gen = SecondChange.substr(1);
+            std::string FirstWordFinal = FirstWord.substr(FirstWord.size() - 1);
+            std::string SecondWordInitial = SecondWord.substr(0);
+            std::string SecondWordFinal = SecondWord.substr(SecondWord.size() - 2);
+            std::string ThirdWordInitial = ThirdWord.substr(0);
+
+            if (FirstWordFinal != SecondWordInitial && SecondWordFinal != ThirdWordInitial)
+            {
+                if (FirstWord.substr(1) != SecondWord.substr(0, SecondWord.size() - 1) && ThirdWord != SecondWord && FirstWord.substr(1) != ThirdWord.substr(0, ThirdWord.size() - 1))
+                {
+                    if (DragonName_Gen != "Alduin" && DragonName_Gen != "Paarthurnax" && DragonName_Gen != "Odahviing" && DragonName_Gen != "Durnehviir" && DragonName_Gen 
+                    != "Krosulhah" && DragonName_Gen != "Mirmulnir" && DragonName_Gen != "Naaslaarum" && DragonName_Gen != "Nahagliiv" && DragonName_Gen != "Relonikiv" && DragonName_Gen 
+                    != "Sahloknir" && DragonName_Gen != "Sahrotaar" && DragonName_Gen != "Viinturuth" && DragonName_Gen != "Vuljotnaak" && DragonName_Gen != "Vulthuryol" && DragonName_Gen 
+                    != "Voslaarum" && DragonName_Gen != "Faallokaar" && DragonName_Gen != "Thanatos" && DragonName_Gen != "Behemoth")
+                    {
+                        namegen = true;
+                        break;
+                    }
+                }
+            }
         }
-        
+        a_actor->SetGraphVariableBool("bLDP_NameGenerated_Faction", true);
+        a_actor->SetDisplayName(DragonName_Gen, false);
     }
 
     void DovahAI::UDPhysical_Impact(RE::Actor *a_actor, RE::Actor *a_target, bool tailwhip)
