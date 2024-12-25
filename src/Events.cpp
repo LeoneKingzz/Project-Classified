@@ -216,6 +216,7 @@ namespace Events_Space
 								{
 									// tailbroken flag
 									// additem (dragon bonemeal)
+									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonTailBoneMeal"), true);
 									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
 									{
 										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
@@ -229,6 +230,7 @@ namespace Events_Space
 								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
 								{
 									// additem (dragon claw)
+									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
 									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
 									{
 									case 0:
@@ -255,6 +257,7 @@ namespace Events_Space
 								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
 								{
 									// additem (dragon claw)
+									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
 									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
 									{
 									case 0:
