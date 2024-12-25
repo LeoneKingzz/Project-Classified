@@ -111,6 +111,7 @@ namespace Events_Space
 			switch (event->newState.get()) {
 			case RE::ACTOR_COMBAT_STATE::kCombat:
 				a_actor->SetGraphVariableBool("bLDP_IsinCombat", true);
+				DovahAI_Space::DovahAI::NameGenerating(a_actor);
 				a_actor->SetGraphVariableBool("bLDP_CrashLand_Faction", true);
 				DovahAI_Space::DovahAI::OnInitHPCalc(a_actor);
 				DovahAI_Space::DovahAI::DragonType(a_actor);
