@@ -363,13 +363,15 @@ namespace GFunc_Space{
 			return func(self, a_faction);
 		}
 
-		static bool PlayImpactEffect(RE::TESObjectREFR *a_ref, RE::BGSImpactDataSet *a_impactEffect, const RE::BSFixedString &a_nodeName, float afPickDirX = 0.0, float afPickDirY = 0.0,
-									 float afPickDirZ = -1.0, float afPickLength = 512.0, bool abApplyNodeRotation = false,
-									 bool abUseNodeLocalRotation = false)
+		static bool PlayImpactEffect(RE::TESObjectREFR *a_ref, RE::BGSImpactDataSet *a_impactEffect, const RE::BSFixedString &a_nodeName, float afPickDirX, float afPickDirY, float afPickDirZ, float afPickLength, bool abApplyNodeRotation, bool abUseNodeLocalRotation)
 		{
-			using func_t = decltype(&PlayImpactEffect);
-			REL::Relocation<func_t> func{RELOCATION_ID(35320, 36215)};
-			return func(a_ref, a_impactEffect, a_nodeName, a_pickDirection, a_pickLength, a_applyNodeRotation, a_useNodeLocalRotation);
+			using func_t = bool(RE::BSScript::Internal::VirtualMachine *, RE::VMStackID, RE::TESObjectREFR *, RE::BGSImpactDataSet * , const RE::BSFixedString &, float , float , float, float , bool, bool);
+			RE::VMStackID frame = 0;
+
+			REL::Relocation<func_t> func{RE::VTABLE_BSScript__NativeFunction8_TESObjectREFR_bool_BGSImpactDataSet___BSFixedString_const___float_float_float_float_bool_bool_[0]};
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+
+			return func(vm, frame, a_ref, a_impactEffect, a_nodeName, afPickDirX, afPickDirY, afPickDirZ, afPickLength, abApplyNodeRotation, abUseNodeLocalRotation);
 		}
 
 		bool play_impact_1(RE::Actor *actor, const RE::BSFixedString &nodeName);
