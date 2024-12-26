@@ -372,41 +372,48 @@ namespace Events_Space
 				return RE::BSEventNotifyControl::kContinue;
 			}
 
-			if (auto enemy = event->caster->As<RE::Actor>()){
-				if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat")){
-					if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->magicEffect)){
-						switch (form->GetFormType())
+			if (const auto enemyhandle = event->caster.get(); enemyhandle)
+			{
+				if (enemyhandle->Is(RE::FormType::ActorCharacter))
+				{
+					RE::Actor *enemy = enemyhandle->As<RE::Actor>();
+					if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat"))
+					{
+						if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->magicEffect))
 						{
-						case RE::FormType::MagicEffect:
-							if (auto a_effect = form->As<RE::EffectSetting>())
+							switch (form->GetFormType())
 							{
-								std::string Lsht = (clib_util::editorID::get_editorID(a_effect));
-								switch (hash(Lsht.c_str(), Lsht.size()))
+							case RE::FormType::MagicEffect:
+								if (auto a_effect = form->As<RE::EffectSetting>())
 								{
-								case "BiteEffect_LDP"_h:
-									DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
-									break;
+									std::string Lsht = (clib_util::editorID::get_editorID(a_effect));
+									switch (hash(Lsht.c_str(), Lsht.size()))
+									{
+									case "BiteEffect_LDP"_h:
+										DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
+										break;
 
-								case "LeftWingAttackEffect_LDP"_h:
-									DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
-									break;
+									case "LeftWingAttackEffect_LDP"_h:
+										DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
+										break;
 
-								case "RightWingAttackEffect_LDP"_h:
-									DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
-									break;
+									case "RightWingAttackEffect_LDP"_h:
+										DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+										break;
 
-								case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
-									DovahAI_Space::DovahAI::Unarm_effect(a_actor);
-									break;
+									case "LDP_DragonVoiceDisarmOrUnarmEffect2"_h:
+										DovahAI_Space::DovahAI::Unarm_effect(a_actor);
+										break;
 
-								default:
-									break;
+									default:
+										break;
+									}
 								}
-							}
-							break;
+								break;
 
-						default:
-							break;
+							default:
+								break;
+							}
 						}
 					}
 				}
