@@ -161,10 +161,10 @@ namespace DovahAI_Space{
 
     void DovahAI::ResetAI(RE::Actor *a_actor)
     {
-        auto data = RE::TESDataHandler::GetSingleton();
-        a_actor->AddSpell(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"));
+        //auto data = RE::TESDataHandler::GetSingleton();
+        a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
         std::jthread waitThread(wait, 350);
-        a_actor->RemoveSpell(data->LookupForm<RE::SpellItem>(0xA342E7, "LeoneDragonProject.esp"));
+        a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
     }
 
     void DovahAI::SendRandomAnimationEvent(RE::Actor *a_actor, int I, std::string AnimEvent01, std::string AnimEvent02, std::string AnimEvent03, std::string AnimEvent04)
