@@ -1334,7 +1334,7 @@ namespace DovahAI_Space{
 
     void DovahAI::MoveControllShout1(RE::Actor *a_actor)
     {
-        auto trackspeed = pow(GetFloatVariable(a_actor, "fLDP_MoveCtrlShout_angle") * (1.0 + (GetIntVariable(a_actor, "iLDP_Lvl_Rank") / 50.0)) / 10.0, 3.0) / 10000.0;
+        auto trackspeed = pow(GetFloatVariable(a_actor, "fLDP_MoveCtrlShout_angle") * (1.0f + (GetIntVariable(a_actor, "iLDP_Lvl_Rank") / 50.0f)) / 10.0f, 3.0f) / 10000.0f;
         a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", trackspeed);
 
         int i = 0;
@@ -2332,10 +2332,11 @@ namespace DovahAI_Space{
                     flPartThree_vector.push_back(i_form->As<RE::BGSMessage>());
                 }
             }
+            //static_cast<int>
 
-            std::string FirstWord = (flPartOne_vector[floor(GetSingleton()->rd() * flPartOne_vector.size())])->GetName();
-            std::string SecondWord = (flPartTwo_vector[floor(GetSingleton()->rd() * flPartTwo_vector.size())])->GetName();
-            std::string ThirdWord = (flPartThree_vector[floor(GetSingleton()->rd() * flPartThree_vector.size())])->GetName();
+            std::string FirstWord = (flPartOne_vector[static_cast<int>(floor(GetSingleton()->rd() * flPartOne_vector.size()))])->GetName();
+            std::string SecondWord = (flPartTwo_vector[static_cast<int>(floor(GetSingleton()->rd() * flPartTwo_vector.size()))])->GetName();
+            std::string ThirdWord = (flPartThree_vector[static_cast<int>(floor(GetSingleton()->rd() * flPartThree_vector.size()))])->GetName();
             std::string Setup = FirstWord + SecondWord + ThirdWord;
             std::string FirstChange = Setup.substr(0, Setup.find("2")) + Setup.substr(Setup.find("2") + 1);
             std::string SecondChange = FirstChange.substr(0, FirstChange.size() - 1);
