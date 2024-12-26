@@ -185,7 +185,7 @@ namespace Events_Space
 							default:
 								if (const auto caster = enemy->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant))
 								{
-									caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), true, enemy, 1, false, 1.0, enemy);
+									caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), false, enemy, 1, false, 1.0, enemy);
 								}
 								break;
 							}
@@ -448,7 +448,7 @@ namespace Events_Space
 						switch (hash(Lsht.c_str(), Lsht.size()))
 						{
 						case "LDP_005VijoDarkBallAbsorbSpell"_h:
-							caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0x9C4, "Leone Dragon Project Shouts 2.esp"), true, a_actor, 1, false, 50.0, a_actor); // Blood Cloak
+							caster->CastSpellImmediate(H->LookupForm<RE::SpellItem>(0x9C4, "Leone Dragon Project Shouts 2.esp"), false, a_actor, 1, false, 50.0, a_actor); // Blood Cloak
 							break;
 
 						default:
@@ -487,10 +487,10 @@ namespace Events_Space
 		case "DragonForcefulLandEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				RE::NiPoint3 Tx;
-				Tx.x = -1.0f;
+				//RE::NiPoint3 Tx;
+				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -541,10 +541,10 @@ namespace Events_Space
 				{
 					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
-				RE::NiPoint3 Tx;
-				Tx.x = -1.0f;
+				//RE::NiPoint3 Tx;
+				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -592,10 +592,10 @@ namespace Events_Space
 				{
 					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
-				RE::NiPoint3 Tx;
-				Tx.x = -1.0f;
+				//RE::NiPoint3 Tx;
+				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
@@ -604,9 +604,9 @@ namespace Events_Space
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3F1F3, "Skyrim.esm"))); // NPCDragonLandCrashLong2DSD [SNDR:0003F1F3]
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
@@ -747,10 +747,10 @@ namespace Events_Space
 				{
 					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
 				}
-				RE::NiPoint3 Tx;
-				Tx.x = -1.0f;
+				//RE::NiPoint3 Tx;
+				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
@@ -797,15 +797,15 @@ namespace Events_Space
 						switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Shout_to_Cast"))
 						{
 						case 1:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_VoiceDragonFrostBall01SPELLSHOUT"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_VoiceDragonFrostBall01SPELLSHOUT"), false, ct, 1, false, 0.0, a_actor);
 							break;
 
 						case 2:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_ShockBallSpellShoutversion"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_ShockBallSpellShoutversion"), false, ct, 1, false, 0.0, a_actor);
 							break;
 
 						case 3:
-							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("L_VoiceDragonFireBall01"), true, ct, 1, false, 0.0, a_actor);
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("L_VoiceDragonFireBall01"), false, ct, 1, false, 0.0, a_actor);
 							break;
 
 						default:
@@ -882,7 +882,7 @@ namespace Events_Space
 			if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("Backfire_CoolKey"), 1.0))
 			{
 				const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-				caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), true, a_actor, 1, false, 0.0, a_actor);
+				caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), false, a_actor, 1, false, 1.0, a_actor);
 			}
 
 		default:

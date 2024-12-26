@@ -363,13 +363,18 @@ namespace GFunc_Space{
 			return func(self, a_faction);
 		}
 
-		static bool PlayImpactEffect(RE::TESObjectREFR *a_ref, RE::BGSImpactDataSet *a_impactEffect, const RE::BSFixedString &a_nodeName, RE::NiPoint3 &a_pickDirection, float a_pickLength, bool a_applyNodeRotation, bool a_useNodeLocalRotation)
+		static bool PlayImpactEffect(RE::TESObjectREFR *a_ref, RE::BGSImpactDataSet *a_impactEffect, const RE::BSFixedString &a_nodeName, float afPickDirX = 0.0, float afPickDirY = 0.0,
+									 float afPickDirZ = -1.0, float afPickLength = 512.0, bool abApplyNodeRotation = false,
+									 bool abUseNodeLocalRotation = false)
 		{
 			using func_t = decltype(&PlayImpactEffect);
 			REL::Relocation<func_t> func{RELOCATION_ID(35320, 36215)};
 			return func(a_ref, a_impactEffect, a_nodeName, a_pickDirection, a_pickLength, a_applyNodeRotation, a_useNodeLocalRotation);
 		}
 
+		bool play_impact_1(RE::Actor *actor, const RE::BSFixedString &nodeName);
+		bool play_impact_2(RE::TESObjectREFR *a, RE::BGSImpactData *impact, RE::NiPoint3 *P_V, RE::NiPoint3 *P_from, RE::NiNode *bone);
+		bool play_impact_3(RE::TESObjectCELL *cell, float a_lifetime, const char *model, RE::NiPoint3 *a_rotation, RE::NiPoint3 *a_position, float a_scale, uint32_t a_flags, RE::NiNode *a_target);
 
 	private:
 		// GFunc() = default;

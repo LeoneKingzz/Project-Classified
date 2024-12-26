@@ -436,7 +436,7 @@ namespace DovahAI_Space{
             //auto H = RE::TESDataHandler::GetSingleton();
             box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
             const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), true, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), false, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
         }else{
             GetSingleton()->Set_Box(a_actor);
             if (auto boxx = GetSingleton()->Get_Box(a_actor))
@@ -444,7 +444,7 @@ namespace DovahAI_Space{
                 //auto H = RE::TESDataHandler::GetSingleton();
                 boxx->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
                 const auto caster = boxx->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), true, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), false, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
             }
         }
     }
@@ -455,14 +455,14 @@ namespace DovahAI_Space{
         {
             box->MoveToNode(a_actor, a_node);
             const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-            caster->CastSpellImmediate(a_spell, true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(a_spell, false, a_actor, 1, false, 0.0, a_actor);
         }else{
             GetSingleton()->Set_Box(a_actor);
             if (auto boxx = GetSingleton()->Get_Box(a_actor))
             {
                 boxx->MoveToNode(a_actor, a_node);
                 const auto caster = boxx->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-                caster->CastSpellImmediate(a_spell, true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(a_spell, false, a_actor, 1, false, 0.0, a_actor);
             }
         }
     }
@@ -1464,13 +1464,13 @@ namespace DovahAI_Space{
             case 1:
                 // MAGFlamesDragonFireLPMSD [SNDR:0003EF56]
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3EF56, "Skyrim.esm"))); // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // MAGDestructionFrostBiteDragonFireLPM [SNDR:000DAB87]
                 GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xDAB87, "Skyrim.esm"))); // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1482,13 +1482,13 @@ namespace DovahAI_Space{
         case 6:
             // MAGFlamesDragonFireLPMSD [SNDR:0003EF56]
             GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3EF56, "Skyrim.esm"))); // fire
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), false, nullptr, 1, false, 0.0, a_actor);
             break;
         case 5:
         case 7:
             // MAGDestructionFrostBiteDragonFireLPM [SNDR:000DAB87]
             GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xDAB87, "Skyrim.esm"))); // frost
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), false, nullptr, 1, false, 0.0, a_actor);
             break;
 
         default:
@@ -1510,17 +1510,17 @@ namespace DovahAI_Space{
             {
             case 1:
                // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 3:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1533,12 +1533,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1551,12 +1551,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // fire
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1569,12 +1569,12 @@ namespace DovahAI_Space{
             {
             case 1:
                 // shock
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 // frost
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             default:
@@ -1584,17 +1584,17 @@ namespace DovahAI_Space{
 
         case 6:
             // fire
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFireBreath3"), false, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 7:
             // frost
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("VoiceFrostBreath3"), false, nullptr, 1, false, 0.0, a_actor);
             break;
 
         case 8:
             // shock
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), true, nullptr, 1, false, 0.0, a_actor);
+            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonReverbAreaNormal"), false, nullptr, 1, false, 0.0, a_actor);
             break;
 
         default:
@@ -2206,7 +2206,7 @@ namespace DovahAI_Space{
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), true, a_actor, 1, false, 0.0, a_actor);
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), false, a_actor, 1, false, 0.0, a_actor);
         if (const auto combatGroup = a_actor->GetCombatGroup())
         {
             for (auto &targetData : combatGroup->targets)
