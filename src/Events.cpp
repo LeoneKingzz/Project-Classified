@@ -894,7 +894,7 @@ namespace Events_Space
 		//eventSourceHolder->AddEventSink<RE::TESEquipEvent>(eventSink);
 		eventSourceHolder->AddEventSink<RE::TESCombatEvent>(eventSink);
 		//eventSourceHolder->AddEventSink<RE::TESActorLocationChangeEvent>(eventSink);
-		// eventSourceHolder->AddEventSink<RE::TESSpellCastEvent>(eventSink);
+		eventSourceHolder->AddEventSink<RE::TESSpellCastEvent>(eventSink);
 		eventSourceHolder->AddEventSink<RE::TESDeathEvent>(eventSink);
 		eventSourceHolder->AddEventSink<RE::TESHitEvent>(eventSink);
 		eventSourceHolder->AddEventSink<RE::TESMagicEffectApplyEvent>(eventSink);
