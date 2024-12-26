@@ -2449,16 +2449,19 @@ namespace DovahAI_Space{
                 case 1:
                 case 2:
                 case 5:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
+                    // WPNBashBladeSD [SNDR:0003C7C5]
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C7C5, "Skyrim.esm"))); // bashblade
                     break;
 
                 case 4:
                 case 6:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
+                    // WPNBashBluntSD [SNDR:0003C85E]
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C85E, "Skyrim.esm"))); // bashblunt
                     break;
 
                 case 3:
-                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
+                    // WPNBashAxeSD [SNDR:0003C861]
+                    GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C861, "Skyrim.esm"))); // bashaxe
                     break;
 
                 default:
@@ -2499,16 +2502,16 @@ namespace DovahAI_Space{
                     case 1:
                     case 2:
                     case 5:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C7C5, "Skyrim.esm"))); // bashblade
                         break;
 
                     case 4:
                     case 6:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C85E, "Skyrim.esm"))); // bashblunt
                         break;
 
                     case 3:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C861, "Skyrim.esm"))); // bashaxe
                         break;
 
                     default:
@@ -2546,16 +2549,16 @@ namespace DovahAI_Space{
                     case 1:
                     case 2:
                     case 5:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblade
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C7C5, "Skyrim.esm"))); // bashblade
                         break;
 
                     case 4:
                     case 6:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashblunt
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C85E, "Skyrim.esm"))); // bashblunt
                         break;
 
                     case 3:
-                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // bashaxe
+                        GFunc_Space::GFunc::playSound(a_target, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3C861, "Skyrim.esm"))); // bashaxe
                         break;
 
                     default:
@@ -2688,7 +2691,7 @@ namespace DovahAI_Space{
         case 5:
             if(a_actor){
                 auto H = RE::TESDataHandler::GetSingleton();
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // k/s_NPCDragonKillMove
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
                 GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 6200ms, "DeathTimeTravel_Update");
                 GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
