@@ -167,143 +167,146 @@ namespace Events_Space
 					return RE::BSEventNotifyControl::kContinue;
 				}
 
-				if (auto enemy = event->cause->As<RE::Actor>())
+				if (const auto enemyhandle = event->cause.get(); enemyhandle)
 				{
-					if (enemy->IsHostileToActor(a_actor))
+					if (enemyhandle->Is(RE::FormType::ActorCharacter))
 					{
-						a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
-
-						if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("StaggerSpikes_CoolKey"), 1.0))
+						RE::Actor *enemy = enemyhandle->As<RE::Actor>();
+						if (enemy->IsHostileToActor(a_actor))
 						{
-							switch (GFunc_Space::GFunc::GetEquippedItemType(enemy, false))
-							{
-							case 7:
-							case 8:
-								//do nothing
-								break;
+							a_actor->SetGraphVariableBool("bLDP_Busy_State", true);
 
-							default:
-								if (const auto caster = enemy->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant))
+							if (GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("StaggerSpikes_CoolKey"), 1.0))
+							{
+								switch (GFunc_Space::GFunc::GetEquippedItemType(enemy, false))
 								{
-									caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), false, enemy, 1, false, 1.0, enemy);
+								case 7:
+								case 8:
+									// do nothing
+									break;
+
+								default:
+									if (const auto caster = enemy->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant))
+									{
+										caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_StaggerHitSpell"), false, enemy, 1, false, 1.0, enemy);
+									}
+									break;
 								}
-								break;
 							}
+
+							if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+							{
+								auto DiffHp = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+								float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
+
+								if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") > 0)
+								{
+									auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP");
+									a_actor->SetGraphVariableFloat("iLDP_Front_HP", val -= DiffHp);
+									if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") <= 0)
+									{
+										// headbroken flag
+										if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+										{
+											DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+										}
+									}
+								}
+								else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") > 0)
+								{
+									auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP");
+									a_actor->SetGraphVariableFloat("iLDP_Back_HP", val -= DiffHp);
+									if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") <= 0)
+									{
+										// tailbroken flag
+										// additem (dragon bonemeal)
+										GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonTailBoneMeal"), true);
+										if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+										{
+											DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+										}
+									}
+								}
+								else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") > 0)
+								{
+									auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP");
+									a_actor->SetGraphVariableFloat("iLDP_Left_HP", val -= DiffHp);
+									if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") <= 0)
+									{
+										// additem (dragon claw)
+										GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
+										switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+										{
+										case 0:
+											a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+											break;
+										case 1:
+											a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+											break;
+
+										default:
+											break;
+										}
+
+										if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+										{
+											DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+										}
+									}
+								}
+								else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") > 0)
+								{
+									auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP");
+									a_actor->SetGraphVariableFloat("iLDP_Right_HP", val -= DiffHp);
+									if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") <= 0)
+									{
+										// additem (dragon claw)
+										GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
+										switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
+										{
+										case 0:
+											a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
+											break;
+										case 1:
+											a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
+											break;
+
+										default:
+											break;
+										}
+
+										if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
+										{
+											DovahAI_Space::DovahAI::BleedOut_state(a_actor);
+										}
+									}
+								}
+
+								a_actor->SetGraphVariableFloat("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+
+								auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
+
+								if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
+								{
+									DovahAI_Space::DovahAI::Enrage(a_actor, 3);
+									a_actor->SetGraphVariableFloat("iLDP_Right_HP", rt -= 0.1f);
+								}
+
+								if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
+								{
+									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsStaggering"))
+									{
+										DovahAI_Space::DovahAI::Enrage(a_actor, 1);
+									}
+								}
+							}
+
+							std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+							GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
+							GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 						}
-
-						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
-						{
-							auto DiffHp = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
-							float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
-
-							if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") > 0)
-							{
-								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP");
-								a_actor->SetGraphVariableFloat("iLDP_Front_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") <= 0)
-								{
-									// headbroken flag
-									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-									{
-										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-									}
-								}
-							}
-							else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") > 0)
-							{
-								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP");
-								a_actor->SetGraphVariableFloat("iLDP_Back_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") <= 0)
-								{
-									// tailbroken flag
-									// additem (dragon bonemeal)
-									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonTailBoneMeal"), true);
-									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-									{
-										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-									}
-								}
-							}
-							else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") > 0)
-							{
-								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP");
-								a_actor->SetGraphVariableFloat("iLDP_Left_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") <= 0)
-								{
-									// additem (dragon claw)
-									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
-									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
-									{
-									case 0:
-										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
-										break;
-									case 1:
-										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
-										break;
-
-									default:
-										break;
-									}
-
-									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-									{
-										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-									}
-								}
-							}
-							else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") > 0)
-							{
-								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP");
-								a_actor->SetGraphVariableFloat("iLDP_Right_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") <= 0)
-								{
-									// additem (dragon claw)
-									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
-									switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_DownFlyRate"))
-									{
-									case 0:
-										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 1);
-										break;
-									case 1:
-										a_actor->SetGraphVariableInt("iLDP_DownFlyRate", 2);
-										break;
-
-									default:
-										break;
-									}
-
-									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
-									{
-										DovahAI_Space::DovahAI::BleedOut_state(a_actor);
-									}
-								}
-							}
-
-							a_actor->SetGraphVariableFloat("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
-
-							auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
-
-							if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
-							{
-								DovahAI_Space::DovahAI::Enrage(a_actor, 3);
-								a_actor->SetGraphVariableFloat("iLDP_Right_HP", rt -= 0.1f);
-							}
-
-							if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
-							{
-								if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsStaggering"))
-								{
-									DovahAI_Space::DovahAI::Enrage(a_actor, 1);
-								}
-							}
-						}
-
-						std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-						GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "BusyState_Update");
-						GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 					}
 				}
-
 			}else{
 				if (const auto enemyhandle = event->cause.get(); enemyhandle)
 				{
