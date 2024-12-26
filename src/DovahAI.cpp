@@ -1869,17 +1869,20 @@ namespace DovahAI_Space{
                         switch (RNGy)
                         {
                         case 1:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            // VOCShoutDragonAlduin27BFoKrahDiin [SNDR:FE164A2B]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2B, "Leone Dragon Project Voicing.esp"))); // frost
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                             break;
 
                         case 2:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            // VOCShoutDragonAlduin27CSovAgSlen [SNDR:FE164A2C]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2C, "Leone Dragon Project Voicing.esp"))); // shock
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                             break;
 
                         case 3:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            // VOCShoutDragonAlduin27AYolToorShul [SNDR:FE164A2A]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2A, "Leone Dragon Project Voicing.esp"))); // fire
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                             break;
 
@@ -1892,17 +1895,20 @@ namespace DovahAI_Space{
                         switch (RNGy)
                         {
                         case 1:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            // VOCShoutDragon31BFoKrahDiin [SNDR:FE164A28]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA28, "Leone Dragon Project Voicing.esp"))); // frost
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                             break;
 
                         case 2:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            // VOCShoutDragon31CSovAgSlen [SNDR:FE164A29]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA29, "Leone Dragon Project Voicing.esp"))); // shock
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                             break;
 
                         case 3:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            // VOCShoutDragon31AYolToorShul [SNDR:FE164A27]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA27, "Leone Dragon Project Voicing.esp"))); // fire
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                             break;
 
@@ -1917,12 +1923,14 @@ namespace DovahAI_Space{
                             switch (RNG)
                             {
                             case 1:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                // VOCShoutDragonPaarthurnax20BFoKrahDiin [SNDR:FE164A30]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA30, "Leone Dragon Project Voicing.esp"))); // frost
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                                 break;
 
                             case 2:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                // VOCShoutDragonPaarthurnax20AYolToorShul [SNDR:FE164A2F]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2F, "Leone Dragon Project Voicing.esp"))); // fire
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                                 break;
 
@@ -1935,12 +1943,14 @@ namespace DovahAI_Space{
                             switch (RNG)
                             {
                             case 1:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                // VOCShoutDragonOdahviing20BFoKrahDiin [SNDR:FE164A2E]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2E, "Leone Dragon Project Voicing.esp"))); // frost
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                                 break;
 
                             case 2:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                // VOCShoutDragonOdahviing20AYolToorShul [SNDR:FE164A2D]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA2D, "Leone Dragon Project Voicing.esp"))); // fire
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                                 break;
 
@@ -1953,12 +1963,14 @@ namespace DovahAI_Space{
                             switch (RNG)
                             {
                             case 1:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                                // VOCShoutDragon31BFoKrahDiin [SNDR:FE164A28]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA28, "Leone Dragon Project Voicing.esp"))); // frost
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                                 break;
 
                             case 2:
-                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                                // VOCShoutDragon31AYolToorShul [SNDR:FE164A27]
+                                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA27, "Leone Dragon Project Voicing.esp"))); // fire
                                 a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                                 break;
 
@@ -1973,12 +1985,14 @@ namespace DovahAI_Space{
                         switch (RNG)
                         {
                         case 1:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            // VOCShoutDragon31CSovAgSlen [SNDR:FE164A29]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA29, "Leone Dragon Project Voicing.esp"))); // shock
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                             break;
 
                         case 2:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                            // VOCShoutDragon31AYolToorShul [SNDR:FE164A27]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA27, "Leone Dragon Project Voicing.esp"))); // fire
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                             break;
 
@@ -1992,12 +2006,14 @@ namespace DovahAI_Space{
                         switch (RNG)
                         {
                         case 1:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                            // VOCShoutDragon31BFoKrahDiin [SNDR:FE164A28]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA28, "Leone Dragon Project Voicing.esp"))); // frost
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                             break;
 
                         case 2:
-                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                            // VOCShoutDragon31CSovAgSlen [SNDR:FE164A29]
+                            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA29, "Leone Dragon Project Voicing.esp"))); // shock
                             a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                             break;
 
@@ -2007,17 +2023,20 @@ namespace DovahAI_Space{
                         break;
 
                     case 6:
-                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // fire
+                        // VOCShoutDragon31AYolToorShul [SNDR:FE164A27]
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA27, "Leone Dragon Project Voicing.esp"))); // fire
                         a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 3);
                         break;
 
                     case 7:
-                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // frost
+                        // VOCShoutDragon31BFoKrahDiin [SNDR:FE164A28]
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA28, "Leone Dragon Project Voicing.esp"))); // frost
                         a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 1);
                         break;
 
                     case 8:
-                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x802, "LeoneDragonProject.esp"))); // shock
+                        // VOCShoutDragon31CSovAgSlen [SNDR:FE164A29]
+                        GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xA29, "Leone Dragon Project Voicing.esp"))); // shock
                         a_actor->SetGraphVariableInt("iLDP_Shout_to_Cast", 2);
                         break;
 
