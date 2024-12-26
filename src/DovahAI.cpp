@@ -561,7 +561,7 @@ namespace DovahAI_Space{
         //RE::NiPoint3 Tx;
         //Tx.x = -1.0f;
         // FXDragonLandingImpactSet [IPDS:0002BD39]
-        GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+        //GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 900ms, "TalonSmash1_Update");
