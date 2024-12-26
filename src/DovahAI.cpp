@@ -2388,7 +2388,7 @@ namespace DovahAI_Space{
 
                 if (ReducePerc >= 80.0f)
                 {
-                    ReducePerc == 80.0f;
+                    ReducePerc = 80.0f;
                 }
 
                 float Damage = a_target->AsActorValueOwner()->GetActorValue(RE::ActorValue::kUnarmedDamage) * 1.8f / 100.0f / (100.0f - ReducePerc);
