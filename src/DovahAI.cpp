@@ -318,7 +318,7 @@ namespace DovahAI_Space{
     void DovahAI::Set_Box(RE::Actor *actor)
     {
         auto H = RE::TESDataHandler::GetSingleton();
-        auto Box = actor->PlaceObjectAtMe(H->LookupForm<RE::TESObjectACTI>(0xA342E7, "LeoneDragonProject.esp"), false).get(); //fxactivator
+        auto Box = actor->PlaceObjectAtMe(H->LookupForm<RE::TESObjectACTI>(0xB79FF, "Skyrim.esm"), false).get(); // FXEmptyActivator [ACTI:000B79FF]
         if (Box)
         {
             GetSingleton()->scan_activeBoxes(actor, Box, true);
