@@ -159,8 +159,6 @@ namespace GFunc_Space{
 			}
 		};
 
-		float get_angle_he_me(RE::Actor *me, RE::Actor *he, RE::BGSAttackData *attackdata);
-
 		template <class T>
 		static std::vector<T *> get_all(const std::vector<RE::BGSKeyword *> &a_keywords)
 		{

@@ -193,7 +193,7 @@ namespace Events_Space
 
 						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 						{
-							auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+							auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (static_cast<int>(a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth)));
 							float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
 
 							if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
@@ -279,7 +279,7 @@ namespace Events_Space
 								}
 							}
 
-							a_actor->SetGraphVariableInt("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
+							a_actor->SetGraphVariableInt("iLDP_Pre_HP", static_cast<int>(a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth)));
 
 							auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
 
