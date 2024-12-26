@@ -78,7 +78,7 @@ namespace DovahAI_Space{
     {
         auto first_position = a_actor->GetPosition();
         DeferredKill(a_actor, true);
-        std::jthread waitThread(wait, 100);
+        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 100);
         auto second_position = a_actor->GetPosition();
         DeferredKill(a_actor);
         DeferredKill(a_actor, true);
@@ -144,7 +144,7 @@ namespace DovahAI_Space{
         DeferredKill(a_actor, true);
         auto first_position = a_actor->GetPosition();
         auto first_time = std::chrono::steady_clock::now();
-        std::jthread waitThread(wait, 400);
+        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 400);
         auto second_position = a_actor->GetPosition();
         auto second_time = std::chrono::steady_clock::now();
         auto time_secs = (std::chrono::duration_cast<std::chrono::seconds>(second_time - first_time).count()) * 10.0;
@@ -163,7 +163,7 @@ namespace DovahAI_Space{
     {
         //auto data = RE::TESDataHandler::GetSingleton();
         a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
-        std::jthread waitThread(wait, 350);
+        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 350);
         a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
     }
 
@@ -508,14 +508,14 @@ namespace DovahAI_Space{
 
                     while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
                     {
-                        std::jthread waitThread(wait, 500);
+                        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 500);
                     }
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
 
                     while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
-                        std::jthread waitThread1(wait, 500);
+                        std::jthread waitThread1(&DovahAI_Space::DovahAI::wait, 500);
                     }
                     GFunc_Space::GFunc::Reset_iFrames(a_actor);
                 }
@@ -542,7 +542,7 @@ namespace DovahAI_Space{
         && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) 
         && !GetBoolVariable(a_actor, "Injured"))
         {
-            std::jthread waitThread(wait, 100);
+            std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 100);
         }
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 800ms, "TalonSmash_Update");
@@ -709,7 +709,7 @@ namespace DovahAI_Space{
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
-                std::jthread waitThread(wait, 1000);
+                std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 1000);
             }
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "CDR_AI_Update");
@@ -1051,7 +1051,7 @@ namespace DovahAI_Space{
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
-                std::jthread waitThread(wait, 1000);
+                std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 1000);
             }
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "ControlDistanceFly_AI_Update");
@@ -1092,7 +1092,7 @@ namespace DovahAI_Space{
             {
                 while (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    std::jthread waitThread(wait, 350);
+                    std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 350);
                 }
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
@@ -1120,7 +1120,7 @@ namespace DovahAI_Space{
             {
                 while (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    std::jthread waitThread(wait, 350);
+                    std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 350);
                 }
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
@@ -1196,7 +1196,7 @@ namespace DovahAI_Space{
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
-                std::jthread waitThread(wait, 1000);
+                std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 1000);
             }
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "HAS_AI_Update");
@@ -1340,7 +1340,7 @@ namespace DovahAI_Space{
         int i = 0;
         while ((GetBoolVariable(a_actor, "IsShouting")) && i < 12)
         {
-            std::jthread waitThread(wait, 250);
+            std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 250);
             i += 1;
         }
         a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Combat", 0.075);
@@ -2089,7 +2089,7 @@ namespace DovahAI_Space{
                     }
                     while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
-                        std::jthread waitThread(wait, 1000);
+                        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 1000);
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                 }
@@ -2146,7 +2146,7 @@ namespace DovahAI_Space{
                     }
                     while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
-                        std::jthread waitThread(wait, 1000);
+                        std::jthread waitThread(&DovahAI_Space::DovahAI::wait, 1000);
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
