@@ -286,7 +286,7 @@ namespace Events_Space
 							if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
 							{
 								DovahAI_Space::DovahAI::Enrage(a_actor, 3);
-								a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
+								a_actor->SetGraphVariableFloat("iLDP_Right_HP", rt -= 0.1f);
 							}
 
 							if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
