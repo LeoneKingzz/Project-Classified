@@ -305,54 +305,57 @@ namespace Events_Space
 				}
 
 			}else{
-				if (auto enemy = event->cause->As<RE::Actor>())
+				if (const auto enemyhandle = event->cause.get(); enemyhandle)
 				{
-					if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat") && enemy->IsHostileToActor(a_actor))
+					if (enemyhandle->Is(RE::FormType::ActorCharacter))
 					{
-						if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->source))
+						RE::Actor* enemy = enemyhandle->As<RE::Actor>();
+						if (DovahAI_Space::DovahAI::GetBoolVariable(enemy, "bLDP_IsinCombat") && enemy->IsHostileToActor(a_actor))
 						{
-							if (form)
+							if (auto form = RE::TESForm::LookupByID<RE::TESForm>(event->source))
 							{
-								switch (form->GetFormType())
+								if (form)
 								{
-								case RE::FormType::Spell:
-									if (auto a_spell = form->As<RE::SpellItem>())
+									switch (form->GetFormType())
 									{
-										std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
-										switch (hash(Lsht.c_str(), Lsht.size()))
+									case RE::FormType::Spell:
+										if (auto a_spell = form->As<RE::SpellItem>())
 										{
-										case "BiteAttack_LDP"_h:
-											DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
-											break;
+											std::string Lsht = (clib_util::editorID::get_editorID(a_spell));
+											switch (hash(Lsht.c_str(), Lsht.size()))
+											{
+											case "BiteAttack_LDP"_h:
+												DovahAI_Space::DovahAI::BiteAttack_Impact(enemy, a_actor);
+												break;
 
-										case "LeftWingAttack_LDP"_h:
-											DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
-											break;
+											case "LeftWingAttack_LDP"_h:
+												DovahAI_Space::DovahAI::LeftWingAttack_Impact(enemy, a_actor);
+												break;
 
-										case "RightWingAttack_LDP"_h:
-											DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
-											break;
+											case "RightWingAttack_LDP"_h:
+												DovahAI_Space::DovahAI::RightWingAttack_Impact(enemy, a_actor);
+												break;
 
-										case "LDP_aaaUDTailTurnSpell"_h:
-											DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor, true);
-											break;
+											case "LDP_aaaUDTailTurnSpell"_h:
+												DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor, true);
+												break;
 
-										case "LDP_aaaUDStampSpell"_h:
-											DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor);
-											break;
+											case "LDP_aaaUDStampSpell"_h:
+												DovahAI_Space::DovahAI::UDPhysical_Impact(enemy, a_actor);
+												break;
 
-										default:
-											break;
+											default:
+												break;
+											}
 										}
+										break;
+
+									default:
+										break;
 									}
-									break;
-								
-								default:
-									break;
 								}
 							}
 						}
-						
 					}
 				}
 			}
