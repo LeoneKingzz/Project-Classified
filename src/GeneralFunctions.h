@@ -372,13 +372,13 @@ namespace GFunc_Space{
 
 
 	private:
-		GFunc() = default;
-		GFunc(const GFunc &) = delete;
-		GFunc(GFunc &&) = delete;
-		~GFunc() = default;
+		// GFunc() = default;
+		// GFunc(const GFunc &) = delete;
+		// GFunc(GFunc &&) = delete;
+		// ~GFunc() = default;
 
-		GFunc &operator=(const GFunc &) = delete;
-		GFunc &operator=(GFunc &&) = delete;
+		// GFunc &operator=(const GFunc &) = delete;
+		// GFunc &operator=(GFunc &&) = delete;
 
 		std::random_device rd;
 
@@ -414,6 +414,14 @@ namespace GFunc_Space{
 		}
 
 	protected:
+		GFunc() = default;
+		GFunc(const GFunc &) = delete;
+		GFunc(GFunc &&) = delete;
+		~GFunc() = default;
+
+		GFunc &operator=(const GFunc &) = delete;
+		GFunc &operator=(GFunc &&) = delete;
+		
 		std::unordered_map<RE::Actor *, std::vector<std::tuple<bool, std::chrono::steady_clock::time_point, std::chrono::milliseconds, std::string>>> _Timer;
 		std::shared_mutex mtx_Timer;
 	};

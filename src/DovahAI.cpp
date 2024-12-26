@@ -156,7 +156,7 @@ namespace DovahAI_Space{
         a_actor->AsActorValueOwner()->RestoreActorValue(RE::ACTOR_VALUE_MODIFIER::kDamage, RE::ActorValue::kHealth, -9999.0f);
         DeferredKill(a_actor);
         a_actor->NotifyAnimationGraph("Ragdoll");
-        GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, total_val);
+        GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, static_cast<float>(total_val));
     }
 
     void DovahAI::ResetAI(RE::Actor *a_actor)
