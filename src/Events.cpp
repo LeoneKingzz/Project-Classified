@@ -193,14 +193,14 @@ namespace Events_Space
 
 						if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 						{
-							auto DiffHp = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Pre_HP") - (static_cast<int>(a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth)));
+							auto DiffHp = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Pre_HP") - (a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
 							float hitAngle = GFunc_Space::GFunc::GetSingleton()->get_angle_he_me(a_actor, enemy, nullptr);
 
-							if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") > 0)
+							if (abs(hitAngle) <= 45.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") > 0)
 							{
-								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP");
-								a_actor->SetGraphVariableInt("iLDP_Front_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Front_HP") <= 0)
+								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP");
+								a_actor->SetGraphVariableFloat("iLDP_Front_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Front_HP") <= 0)
 								{
 									// headbroken flag
 									if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_BleedOut_State"))
@@ -209,11 +209,11 @@ namespace Events_Space
 									}
 								}
 							}
-							else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") > 0)
+							else if (abs(hitAngle) >= 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") > 0)
 							{
-								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP");
-								a_actor->SetGraphVariableInt("iLDP_Back_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Back_HP") <= 0)
+								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP");
+								a_actor->SetGraphVariableFloat("iLDP_Back_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Back_HP") <= 0)
 								{
 									// tailbroken flag
 									// additem (dragon bonemeal)
@@ -224,11 +224,11 @@ namespace Events_Space
 									}
 								}
 							}
-							else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") > 0)
+							else if (hitAngle < -45.0f && hitAngle > -135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") > 0)
 							{
-								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP");
-								a_actor->SetGraphVariableInt("iLDP_Left_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Left_HP") <= 0)
+								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP");
+								a_actor->SetGraphVariableFloat("iLDP_Left_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Left_HP") <= 0)
 								{
 									// additem (dragon claw)
 									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
@@ -251,11 +251,11 @@ namespace Events_Space
 									}
 								}
 							}
-							else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") > 0)
+							else if (hitAngle > 45.0f && hitAngle < 135.0f && DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") > 0)
 							{
-								auto val = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP");
-								a_actor->SetGraphVariableInt("iLDP_Right_HP", val -= DiffHp);
-								if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Right_HP") <= 0)
+								auto val = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP");
+								a_actor->SetGraphVariableFloat("iLDP_Right_HP", val -= DiffHp);
+								if (DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "iLDP_Right_HP") <= 0)
 								{
 									// additem (dragon claw)
 									GFunc_Space::GFunc::GetSingleton()->AddItem(a_actor, RE::TESForm::LookupByEditorID<RE::IngredientItem>("LDP_aaaUDDragonClaw"), true);
@@ -279,14 +279,14 @@ namespace Events_Space
 								}
 							}
 
-							a_actor->SetGraphVariableInt("iLDP_Pre_HP", static_cast<int>(a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth)));
+							a_actor->SetGraphVariableFloat("iLDP_Pre_HP", a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth));
 
 							auto rt = DovahAI_Space::DovahAI::GetFloatVariable(a_actor, "fLDP_Ratio_HP");
 
 							if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
 							{
 								DovahAI_Space::DovahAI::Enrage(a_actor, 3);
-								a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
+								a_actor->SetGraphVariableFloat("iLDP_Right_HP", rt -= 0.1f);
 							}
 
 							if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
