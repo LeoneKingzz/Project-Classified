@@ -196,10 +196,10 @@ namespace DovahAI_Space{
     {
         auto perm_health = a_actor->AsActorValueOwner()->GetActorValue(RE::ActorValue::kHealth);
         a_actor->SetGraphVariableFloat("iLDP_Pre_HP", (perm_health));
-        a_actor->SetGraphVariableFloat("iLDP_Front_HP", (perm_health * 0.4));
-        a_actor->SetGraphVariableFloat("iLDP_Back_HP", (perm_health * 0.25));
-        a_actor->SetGraphVariableFloat("iLDP_Left_HP", (perm_health * 0.3));
-        a_actor->SetGraphVariableFloat("iLDP_Right_HP", (perm_health * 0.3));
+        a_actor->SetGraphVariableFloat("iLDP_Front_HP", (perm_health * 0.4f));
+        a_actor->SetGraphVariableFloat("iLDP_Back_HP", (perm_health * 0.25f));
+        a_actor->SetGraphVariableFloat("iLDP_Left_HP", (perm_health * 0.3f));
+        a_actor->SetGraphVariableFloat("iLDP_Right_HP", (perm_health * 0.3f));
     }
 
     float DovahAI::GetActorValuePercent(RE::Actor *a_actor, RE::ActorValue a_value)
