@@ -286,7 +286,7 @@ namespace Events_Space
 							if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kHealth) <= rt && rt > 0.0f)
 							{
 								DovahAI_Space::DovahAI::Enrage(a_actor, 3);
-								a_actor->SetGraphVariableFloat("iLDP_Right_HP", rt -= 0.1f);
+								a_actor->SetGraphVariableInt("iLDP_Right_HP", rt -= 0.1f);
 							}
 
 							if (event->flags && (event->flags.all(RE::TESHitEvent::Flag::kPowerAttack) || event->flags.all(RE::TESHitEvent::Flag::kBashAttack)))
@@ -462,7 +462,7 @@ namespace Events_Space
 		if (!a_event.holder) {
 			return fn ? (this->*fn)(a_event, src) : RE::BSEventNotifyControl::kContinue;
 		}
-		auto data = RE::TESDataHandler::GetSingleton();
+		auto H = RE::TESDataHandler::GetSingleton();
 		RE::Actor* a_actor = const_cast<RE::TESObjectREFR*>(a_event.holder)->As<RE::Actor>();
 		switch (hash(a_event.tag.c_str(), a_event.tag.size())) {
 		case "footfront"_h:
@@ -480,7 +480,7 @@ namespace Events_Space
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -495,7 +495,7 @@ namespace Events_Space
 				}
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
-					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
+					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 				}
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
 				{
@@ -534,7 +534,7 @@ namespace Events_Space
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -585,7 +585,7 @@ namespace Events_Space
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 0.0f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
@@ -594,12 +594,12 @@ namespace Events_Space
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", Tx, 512.0f, false, false);
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
-						GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", Tx, 512.0f, false, false);
+						GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", Tx, 512.0f, false, false);
 
-						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x3F1F3, "Skyrim.esm"))); // NPCDragonLandCrashLong2DSD [SNDR:0003F1F3]
-						GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
+						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3F1F3, "Skyrim.esm"))); // NPCDragonLandCrashLong2DSD [SNDR:0003F1F3]
+						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 
 						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_TripleThreat_Faction"))
 						{
@@ -627,7 +627,7 @@ namespace Events_Space
 				}
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
-					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
+					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 				}
 			}
 			break;
@@ -740,11 +740,11 @@ namespace Events_Space
 				RE::NiPoint3 Tx;
 				Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				GFunc_Space::GFunc::PlayImpactEffect(a_actor, data->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
+				GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", Tx, 512.0f, false, false);
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 0.0f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
-					GFunc_Space::GFunc::playSound(a_actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
+					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 				}
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
