@@ -2726,6 +2726,7 @@ namespace DovahAI_Space{
                 switch (hash(Lsht.c_str(), Lsht.size())){
                 case "LDP_UnrelentingForceShout"_h:
                 case "LDP_DragonUnrelentingForceAreaShout"_h:
+                case "MQ101DragonUnrelentingForceShout"_h:
                     if (SpellFire)
                     {
                         GFunc_Space::GFunc::playSound(actor, (data->LookupForm<RE::BGSSoundDescriptorForm>(0x10FF06, "Skyrim.esm")));
