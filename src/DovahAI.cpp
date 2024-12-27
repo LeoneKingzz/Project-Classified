@@ -2247,7 +2247,7 @@ namespace DovahAI_Space{
     void DovahAI::Physical_Impact(RE::Actor *a_actor, std::string a_spell, float p_force)
     {
         const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), false, a_actor, 1, false, 0.0, a_actor);
+        caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>(a_spell), false, a_actor, 1, false, 100.0, a_actor);
         if (const auto combatGroup = a_actor->GetCombatGroup())
         {
             for (auto &targetData : combatGroup->targets)
