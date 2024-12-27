@@ -141,7 +141,8 @@ namespace DovahAI_Space{
     {
         if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
         {
-            GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, combat_target_handle.get());
+            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_SetForcedLandingMarker", combat_target_handle.get()->As<RE::TESObjectREFR>());
+            //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, combat_target_handle.get());
         }
     }
 
@@ -530,7 +531,8 @@ namespace DovahAI_Space{
                     }
                     logger::info("End wait"sv);
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
-                    GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
+                    //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
                     logger::info("Began wait"sv);
                     logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
@@ -2207,7 +2209,8 @@ namespace DovahAI_Space{
                     }
                     logger::info("End wait"sv);
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-                    GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
+                    //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
