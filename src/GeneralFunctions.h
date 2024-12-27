@@ -379,7 +379,7 @@ namespace GFunc_Space{
 		bool play_impact_3(RE::TESObjectCELL *cell, float a_lifetime, const char *model, RE::NiPoint3 *a_rotation, RE::NiPoint3 *a_position, float a_scale, uint32_t a_flags, RE::NiNode *a_target);
 
 		template <typename... Args>
-		static void Call_Papyrus_Function(RE::Actor *a_actor, RE::BSFixedString scriptName, RE::BSFixedString functionName, Args... args)
+		static void Call_Papyrus_Function(RE::Actor *a_actor, RE::BSFixedString scriptName, RE::BSFixedString functionName, Args&& ...args)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 
@@ -398,7 +398,7 @@ namespace GFunc_Space{
 
 			if (vm->FindBoundObject(handle, scriptName.c_str(), object))
 			{
-				auto a_args = RE::MakeFunctionArguments(std::move(args));
+				auto a_args = RE::MakeFunctionArguments(std::move(std::forward<Args>(args)...));
 				vm->DispatchMethodCall1(object, functionName, a_args, result);
 			}
 		}
