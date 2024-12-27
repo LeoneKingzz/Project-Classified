@@ -1152,6 +1152,38 @@ namespace Events_Space
 									}
 									break;
 
+								case "TSmashALT_Wt1_Update"_h:
+									if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "Injured"))
+									{
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+										GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 100ms, "TSmashALT_Wt1_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+										
+									}else{
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+										GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 800ms, "TalonSmash_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+									}
+									break;
+
+								case "CDRAI_Wt1_Update"_h:
+									if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+									{
+										auto ct = targethandle.get();
+										if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_CRDAI_Var") <= DovahAI_Space::DovahAI::HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
+										{
+											a_actor->SetGraphVariableInt("iLDP_CRDAI_Var", (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_CRDAI_Var") + 1));
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+											GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 1000ms, "CDRAI_Wt1_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+										}else{
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+											GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 1000ms, "CDR_AI_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+										}
+									}
+									break;
+
 								default:
 									break;
 								}

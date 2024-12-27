@@ -562,16 +562,16 @@ namespace DovahAI_Space{
     void DovahAI::TalonSmash(RE::Actor *a_actor)
     {
         a_actor->SetGraphVariableBool("bLDP_PreventFlyingTalonSmash", true);
-        int a = 100;
-        logger::info("Began wait"sv);
-        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-        while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") 
+
+        if (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") 
         && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) 
         && !GetBoolVariable(a_actor, "Injured"))
         {
-            std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+            GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 100ms, "TSmashALT_Wt1_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+            return;
         }
-        logger::info("End wait"sv);
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 800ms, "TalonSmash_Update");
         GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
@@ -734,16 +734,16 @@ namespace DovahAI_Space{
         if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
         {
             auto ct = targethandle.get();
-            int i = 0;
-            int a = 1000;
-            logger::info("Began wait"sv);
-            logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-            while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
+            a_actor->SetGraphVariableInt("iLDP_CRDAI_Var", 0);
+            
+            if (GetIntVariable(a_actor, "iLDP_CRDAI_Var") <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
-                i += 1;
-                std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                a_actor->SetGraphVariableInt("iLDP_CRDAI_Var", (GetIntVariable(a_actor, "iLDP_CRDAI_Var") + 1));
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+                GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 1000ms, "CDRAI_Wt1_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+                return;
             }
-            logger::info("End wait"sv);
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
             GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "CDR_AI_Update");
             GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
