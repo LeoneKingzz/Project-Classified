@@ -377,8 +377,31 @@ namespace GFunc_Space{
 		bool play_impact_1(RE::Actor *actor, const RE::BSFixedString &nodeName);
 		bool play_impact_2(RE::TESObjectREFR *a, RE::BGSImpactData *impact, RE::NiPoint3 *P_V, RE::NiPoint3 *P_from, RE::NiNode *bone);
 		bool play_impact_3(RE::TESObjectCELL *cell, float a_lifetime, const char *model, RE::NiPoint3 *a_rotation, RE::NiPoint3 *a_position, float a_scale, uint32_t a_flags, RE::NiNode *a_target);
+
 		template <typename... Args>
-		static void Call_Papyrus_Function(RE::Actor *a_actor, RE::BSFixedString scriptName, RE::BSFixedString functionName, Args... args);
+		static void Call_Papyrus_Function(RE::Actor *a_actor, RE::BSFixedString scriptName, RE::BSFixedString functionName, Args... args)
+		{
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+
+			RE::TESForm *form = std::move(a_actor);
+
+			auto policy = vm->GetObjectHandlePolicy();
+			RE::VMHandle handle = policy->GetHandleForObject(form->GetFormType(), form);
+
+			if (handle == policy->EmptyHandle())
+			{
+				return;
+			}
+
+			RE::BSTSmartPointer<RE::BSScript::Object> object;
+			RE::BSTSmartPointer<RE::BSScript::IStackCallbackFunctor> result;
+
+			if (vm->FindBoundObject(handle, scriptName.c_str(), object))
+			{
+				auto a_args = RE::MakeFunctionArguments(std::move(args));
+				vm->DispatchMethodCall1(object, functionName, a_args, result);
+			}
+		}
 
 	private:
 		// GFunc() = default;
