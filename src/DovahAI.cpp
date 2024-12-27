@@ -522,25 +522,27 @@ namespace DovahAI_Space{
                     GetSingleton()->SetLandingMarker(a_actor);
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", true);
                     TalonSmash(a_actor);
-                    int a = 500;
-                    logger::info("Began wait"sv);
-                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-                    while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
+                    if (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
                     {
-                        std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 500ms, "TalonSmash_Wt1_Update");
+                        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                        return;
                     }
-                    logger::info("End wait"sv);
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
                     GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
-                    logger::info("Began wait"sv);
-                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-                    while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
+
+                    if (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
-                        std::jthread waitThread1([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 500ms, "TalonSmash_Wt2_Update");
+                        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                        return;
                     }
+
                     GFunc_Space::GFunc::Reset_iFrames(a_actor);
-                    logger::info("End wait"sv);
+                    
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
@@ -2199,17 +2201,14 @@ namespace DovahAI_Space{
                     default:
                         break;
                     }
-                    int a = 1000;
-                    logger::info("Began wait"sv);
-                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-                    while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
+                    if (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
-                        //[&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); }
-                        std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                        std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+                        GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "GAVS_Wt1_Update");
+                        GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+                        return;
                     }
-                    logger::info("End wait"sv);
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-                    //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
                     GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);

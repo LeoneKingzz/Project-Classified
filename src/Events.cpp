@@ -1088,6 +1088,70 @@ namespace Events_Space
 									DovahAI_Space::DovahAI::LandingCombatAI1(a_actor);
 									break;
 
+								case "TalonSmash_Wt1_Update"_h:
+									if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
+									{
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+										GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 500ms, "TalonSmash_Wt1_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+									}else{
+										a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
+										if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+										{
+											auto ct = targethandle.get();
+											if (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
+											{
+												std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+												GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 500ms, "TalonSmash_Wt2_Update");
+												GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+												break;
+											}
+											GFunc_Space::GFunc::Reset_iFrames(a_actor);
+											a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Dt;
+											GFunc_Space::GFunc::set_tupledata(Dt, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Dt);
+										}
+									}
+									break;
+
+								case "TalonSmash_Wt2_Update"_h:
+									if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+									{
+										auto ct = targethandle.get();
+										if (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
+										{
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+											GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 500ms, "TalonSmash_Wt2_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+										}else{
+											GFunc_Space::GFunc::Reset_iFrames(a_actor);
+											a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Dt;
+											GFunc_Space::GFunc::set_tupledata(Dt, true, std::chrono::steady_clock::now(), 8100ms, "TSS_AI_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Dt);
+										}
+									}
+									break;
+
+								case "GAVS_Wt1_Update"_h:
+									if (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
+									{
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+										GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 1000ms, "GAVS_Wt1_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+									}else{
+										a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
+										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
+
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+										GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 8100ms, "GAVS_AI_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+									}
+									break;
+
 								default:
 									break;
 								}
