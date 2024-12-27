@@ -522,9 +522,7 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 1.25f);
-				if(auto process = a_actor->GetActorRuntimeData().currentProcess){
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect"))
 				{
@@ -541,10 +539,7 @@ namespace Events_Space
 		case "DragonPassByEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
-				{
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.0f);
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
@@ -593,10 +588,7 @@ namespace Events_Space
 		case "DragonTailAttackEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
-				{
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
@@ -639,10 +631,7 @@ namespace Events_Space
 		case "DragonRightWingAttackEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
-				{
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.25f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
 					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
@@ -654,10 +643,7 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
-				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
-				{
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.0f);
 			}
 			break;
 
@@ -751,10 +737,7 @@ namespace Events_Space
 		case "StampHitEvent"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (auto process = a_actor->GetActorRuntimeData().currentProcess)
-				{
-					process->KnockExplosion(a_actor, a_actor->GetPosition(), 1.0f);
-				}
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
