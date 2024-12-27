@@ -493,8 +493,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis");
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis"));
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -522,7 +522,7 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 1.25f);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.5f));
 				a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") && !DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_RunOnce_TakeOffeffect"))
 				{
@@ -539,12 +539,12 @@ namespace Events_Space
 		case "DragonPassByEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.0f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.0f));
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "");
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""));
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -588,12 +588,12 @@ namespace Events_Space
 		case "DragonTailAttackEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.5f));
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "");
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""));
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 1.25f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
@@ -602,11 +602,11 @@ namespace Events_Space
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
-						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "");
+						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), ""));
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
-						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8");
+						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8"));
 
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3F1F3, "Skyrim.esm"))); // NPCDragonLandCrashLong2DSD [SNDR:0003F1F3]
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
@@ -631,7 +631,7 @@ namespace Events_Space
 		case "DragonRightWingAttackEffect"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.25f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.25f));
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
 					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
@@ -643,7 +643,7 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.0f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.0f));
 			}
 			break;
 
@@ -737,12 +737,12 @@ namespace Events_Space
 		case "StampHitEvent"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", 1.0f, 1.5f);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(RE::MakeFunctionArguments(1.0f, 1.5f)));
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis");
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm"), "NPC Pelvis"));
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
@@ -1096,7 +1096,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
 										if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
 										{
 											auto ct = targethandle.get();
@@ -1143,7 +1143,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker");
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
 										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
 
 										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
