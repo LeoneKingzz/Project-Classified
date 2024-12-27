@@ -177,10 +177,7 @@ namespace DovahAI_Space{
         //auto data = RE::TESDataHandler::GetSingleton();
         a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
         int a = 350;
-        logger::info("Began wait"sv);
-        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
-        logger::info("End wait"sv);
         a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
     }
 
@@ -735,7 +732,7 @@ namespace DovahAI_Space{
         {
             auto ct = targethandle.get();
             a_actor->SetGraphVariableInt("iLDP_CRDAI_Var", 0);
-            
+
             if (GetIntVariable(a_actor, "iLDP_CRDAI_Var") <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 a_actor->SetGraphVariableInt("iLDP_CRDAI_Var", (GetIntVariable(a_actor, "iLDP_CRDAI_Var") + 1));
@@ -752,9 +749,14 @@ namespace DovahAI_Space{
 
     void DovahAI::ControlDistanceRiddenAI1(RE::Actor *a_actor)
     {
-        while (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
+        if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
         {
-            GetSingleton()->ResetAI(a_actor);
+            a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+            
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+            GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 350ms, "CDRAI_Wt2_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
+            return;
         }
         a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
