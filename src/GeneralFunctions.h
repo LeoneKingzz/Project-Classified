@@ -398,7 +398,7 @@ namespace GFunc_Space{
 
 			if (vm->FindBoundObject(handle, scriptName.c_str(), object))
 			{
-				auto a_args = RE::MakeFunctionArguments(std::move(std::forward<Args>(args)...));
+				auto a_args = RE::MakeFunctionArguments(std::forward<Args>(args)...);
 				vm->DispatchMethodCall1(object, functionName, a_args, result);
 			}
 		}
