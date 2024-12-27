@@ -383,7 +383,7 @@ namespace GFunc_Space{
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 
-			RE::TESForm *form = std::move(a_actor);
+			RE::TESForm *form = a_actor;
 
 			auto policy = vm->GetObjectHandlePolicy();
 			RE::VMHandle handle = policy->GetHandleForObject(form->GetFormType(), form);
