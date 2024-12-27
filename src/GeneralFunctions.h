@@ -377,6 +377,7 @@ namespace GFunc_Space{
 		bool play_impact_1(RE::Actor *actor, const RE::BSFixedString &nodeName);
 		bool play_impact_2(RE::TESObjectREFR *a, RE::BGSImpactData *impact, RE::NiPoint3 *P_V, RE::NiPoint3 *P_from, RE::NiNode *bone);
 		bool play_impact_3(RE::TESObjectCELL *cell, float a_lifetime, const char *model, RE::NiPoint3 *a_rotation, RE::NiPoint3 *a_position, float a_scale, uint32_t a_flags, RE::NiNode *a_target);
+		static void Call_Papyrus_Function();
 
 	private:
 		// GFunc() = default;

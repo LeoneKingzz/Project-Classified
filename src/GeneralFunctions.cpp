@@ -685,4 +685,30 @@ namespace GFunc_Space{
 	{
 		return RE::BSTempEffectParticle::Spawn(cell, a_lifetime, model, *a_rotation, *a_position, a_scale, a_flags, a_target);
 	}
+
+	template <typename... Args>
+	void GFunc::Call_Papyrus_Function(RE::Actor *a_actor, RE::BSFixedString scriptName, RE::BSFixedString functionName, Args... args)
+	{
+		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+
+		RE::TESForm *form = a_actor->GetActorBase();
+
+		auto policy = vm->GetObjectHandlePolicy();
+		RE::VMHandle handle = policy->GetHandleForObject(form->GetFormType(), form);
+
+		if (handle == policy->EmptyHandle())
+		{
+			return;
+		}
+
+		RE::BSTSmartPointer<RE::BSScript::Object> object;
+		RE::BSTSmartPointer<RE::BSScript::IStackCallbackFunctor> result;
+
+		if (vm->FindBoundObject(handle, scriptName.c_str(), object))
+		{
+			int x = 42;
+			auto args = RE::MakeFunctionArguments(std::move(x));
+			vm->DispatchMethodCall1(object, functionName, args, result);
+		}
+	}
 }
