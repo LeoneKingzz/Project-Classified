@@ -383,7 +383,7 @@ namespace GFunc_Space{
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 
-			RE::TESForm *form = a_actor;
+			RE::TESForm *form = std::move(a_actor);
 
 			auto policy = vm->GetObjectHandlePolicy();
 			RE::VMHandle handle = policy->GetHandleForObject(form->GetFormType(), form);
@@ -398,7 +398,7 @@ namespace GFunc_Space{
 
 			if (vm->FindBoundObject(handle, scriptName.c_str(), object))
 			{
-				auto a_args = RE::MakeFunctionArguments(std::forward<Args>(args)...);
+				auto a_args = RE::MakeFunctionArguments(std::move(std::forward<Args>(args)...));
 				vm->DispatchMethodCall1(object, functionName, a_args, result);
 			}
 		}
