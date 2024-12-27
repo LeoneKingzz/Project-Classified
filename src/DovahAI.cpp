@@ -80,6 +80,7 @@ namespace DovahAI_Space{
         DeferredKill(a_actor, true);
         int a = 100;
         logger::info("Began wait"sv);
+        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
         logger::info("End wait"sv);
         auto second_position = a_actor->GetPosition();
@@ -149,6 +150,7 @@ namespace DovahAI_Space{
         auto first_time = std::chrono::steady_clock::now();
         int a = 400;
         logger::info("Began wait"sv);
+        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
         logger::info("End wait"sv);
         auto second_position = a_actor->GetPosition();
@@ -171,6 +173,7 @@ namespace DovahAI_Space{
         a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
         int a = 350;
         logger::info("Began wait"sv);
+        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
         logger::info("End wait"sv);
         a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
@@ -516,6 +519,7 @@ namespace DovahAI_Space{
                     TalonSmash(a_actor);
                     int a = 500;
                     logger::info("Began wait"sv);
+                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash"))
                     {
                         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -524,6 +528,7 @@ namespace DovahAI_Space{
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
                     logger::info("Began wait"sv);
+                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
                         std::jthread waitThread1([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -551,6 +556,7 @@ namespace DovahAI_Space{
         a_actor->SetGraphVariableBool("bLDP_PreventFlyingTalonSmash", true);
         int a = 100;
         logger::info("Began wait"sv);
+        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         while (GetBoolVariable(a_actor, "bLDP_PreventFlyingTalonSmash") 
         && (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && a_actor->AsActorState()->GetFlyState() <= RE::FLY_STATE::kPerching) 
         && !GetBoolVariable(a_actor, "Injured"))
@@ -722,6 +728,7 @@ namespace DovahAI_Space{
             int i = 0;
             int a = 1000;
             logger::info("Began wait"sv);
+            logger::info("Line {} File {}"sv, __LINE__, __FILE__);
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
@@ -1067,6 +1074,7 @@ namespace DovahAI_Space{
             int i = 0;
             int a = 1000;
             logger::info("Began wait"sv);
+            logger::info("Line {} File {}"sv, __LINE__, __FILE__);
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
@@ -1112,6 +1120,7 @@ namespace DovahAI_Space{
             {
                 int a = 350;
                 logger::info("Began wait"sv);
+                logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                 while (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
                     std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -1143,6 +1152,7 @@ namespace DovahAI_Space{
             {
                 int a = 350;
                 logger::info("Began wait"sv);
+                logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                 while (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
                     std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -1221,6 +1231,7 @@ namespace DovahAI_Space{
             int i = 0;
             int a = 1000;
             logger::info("Began wait"sv);
+            logger::info("Line {} File {}"sv, __LINE__, __FILE__);
             while (i <= HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
             {
                 i += 1;
@@ -1369,6 +1380,7 @@ namespace DovahAI_Space{
         int i = 0;
         int a = 250;
         logger::info("Began wait"sv);
+        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         while ((GetBoolVariable(a_actor, "IsShouting")) && i < 12)
         {
             std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -2121,6 +2133,7 @@ namespace DovahAI_Space{
                     }
                     int a = 1000;
                     logger::info("Began wait"sv);
+                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
                         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
@@ -2181,6 +2194,7 @@ namespace DovahAI_Space{
                     }
                     int a = 1000;
                     logger::info("Began wait"sv);
+                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
                         //[&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); }
