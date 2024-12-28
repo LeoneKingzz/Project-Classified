@@ -1208,6 +1208,24 @@ namespace Events_Space
 									}
 									break;
 
+								case "CDFAI_Wt1_Update"_h:
+									if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+									{
+										auto ct = targethandle.get();
+										if (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_CDAIF_Var") <= DovahAI_Space::DovahAI::HoverWaitTime(a_actor) && GFunc_Space::IsAllowedToFly(a_actor, 1.0f) && ct && !ct->IsDead() && a_actor->GetPosition().GetDistance(ct->GetPosition()) <= 500.0f * 2.5f)
+										{
+											a_actor->SetGraphVariableInt("iLDP_CDAIF_Var", DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_CDAIF_Var") + 1);
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+											GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 1000ms, "CDFAI_Wt1_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+										}else{
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+											GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1000ms, "ControlDistanceFly_AI_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+										}
+									}
+									break;
+
 								default:
 									break;
 								}
