@@ -91,7 +91,7 @@ namespace DovahAI_Space{
         a_actor->NotifyAnimationGraph("Ragdoll");
         //GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, 50000.0f);
         GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ApplyHavokImpulse",
-                                                  RE::MakeFunctionArguments(second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, 50000.0f));
+                                                  RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, 50000.0f));
     }
 
     float DovahAI::PercentageHealthAction(RE::Actor *a_actor)
@@ -141,7 +141,7 @@ namespace DovahAI_Space{
     {
         if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
         {
-            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_SetForcedLandingMarker", RE::MakeFunctionArguments(combat_target_handle.get()->As<RE::TESObjectREFR>()));
+            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_SetForcedLandingMarker", RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), combat_target_handle.get()->As<RE::TESObjectREFR>()));
             //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, combat_target_handle.get());
         }
     }
@@ -169,7 +169,7 @@ namespace DovahAI_Space{
         a_actor->NotifyAnimationGraph("Ragdoll");
         //GFunc_Space::GFunc::GetSingleton()->ApplyHavokImpulse(a_actor, second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, static_cast<float>(total_val));
         GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ApplyHavokImpulse",
-                                                  RE::MakeFunctionArguments(second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, static_cast<float>(total_val)));
+                                                  RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), second_position.x - first_position.x, second_position.y - first_position.y, second_position.z - first_position.z, static_cast<float>(total_val)));
     }
 
     void DovahAI::ResetAI(RE::Actor *a_actor)
@@ -528,7 +528,7 @@ namespace DovahAI_Space{
                     }
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
-                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), ));
 
                     if (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
@@ -586,7 +586,7 @@ namespace DovahAI_Space{
         //GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
         RE::BSFixedString empty_str = "";
         auto FXDragonLandingImpactSet = H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm");
-        GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonLandingImpactSet, empty_str));
+        GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), FXDragonLandingImpactSet, empty_str));
 
         std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
         GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 900ms, "TalonSmash1_Update");
@@ -2213,7 +2213,7 @@ namespace DovahAI_Space{
                         return;
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(GFunc_Space::GFunc::EmptyFunction(), ));
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
