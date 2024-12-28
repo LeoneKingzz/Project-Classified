@@ -528,7 +528,7 @@ namespace DovahAI_Space{
                     }
                     a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
                     //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, nullptr);
-                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
 
                     if (ct->AsActorState()->GetFlyState() != RE::FLY_STATE::kCruising)
                     {
@@ -2213,7 +2213,7 @@ namespace DovahAI_Space{
                         return;
                     }
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+                    GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;

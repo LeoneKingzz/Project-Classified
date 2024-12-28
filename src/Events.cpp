@@ -1101,7 +1101,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
 										if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
 										{
 											auto ct = targethandle.get();
@@ -1148,7 +1148,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
 										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
 
 										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
