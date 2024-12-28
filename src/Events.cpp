@@ -698,15 +698,15 @@ namespace Events_Space
 						DovahAI_Space::DovahAI::ControlDistanceAIFly(a_actor);
 					}
 				}
-				// if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
-				// {
-				// 	if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
-				// 	{
-				// 		a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", true);
-				// 		DovahAI_Space::DovahAI::ControlDistanceAIGround(a_actor);
-				// 		a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", false);
-				// 	}
-				// }
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
+				{
+					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+					{
+						a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", true);
+						DovahAI_Space::DovahAI::ControlDistanceAIGround(a_actor);
+						a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", false);
+					}
+				}
 			}
 			break;
 
