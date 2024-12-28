@@ -2149,13 +2149,10 @@ namespace DovahAI_Space{
                         break;
                     }
                     int a = 1000;
-                    logger::info("Began wait"sv);
-                    logger::info("Line {} File {}"sv, __LINE__, __FILE__);
                     while (a_actor->AsActorState()->GetFlyState() > RE::FLY_STATE::kNone && GetBoolVariable(a_actor, "bLDP_DragonFlightlessCombat"))
                     {
                         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
                     }
-                    logger::info("End wait"sv);
                     a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
