@@ -498,8 +498,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), NPCPelvis));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), NPCPelvis));
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -548,8 +548,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str));
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -597,8 +597,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str));
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 1.25f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
@@ -607,11 +607,11 @@ namespace Events_Space
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
-						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), empty_str));
+						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), empty_str));
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
 						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonLandingImpactSet), NPCTail8));
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonLandingImpactSet), NPCTail8));
 
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3F1F3, "Skyrim.esm"))); // NPCDragonLandCrashLong2DSD [SNDR:0003F1F3]
 						GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
@@ -746,8 +746,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<void *>(FXDragonTakeOffImpactSet), NPCPelvis));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), NPCPelvis));
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
