@@ -808,6 +808,25 @@ namespace Events_Space
 						default:
 							break;
 						}
+					}else{
+						const auto caster = a_actor->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+						switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_Shout_to_Cast"))
+						{
+						case 1:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_VoiceDragonFrostBall01SPELLSHOUT"), false, nullptr, 1, false, 0.0, a_actor);
+							break;
+
+						case 2:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_ShockBallSpellShoutversion"), false, nullptr, 1, false, 0.0, a_actor);
+							break;
+
+						case 3:
+							caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("L_VoiceDragonFireBall01"), false, nullptr, 1, false, 0.0, a_actor);
+							break;
+
+						default:
+							break;
+						}
 					}
 					
 				}
