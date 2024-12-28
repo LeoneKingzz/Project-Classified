@@ -141,7 +141,7 @@ namespace DovahAI_Space{
     {
         if (auto combat_target_handle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); combat_target_handle)
         {
-            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_SetForcedLandingMarker", RE::MakeFunctionArguments(std::bit_cast<void *>(combat_target_handle.get()->As<RE::TESObjectREFR>())));
+            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_SetForcedLandingMarker", RE::MakeFunctionArguments(std::bit_cast<RE::TESObjectREFR *>(combat_target_handle.get()->As<RE::TESObjectREFR>())));
             //GFunc_Space::GFunc::SetForcedLandingMarker(a_actor, combat_target_handle.get());
         }
     }
