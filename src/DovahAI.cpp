@@ -1395,16 +1395,15 @@ namespace DovahAI_Space{
         auto trackspeed = pow(GetFloatVariable(a_actor, "fLDP_MoveCtrlShout_angle") * (1.0f + (GetIntVariable(a_actor, "iLDP_Lvl_Rank") / 50.0f)) / 10.0f, 3.0f) / 10000.0f;
         a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", trackspeed);
 
-        int i = 0;
-        int a = 250;
-        logger::info("Began wait"sv);
-        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-        while ((GetBoolVariable(a_actor, "IsShouting")) && i < 12)
+        a_actor->SetGraphVariableInt("iLDP_MCS1_Var", 0);
+
+        if ((GetBoolVariable(a_actor, "IsShouting")) && GetIntVariable(a_actor, "iLDP_MCS1_Var") < 12)
         {
-            std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
-            i += 1;
+            std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+            GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 250ms, "MCS1_Wt1_Update");
+            GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+            return;
         }
-        logger::info("End wait"sv);
         a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Combat", 0.075);
         a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.25);
 

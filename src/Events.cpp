@@ -1327,6 +1327,23 @@ namespace Events_Space
 									}
 									break;
 
+								case "MCS1_Wt1_Update"_h:
+									a_actor->SetGraphVariableInt("iLDP_MCS1_Var", (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_MCS1_Var") + 1));
+									if ((DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsShouting")) && DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_MCS1_Var") < 12)
+									{
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+										GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 250ms, "MCS1_Wt1_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+									}else{
+										a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Combat", 0.075);
+										a_actor->SetGraphVariableFloat("BSLookAtModifier_m_onGain_Shouting", 0.25);
+
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+										GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 100ms, "MovShout2_AI_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+									}
+									break;
+
 								default:
 									break;
 								}
