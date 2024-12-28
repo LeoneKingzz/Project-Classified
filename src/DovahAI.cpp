@@ -1211,9 +1211,12 @@ namespace DovahAI_Space{
             }
             else
             {
-                while (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
+                if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
                 {
-                    GetSingleton()->ResetAI(a_actor);
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+                    GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIF1_Wt1_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+                    return;
                 }
                 a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
                 std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
@@ -1223,9 +1226,12 @@ namespace DovahAI_Space{
         }
         else
         {
-            while (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
+            if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
             {
-                GetSingleton()->ResetAI(a_actor);
+                std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+                GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIF1_Wt1_Update");
+                GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+                return;
             }
             a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
             std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;

@@ -1293,6 +1293,23 @@ namespace Events_Space
 										}
 									}
 
+								case "CDAIF1_Wt1_Update"_h:
+									a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+									if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
+									{
+										a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+										GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIF1_Wt1_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+									}else{
+										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
+										GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "ControlDistanceFly_AI2_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+									}
+									break;
+
 									break;
 
 								default:
