@@ -476,9 +476,9 @@ namespace Events_Space
 			return fn ? (this->*fn)(a_event, src) : RE::BSEventNotifyControl::kContinue;
 		}
 		auto H = RE::TESDataHandler::GetSingleton();
-		std::string NPCPelvis = "NPC Pelvis";
-		std::string empty_str = "";
-		std::string NPCTail8 = "NPC Tail8";
+		const char *NPCPelvis = "NPC Pelvis";
+		const char *empty_str = "";
+		const char *NPCTail8 = "NPC Tail8";
 		auto FXDragonLandingImpactSet = H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm");
 		auto FXDragonTakeOffImpactSet = H->LookupForm<RE::BGSImpactDataSet>(0x19A01, "Skyrim.esm");
 		RE::Actor* a_actor = const_cast<RE::TESObjectREFR*>(a_event.holder)->As<RE::Actor>();

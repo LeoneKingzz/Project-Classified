@@ -584,7 +584,7 @@ namespace DovahAI_Space{
         //Tx.x = -1.0f;
         // FXDragonLandingImpactSet [IPDS:0002BD39]
         //GFunc_Space::GFunc::PlayImpactEffect(a_actor, H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "", 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-        std::string empty_str = "";
+        const char *empty_str = "";
         auto FXDragonLandingImpactSet = H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm");
         GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonLandingImpactSet), empty_str));
 
