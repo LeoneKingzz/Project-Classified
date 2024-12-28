@@ -1352,11 +1352,11 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-										
+
 										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
-										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> data;
-										GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
-										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
+										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
+										GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 8100ms, "GAS_AI_Update");
+										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Bt);
 									}
 									break;
 
