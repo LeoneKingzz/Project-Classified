@@ -499,7 +499,7 @@ namespace Events_Space
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
 				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), "NPCPelvis"));
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), NPCPelvis));
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
