@@ -1238,7 +1238,7 @@ namespace Events_Space
 										}else{
 											if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 											{
-												if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+												if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "Injured") || DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
 												{
 													switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
 													{
@@ -1258,6 +1258,41 @@ namespace Events_Space
 											}
 										}
 									}
+									break;
+
+								case "CDAIG_Wt2_Update"_h:
+									if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
+									{
+										auto ct = targethandle.get();
+										if (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+										{
+											std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+											GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIG_Wt2_Update");
+											GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+										}else{
+											if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+											{
+												if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "Injured") || DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
+												{
+													switch (DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
+													{
+													case 1:
+														a_actor->NotifyAnimationGraph("Takeoff");
+														break;
+
+													case 2:
+														a_actor->NotifyAnimationGraph("Takeoff_Vertical");
+														break;
+
+													default:
+														break;
+													}
+												}
+												a_actor->SetGraphVariableBool("bLDP_DragonFlightlessCombat", false);
+											}
+										}
+									}
+
 									break;
 
 								default:
