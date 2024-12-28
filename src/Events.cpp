@@ -499,7 +499,7 @@ namespace Events_Space
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
 				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, NPCPelvis));
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(100, 1.0));
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
@@ -548,8 +548,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(100, 1.0), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(100, 1.0));
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
@@ -597,8 +597,8 @@ namespace Events_Space
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
-				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str));
+				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(100, 1.0), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(100, 1.0));
 				GFunc_Space::shakeCamera(1.0f, a_actor->GetPosition(), 1.25f);
 				if (auto var = DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_tailAttack_counter"))
 				{
@@ -607,8 +607,8 @@ namespace Events_Space
 					}else{
 						a_actor->SetGraphVariableInt("iLDP_tailAttack_counter", 0);
 						// FXDragonTakeoffImpactSet [IPDS:00019A01]
-						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, empty_str));
+						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(100, 1.0), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(100, 1.0));
 						// FXDragonLandingImpactSet [IPDS:0002BD39]
 						//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(H->LookupForm<RE::BGSImpactDataSet>(0x2BD39, "Skyrim.esm"), "NPC Tail8"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonLandingImpactSet, NPCTail8));
@@ -747,7 +747,7 @@ namespace Events_Space
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
 				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(FXDragonTakeOffImpactSet, NPCPelvis));
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(100, 1.0));
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
@@ -1101,7 +1101,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableBool("bLDP_Talon_Faction", false);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
 										if (auto targethandle = a_actor->GetActorRuntimeData().currentCombatTarget.get(); targethandle)
 										{
 											auto ct = targethandle.get();
@@ -1148,7 +1148,7 @@ namespace Events_Space
 										GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
 									}else{
 										a_actor->SetGraphVariableInt("iLDP_Landing_Faction", 0);
-										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments(nullptr));
+										GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_ClearForcedLandingMarker", RE::MakeFunctionArguments());
 										a_actor->SetGraphVariableBool("bLDP_AIControl_doOnce", true);
 
 										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
