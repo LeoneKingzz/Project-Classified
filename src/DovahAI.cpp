@@ -1132,14 +1132,13 @@ namespace DovahAI_Space{
             }
             else if (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f)
             {
-                int a = 350;
-                logger::info("Began wait"sv);
-                logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-                while (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                if (a_actor->GetPosition().GetDistance(ct->GetPosition()) > 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+                    GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIG_Wt1_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+                    return;
                 }
-                logger::info("End wait"sv);
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
@@ -1164,14 +1163,13 @@ namespace DovahAI_Space{
             }
             else
             {
-                int a = 350;
-                logger::info("Began wait"sv);
-                logger::info("Line {} File {}"sv, __LINE__, __FILE__);
-                while (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
+                if (a_actor->GetPosition().GetDistance(ct->GetPosition()) < 500.0f * 3.0f && a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
-                    std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
+                    std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
+                    GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIG_Wt2_Update");
+                    GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, Xt);
+                    return;
                 }
-                logger::info("End wait"sv);
                 if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
