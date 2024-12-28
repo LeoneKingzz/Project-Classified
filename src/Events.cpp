@@ -742,7 +742,7 @@ namespace Events_Space
 		case "StampHitEvent"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(RE::MakeFunctionArguments(1.0f, 1.5f)));
+				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_KnockAreaEffect", RE::MakeFunctionArguments(1.0f, 1.5f));
 				//RE::NiPoint3 Tx;
 				//Tx.x = -1.0f;
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
