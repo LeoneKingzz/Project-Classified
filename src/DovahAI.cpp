@@ -61,7 +61,7 @@ namespace DovahAI_Space{
         auto result = false;
         if (auto AB = a_actor->GetActorBase())
         {
-            if (AB == RE::TESForm::LookupByEditorID<RE::TESNPC>("MQ206AncientAlduin"))
+            if (AB == RE::TESForm::LookupByEditorID<RE::TESNPC>("MQ101Alduin"))
             {
                 result = true;
             }
