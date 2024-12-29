@@ -500,7 +500,7 @@ namespace Events_Space
 				// FXDragonTakeoffImpactSet [IPDS:00019A01]
 				//GFunc_Space::GFunc::PlayImpactEffect(a_actor, RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), "NPC Pelvis"), 0.0f, 0.0f, -1.0f, 512.0f, false, false);
 				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), std::bit_cast<const char *>(NPCPelvis)));
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
 				}
@@ -534,7 +534,7 @@ namespace Events_Space
 					DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_Takeoff", 13.0f);
 					a_actor->SetGraphVariableBool("bLDP_RunOnce_TakeOffeffect", true);
 				}
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					DovahAI_Space::DovahAI::TakeoffCombatAI(a_actor);
 				}
@@ -552,7 +552,7 @@ namespace Events_Space
 				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_PlayImpactEffect", RE::MakeFunctionArguments(std::bit_cast<RE::BGSImpactDataSet *>(FXDragonTakeOffImpactSet), std::bit_cast<const char *>(empty_str)));
 				DovahAI_Space::DovahAI::Physical_Impact(a_actor, "LDP_PassBy", 10.0f);
 
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					DovahAI_Space::DovahAI::PassByCombatAI(a_actor);
 				}
@@ -566,7 +566,7 @@ namespace Events_Space
 				{
 					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 					{
-						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+						if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 						{
 							if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
 							{
@@ -578,7 +578,7 @@ namespace Events_Space
 						}
 					}
 				}
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 					{
@@ -687,7 +687,7 @@ namespace Events_Space
 
 				if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering || a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kPerching)
 				{
-					if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+					if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 					{
 						if (a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount())
 						{
@@ -698,7 +698,7 @@ namespace Events_Space
 						DovahAI_Space::DovahAI::ControlDistanceAIFly(a_actor);
 					}
 				}
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnceOther") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kNone)
 					{
@@ -713,7 +713,7 @@ namespace Events_Space
 		case "endGroundAttack"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					auto yt = DovahAI_Space::DovahAI::GetSingleton()->Get_AttackList(a_actor);
 					std::get<2>(yt)[1] = 3;
@@ -732,7 +732,7 @@ namespace Events_Space
 		case "SoundPlay.NPCDragonKillMove"_h:
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
-				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce") && GFunc_Space::IsScenePackageRunning(a_actor, 0.0f))
 				{
 					DovahAI_Space::DovahAI::TripleShout(a_actor);
 				}
