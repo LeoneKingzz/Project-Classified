@@ -79,10 +79,10 @@ namespace DovahAI_Space{
         auto first_position = a_actor->GetPosition();
         DeferredKill(a_actor, true);
         int a = 100;
-        logger::info("Began wait"sv);
-        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
+        // logger::info("Began wait"sv);
+        // logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
-        logger::info("End wait"sv);
+        // logger::info("End wait"sv);
         auto second_position = a_actor->GetPosition();
         DeferredKill(a_actor);
         DeferredKill(a_actor, true);
@@ -152,10 +152,10 @@ namespace DovahAI_Space{
         auto first_position = a_actor->GetPosition();
         auto first_time = std::chrono::steady_clock::now();
         int a = 400;
-        logger::info("Began wait"sv);
-        logger::info("Line {} File {}"sv, __LINE__, __FILE__);
+        // logger::info("Began wait"sv);
+        // logger::info("Line {} File {}"sv, __LINE__, __FILE__);
         std::jthread waitThread([&a]() { DovahAI_Space::DovahAI::GetSingleton()->wait(a); });
-        logger::info("End wait"sv);
+        // logger::info("End wait"sv);
         auto second_position = a_actor->GetPosition();
         auto second_time = std::chrono::steady_clock::now();
         auto time_secs = (std::chrono::duration_cast<std::chrono::seconds>(second_time - first_time).count()) * 10.0;
