@@ -1209,11 +1209,11 @@ namespace Events_Space
 									break;
 
 								case "CDRAI_Wt2_Update"_h:
-									// a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+									a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
 
 									if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
 									{
-										// a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+										a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
 
 										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Bt;
 										GFunc_Space::GFunc::set_tupledata(Bt, true, std::chrono::steady_clock::now(), 350ms, "CDRAI_Wt2_Update");
@@ -1312,10 +1312,10 @@ namespace Events_Space
 									}
 
 								case "CDAIF1_Wt1_Update"_h:
-									// a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+									a_actor->RemoveSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
 									if (a_actor->AsActorState()->GetFlyState() == RE::FLY_STATE::kHovering)
 									{
-										// a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
+										a_actor->AddSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_ResetAI_Spell"));
 
 										std::tuple<bool, std::chrono::steady_clock::time_point, GFunc_Space::ms, std::string> Xt;
 										GFunc_Space::GFunc::set_tupledata(Xt, true, std::chrono::steady_clock::now(), 350ms, "CDAIF1_Wt1_Update");
