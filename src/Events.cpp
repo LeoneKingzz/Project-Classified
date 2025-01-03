@@ -516,7 +516,7 @@ namespace Events_Space
 				{
 					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
 				}
-				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor))
+				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor) && !a_actor->HasKeywordString("AlduinUnitedKey"))
 				{
 					DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
 				}
