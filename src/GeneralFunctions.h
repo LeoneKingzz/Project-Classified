@@ -388,7 +388,7 @@ namespace GFunc_Space{
 		}
 		void Set_Handle(RE::Actor *actor, RE::BSSoundHandle &a_handle);
 		void scan_activeHandles(RE::Actor *a_actor, RE::BSSoundHandle &a_handle, bool insert = false, bool clear = false, bool clear_all = false);
-		RE::BSSoundHandle Get_Handle(RE::Actor *a_actor);
+		std::pair<bool, RE::BSSoundHandle> Get_Handle(RE::Actor *a_actor);
 
 	private:
 		// GFunc() = default;
