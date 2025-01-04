@@ -832,6 +832,11 @@ namespace DovahAI_Space{
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) 
                     && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -881,6 +886,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -924,6 +934,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -967,6 +982,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -1113,6 +1133,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -1143,6 +1168,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -1174,6 +1204,11 @@ namespace DovahAI_Space{
                 {
                     if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
                     {
+                        if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                        {
+                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                        }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
                         {
                         case 1:
@@ -1445,6 +1480,11 @@ namespace DovahAI_Space{
     {
         if (GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f && GFunc_Space::Has_Magiceffect_Keyword(a_actor, RE::TESForm::LookupByEditorID<RE::BGSKeyword>("LDP_DragonRendKey"), 0.0f) && !(GetBoolVariable(a_actor, "Injured") || GetBoolVariable(a_actor, "IsEnraging") || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlightMG07Dragon")) || a_actor->HasSpell(RE::TESForm::LookupByEditorID<RE::SpellItem>("AbNoFlight"))))
         {
+            if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+            {
+                GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+            }
             switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
             {
             case 1:
@@ -1927,7 +1967,11 @@ namespace DovahAI_Space{
                     break;
 
                 case 4:
-                    
+                    if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+                    {
+                        GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                        a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+                    }
                     switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))
                     {
                     case 1:
