@@ -2669,12 +2669,12 @@ namespace DovahAI_Space{
 
     void DovahAI::Random_TakeOffandDeath_Anims(RE::Actor *a_actor)
     {
-        if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
-        {
-            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffDefault
-        }else{
-            a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 2); // TakeOffVertical
-        }
+        // if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 100.0f) <= 50.0f)
+        // {
+        //     a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 1); // TakeOffDefault
+        // }else{
+        //     a_actor->SetGraphVariableInt("iLDP_TakeOff_Faction", 2); // TakeOffVertical
+        // }
 
         switch (GFunc_Space::GFunc::GetSingleton()->GenerateRandomInt(0, 5))
         {
