@@ -512,7 +512,7 @@ namespace Events_Space
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
 				}
-				if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
 				{
 					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", true);
 				}
@@ -532,7 +532,7 @@ namespace Events_Space
 				{
 					DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
 				}
-				if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
+				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
 				{
 					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", true);
 				}
