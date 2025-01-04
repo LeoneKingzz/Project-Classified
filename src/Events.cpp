@@ -866,8 +866,13 @@ namespace Events_Space
 			{
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
-					// sound.StopInstance(instanceID);
+					if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
+					{
+						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+						a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
+					}
 				}
+				
 			}
 			break;
 
