@@ -408,6 +408,10 @@ namespace Events_Space
 										DovahAI_Space::DovahAI::Unarm_effect(a_actor);
 										break;
 
+									case "LDP_DragonVoiceMoonBlastEffect2"_h:
+										a_actor->PlaceObjectAtMe(RE::TESForm::LookupByEditorID<RE::BGSExplosion>("DragonRendHitFXExplosion"), false);
+										break;
+
 									default:
 										break;
 									}
