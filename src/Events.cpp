@@ -493,6 +493,10 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				GFunc_Space::shakeCamera(0.5f, a_actor->GetPosition(), 1.25f);
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -507,6 +511,10 @@ namespace Events_Space
 				if (!DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_AIControl_doOnce"))
 				{
 					DovahAI_Space::DovahAI::LandingCombatAI(a_actor);
+				}
+				if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", true);
 				}
 			}
 		case "DragonLandEffect"_h:
@@ -523,6 +531,10 @@ namespace Events_Space
 				if (!DovahAI_Space::DovahAI::IsMQ206CutsceneDragons(a_actor) && !a_actor->HasKeywordString("AlduinUnitedKey"))
 				{
 					DovahAI_Space::DovahAI::Random_TakeOffandDeath_Anims(a_actor);
+				}
+				if (DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) <= 0.1f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", true);
 				}
 			}
 			break;
@@ -595,6 +607,10 @@ namespace Events_Space
 						a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", false);
 					}
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -637,6 +653,10 @@ namespace Events_Space
 					GFunc_Space::GFunc::set_tupledata(data, true, std::chrono::steady_clock::now(), 1400ms, "TATripleThreat_Update");
 					GFunc_Space::GFunc::GetSingleton()->RegisterforUpdate(a_actor, data);
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -648,6 +668,10 @@ namespace Events_Space
 				if (GFunc_Space::GFunc::GetSingleton()->GenerateRandomFloat(0.0f, 1.0f) <= 0.5f)
 				{
 					GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xF1B1F, "Skyrim.esm"))); // NPCDragonKillMove [SNDR:000F1B1F]
+				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
 				}
 			}
 			break;
@@ -676,6 +700,10 @@ namespace Events_Space
 			}
 			if(a_actor->HasKeywordString("DragonVoiceKey")){
 				DovahAI_Space::DovahAI::GetEquippedShout_Dragon(a_actor);
+			}
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+			{
+				a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
 			}
 			break;
 
@@ -718,6 +746,10 @@ namespace Events_Space
 						DovahAI_Space::DovahAI::ControlDistanceAIGround(a_actor);
 						a_actor->SetGraphVariableBool("bLDP_AIControl_doOnceOther", false);
 					}
+				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
 				}
 			}
 			break;
@@ -770,6 +802,10 @@ namespace Events_Space
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight")? "NPC RLegToe1" : "NPC LLegFoot";
 					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDStampSpell"), Node);
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -781,6 +817,10 @@ namespace Events_Space
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight") ? "NPC RLegToe1" : "NPC LLegFoot";
 					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDTailTurnSpell"), Node);
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -790,6 +830,10 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
 					DovahAI_Space::DovahAI::OneMoreTailTurn(a_actor);
+				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
 				}
 			}
 			break;
@@ -842,6 +886,10 @@ namespace Events_Space
 					}
 					
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -862,6 +910,10 @@ namespace Events_Space
 				{
 					DovahAI_Space::DovahAI::StartShout(a_actor);
 				}
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -876,7 +928,10 @@ namespace Events_Space
 						a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
 					}
 				}
-				
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
+				}
 			}
 			break;
 
@@ -912,6 +967,13 @@ namespace Events_Space
 							break;
 						}
 					}
+				}
+			}
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
+			{
+				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
+				{
+					a_actor->SetGraphVariableBool("bLDP_StaminaFlight_Exhausted", false);
 				}
 			}
 			break;
