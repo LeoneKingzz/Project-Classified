@@ -834,7 +834,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -888,7 +891,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -936,7 +942,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -984,7 +993,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -1135,7 +1147,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -1170,7 +1185,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -1206,7 +1224,10 @@ namespace DovahAI_Space{
                     {
                         if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                         {
-                            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                            auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                            if(b_handle.first){
+                                b_handle.second.Stop();
+					        }
                             a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                         }
                         switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -1482,7 +1503,10 @@ namespace DovahAI_Space{
         {
             if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
             {
-                GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                if(b_handle.first){
+                    b_handle.second.Stop();
+				}
                 a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
             }
             switch (GetIntVariable(a_actor, "iLDP_TakeOff_Faction"))
@@ -1969,7 +1993,12 @@ namespace DovahAI_Space{
                 case 4:
                     if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
                     {
-                        GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+                        auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+                        if(b_handle.first){
+                            b_handle.second.Stop();
+					    }
+					
+					
                         a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
                     }
                     switch (GetIntVariable(a_actor, "iLDP_Dragon_Type"))

@@ -579,7 +579,10 @@ namespace Events_Space
 			if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_IsinCombat"))
 			{
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID")){
-					GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+					auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+					if(b_handle.first){
+						b_handle.second.Stop();
+					}
 					a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
 				}
 				if (a_actor->IsBeingRidden() && RE::PlayerCharacter::GetSingleton()->IsOnMount())
@@ -686,7 +689,10 @@ namespace Events_Space
 
 		case "BeginCastVoice"_h:
 		    if(DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID")){
-				GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+				auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+				if(b_handle.first){
+					b_handle.second.Stop();
+				}
 				a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
 			}
 		    if(a_actor->HasKeywordString("AlduinUnitedKey")){
@@ -924,7 +930,10 @@ namespace Events_Space
 				{
 					if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
 					{
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+						auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+						if(b_handle.first){
+							b_handle.second.Stop();
+						}
 						a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
 					}
 				}
@@ -942,7 +951,10 @@ namespace Events_Space
 				{
 					if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_storeSoundID"))
 					{
-						GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_StopInstance", RE::MakeFunctionArguments(DovahAI_Space::DovahAI::GetIntVariable(a_actor, "iLDP_SoundInstance_ID")));
+						auto b_handle = GFunc_Space::GFunc::GetSingleton()->Get_Handle(a_actor);
+						if(b_handle.first){
+							b_handle.second.Stop();
+						}
 						a_actor->SetGraphVariableBool("bLDP_storeSoundID", false);
 					}
 					a_actor->InterruptCast(false);

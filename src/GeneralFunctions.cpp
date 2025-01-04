@@ -748,14 +748,16 @@ namespace GFunc_Space{
 		}
 	}
 
-    RE::BSSoundHandle GFunc::Get_Handle(RE::Actor *a_actor)
-    {
+	std::pair<bool, RE::BSSoundHandle> GFunc::Get_Handle(RE::Actor *a_actor)
+	{
         uniqueLocker lock(mtx_Handles);
+		bool detected_key = false;
 		RE::BSSoundHandle result;
 		for (auto it = _Handles.begin(); it != _Handles.end(); ++it){
             if (it->first == a_actor) {
                 if (!it->second.empty()) {
                     for (auto handle : it->second) {
+						detected_key = true;
 						result = handle;
 						break;
 					}
@@ -763,8 +765,8 @@ namespace GFunc_Space{
             }
             continue;
         }
-        return result;
-    }
+		return {detected_key, result};
+	}
 
 	void GFunc::playSound(RE::Actor *a, RE::BGSSoundDescriptorForm *a_descriptor)
 	{
@@ -780,7 +782,7 @@ namespace GFunc_Space{
 
 		if (a->GetGraphVariableBool("bLDP_storeSoundID", result) && result)
 		{
-			a->SetGraphVariableInt("iLDP_SoundInstance_ID", std::move(ID));
+			GetSingleton()->Set_Handle(a, handle);
 		}
 
 		if (set_sound_position(&handle, a->data.location.x, a->data.location.y, a->data.location.z))
