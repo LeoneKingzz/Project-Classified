@@ -320,8 +320,11 @@ namespace GFunc_Space{
 			*(uint32_t *)&handle.state = 0;
 
 			auto ID = soundHelper_a(RE::BSAudioManager::GetSingleton(), &handle, a_descriptor->GetFormID(), 16);
-			a->SetGraphVariableInt("iLDP_SoundInstance_ID", std::move(ID));
-
+			if (DovahAI_Space::DovahAI::GetBoolVariable(a, "bLDP_storeSoundID"))
+			{
+				a->SetGraphVariableInt("iLDP_SoundInstance_ID", std::move(ID));
+			}
+			
 			if (set_sound_position(&handle, a->data.location.x, a->data.location.y, a->data.location.z))
 			{
 				soundHelper_b(&handle, a->Get3D());
