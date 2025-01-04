@@ -700,5 +700,93 @@ namespace GFunc_Space{
 	{
 		return RE::BSTempEffectParticle::Spawn(cell, a_lifetime, model, *a_rotation, *a_position, a_scale, a_flags, a_target);
 	}
-	
+
+	void GFunc::Set_Handle(RE::Actor *actor, RE::BSSoundHandle &a_handle)
+	{
+		GetSingleton()->scan_activeHandles(actor, a_handle, true);
+	}
+
+    void GFunc::scan_activeHandles([[maybe_unused]] RE::Actor *a_actor, [[maybe_unused]] RE::BSSoundHandle &a_handle, bool insert, bool clear, bool clear_all)
+    {
+		uniqueLocker lock(mtx_Handles);
+		if (insert){
+			auto itt = _Handles.find(a_actor);
+			if (itt == _Handles.end()){
+				std::vector<RE::BSSoundHandle> Hen;
+				_Handles.insert({a_actor, Hen});
+			}
+		}
+		
+		for (auto it = _Handles.begin(); it != _Handles.end(); ++it){
+			if (insert){
+				if (it->first == a_actor){
+					if (!it->second.empty()){
+						it->second.clear();
+					}
+					it->second.push_back(a_handle);
+					break;
+				}
+			}
+			if (clear){
+				if (it->first == a_actor){
+					if (!it->second.empty()){
+						it->second.clear();
+					}
+					_Handles.erase(it);
+					break;
+				}
+			}
+			if (clear_all){
+				if (it->first){
+					if (!it->second.empty()){
+						it->second.clear();
+					}
+					_Handles.erase(it);
+				}
+			}
+			continue;
+		}
+	}
+
+    RE::BSSoundHandle GFunc::Get_Handle(RE::Actor *a_actor)
+    {
+        uniqueLocker lock(mtx_Handles);
+		RE::BSSoundHandle result;
+		for (auto it = _Handles.begin(); it != _Handles.end(); ++it){
+            if (it->first == a_actor) {
+                if (!it->second.empty()) {
+                    for (auto handle : it->second) {
+						result = handle;
+						break;
+					}
+                }
+            }
+            continue;
+        }
+        return result;
+    }
+
+	void GFunc::playSound(RE::Actor *a, RE::BGSSoundDescriptorForm *a_descriptor)
+	{
+
+		RE::BSSoundHandle handle;
+		handle.soundID = static_cast<uint32_t>(-1);
+		handle.assumeSuccess = false;
+		*(uint32_t *)&handle.state = 0;
+
+		auto ID = soundHelper_a(RE::BSAudioManager::GetSingleton(), &handle, a_descriptor->GetFormID(), 16);
+
+		bool result = false;
+
+		if (a->GetGraphVariableBool("bLDP_storeSoundID", result) && result)
+		{
+			a->SetGraphVariableInt("iLDP_SoundInstance_ID", std::move(ID));
+		}
+
+		if (set_sound_position(&handle, a->data.location.x, a->data.location.y, a->data.location.z))
+		{
+			soundHelper_b(&handle, a->Get3D());
+			soundHelper_c(&handle);
+		}
+	}
 }

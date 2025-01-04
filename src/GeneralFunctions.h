@@ -311,29 +311,7 @@ namespace GFunc_Space{
 			return result;
 		}
 
-		static void playSound(RE::Actor *a, RE::BGSSoundDescriptorForm *a_descriptor)
-		{
-
-			RE::BSSoundHandle handle;
-			handle.soundID = static_cast<uint32_t>(-1);
-			handle.assumeSuccess = false;
-			*(uint32_t *)&handle.state = 0;
-
-			auto ID = soundHelper_a(RE::BSAudioManager::GetSingleton(), &handle, a_descriptor->GetFormID(), 16);
-
-			bool result = false;
-
-			if (a->GetGraphVariableBool("bLDP_storeSoundID", result) && result)
-			{
-				a->SetGraphVariableInt("iLDP_SoundInstance_ID", std::move(ID));
-			}
-			
-			if (set_sound_position(&handle, a->data.location.x, a->data.location.y, a->data.location.z))
-			{
-				soundHelper_b(&handle, a->Get3D());
-				soundHelper_c(&handle);
-			}
-		}
+		static void playSound(RE::Actor *a, RE::BGSSoundDescriptorForm *a_descriptor);
 
 		inline auto ApplyHavokImpulse(RE::TESObjectREFR *self, float afX, float afY, float afZ, float afMagnitude)
 		{
@@ -408,6 +386,9 @@ namespace GFunc_Space{
 				vm->DispatchMethodCall1(object, functionName, a_args, result);
 			}
 		}
+		void Set_Handle(RE::Actor *actor, RE::BSSoundHandle &a_handle);
+		void scan_activeHandles(RE::Actor *a_actor, RE::BSSoundHandle &a_handle, bool insert = false, bool clear = false, bool clear_all = false);
+		RE::BSSoundHandle Get_Handle(RE::Actor *a_actor);
 
 	private:
 		// GFunc() = default;
@@ -422,6 +403,8 @@ namespace GFunc_Space{
 
 		std::unordered_map<RE::Actor *, std::vector<RE::TESBoundObject *>> _Inventory;
 		std::shared_mutex mtx_Inventory;
+		std::unordered_map<RE::Actor *, std::vector<RE::BSSoundHandle>> _Handles;
+		std::shared_mutex mtx_Handles;
 
 		static int soundHelper_a(void *manager, RE::BSSoundHandle *a2, int a3, int a4) // sub_140BEEE70
 		{
