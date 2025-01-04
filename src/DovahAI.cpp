@@ -2105,11 +2105,11 @@ namespace DovahAI_Space{
                         break;
                     }
                     break;
+                    a_actor->NotifyAnimationGraph("ShoutFireBallStart");
 
                 default:
                     break;
                 }
-                a_actor->NotifyAnimationGraph("ShoutFireBallStart");
             }
         }
     }
