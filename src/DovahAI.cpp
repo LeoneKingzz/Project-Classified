@@ -446,34 +446,30 @@ namespace DovahAI_Space{
         {
             //auto H = RE::TESDataHandler::GetSingleton();
             box->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
-            const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-            caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), false, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
+            box->PlaceObjectAtMe(RE::TESForm::LookupByEditorID<RE::BGSExplosion>("LDP_DragonDismayAreaExpl"), false); // FearExplosionSpell
         }else{
             GetSingleton()->Set_Box(a_actor);
             if (auto boxx = GetSingleton()->Get_Box(a_actor))
             {
                 //auto H = RE::TESDataHandler::GetSingleton();
                 boxx->MoveToNode(a_actor, "NPC Head MagicNode [Hmag]");
-                const auto caster = boxx->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-                caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_DragonVoiceDismayArea"), false, nullptr, 1, false, 0.0, a_actor); // FearExplosionSpell
+                boxx->PlaceObjectAtMe(RE::TESForm::LookupByEditorID<RE::BGSExplosion>("LDP_DragonDismayAreaExpl"), false); // FearExplosionSpell
             }
         }
     }
 
-    void DovahAI::CastAreaEffect(RE::Actor *a_actor, RE::MagicItem* a_spell, RE::BSFixedString a_node)
+    void DovahAI::CastAreaEffect(RE::Actor *a_actor, RE::SpellItem* a_spell, RE::BSFixedString a_node)
     {
         if (auto box = GetSingleton()->Get_Box(a_actor))
         {
             box->MoveToNode(a_actor, a_node);
-            const auto caster = box->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-            caster->CastSpellImmediate(a_spell, false, a_actor, 1, false, 0.0, a_actor);
+            GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_RemoteCast", RE::MakeFunctionArguments(std::bit_cast<RE::Actor *>(a_actor), std::bit_cast<RE::TESObjectREFR *>(box), std::bit_cast<RE::SpellItem *>(a_spell)));
         }else{
             GetSingleton()->Set_Box(a_actor);
             if (auto boxx = GetSingleton()->Get_Box(a_actor))
             {
                 boxx->MoveToNode(a_actor, a_node);
-                const auto caster = boxx->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
-                caster->CastSpellImmediate(a_spell, false, a_actor, 1, false, 0.0, a_actor);
+                GFunc_Space::GFunc::Call_Papyrus_Function(a_actor, "dragonActorSCRIPT", "LDP_RemoteCast", RE::MakeFunctionArguments(std::bit_cast<RE::Actor *>(a_actor), std::bit_cast<RE::TESObjectREFR *>(boxx), std::bit_cast<RE::SpellItem *>(a_spell)));
             }
         }
     }

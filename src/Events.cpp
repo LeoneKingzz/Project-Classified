@@ -806,7 +806,7 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight")? "NPC RLegToe1" : "NPC LLegFoot";
-					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDStampSpell"), Node);
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_aaaUDStampSpell"), Node);
 				}
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
 				{
@@ -821,7 +821,7 @@ namespace Events_Space
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsUDAnimation"))
 				{
 					auto Node = DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "IsRight") ? "NPC RLegToe1" : "NPC LLegFoot";
-					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDTailTurnSpell"), Node);
+					DovahAI_Space::DovahAI::CastAreaEffect(a_actor, RE::TESForm::LookupByEditorID<RE::SpellItem>("LDP_aaaUDTailTurnSpell"), Node);
 				}
 				if (DovahAI_Space::DovahAI::GetBoolVariable(a_actor, "bLDP_StaminaFlight_Exhausted") && DovahAI_Space::DovahAI::GetActorValuePercent(a_actor, RE::ActorValue::kStamina) >= 1.0f)
 				{
