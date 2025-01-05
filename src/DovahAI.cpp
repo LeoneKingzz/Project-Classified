@@ -1574,16 +1574,16 @@ namespace DovahAI_Space{
             switch (RNG)
             {
             case 1:
-                // MAGFlamesDragonFireLPMSD [SNDR:0003EF56]
+                // LDP_MAGFlamesDragonFireLPMSD [SNDR:FE14D899]
                 a_actor->SetGraphVariableBool("bLDP_storeSoundID", true);
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3EF56, "Skyrim.esm"))); // fire
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x899, "LeoneDragonProject.esp"))); // fire
                 caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
             case 2:
                 a_actor->SetGraphVariableBool("bLDP_storeSoundID", true);
-                // MAGDestructionFrostBiteDragonFireLPM [SNDR:000DAB87]
-                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xDAB87, "Skyrim.esm"))); // frost
+                // LDP_MAGDestructionFrostBiteDragonFireLPM [SNDR:FE14D89A]
+                GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x89A, "LeoneDragonProject.esp"))); // frost
                 caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), false, nullptr, 1, false, 0.0, a_actor);
                 break;
 
@@ -1594,16 +1594,16 @@ namespace DovahAI_Space{
 
         case 4:
         case 6:
-            // MAGFlamesDragonFireLPMSD [SNDR:0003EF56]
+            // LDP_MAGFlamesDragonFireLPMSD [SNDR:FE14D899]
             a_actor->SetGraphVariableBool("bLDP_storeSoundID", true);
-            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x3EF56, "Skyrim.esm"))); // fire
+            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x899, "LeoneDragonProject.esp"))); // fire
             caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFireShout"), false, nullptr, 1, false, 0.0, a_actor);
             break;
         case 5:
         case 7:
-            // MAGDestructionFrostBiteDragonFireLPM [SNDR:000DAB87]
+            // LDP_MAGDestructionFrostBiteDragonFireLPM [SNDR:FE14D89A]
             a_actor->SetGraphVariableBool("bLDP_storeSoundID", true);
-            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0xDAB87, "Skyrim.esm"))); // frost
+            GFunc_Space::GFunc::playSound(a_actor, (H->LookupForm<RE::BGSSoundDescriptorForm>(0x89A, "LeoneDragonProject.esp"))); // frost
             caster->CastSpellImmediate(RE::TESForm::LookupByEditorID<RE::MagicItem>("LDP_aaaUDSwingFrostShout"), false, nullptr, 1, false, 0.0, a_actor);
             break;
 
